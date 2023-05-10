@@ -18,8 +18,13 @@ const storage = multer.diskStorage({
 });
 let fileUpload = multer({ storage: storage });
 
-// router.get('/create', userControllers.createUser) // anda pero crea por el hecho de entrar usarla cuando sea necesario
+router.use(methodOverride('_method'));
+router.use(express.urlencoded({ extended: false }));
+router.use(express.json());
 
+// router.get('/create', userControllers.createUser) // anda pero crea por el hecho de entrar usarla cuando sea necesario
+router.get('/register', userControllers.getRegister)
+router.post('/register', userControllers.register)
 
 
 module.exports = router

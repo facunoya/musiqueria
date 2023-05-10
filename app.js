@@ -7,14 +7,17 @@ const productRoutes = require('./routes/productRoutes')
 const userRoutes = require('./routes/userRoutes')
 const mainRoutes = require('./routes/mainRoutes')
 const apiRoutes = require('./routes/apiRoutes')
+const methodOverride = require('method-override');
 
-
-app.use(express.json())
 app.use(express.static('public'));
 app.use(session({
     secret: 'Mi string secreto',
     expires: new Date(Date.now() + (30 * 86400 * 1000))
 }))
+app.use(methodOverride('_method'));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
+
 
 app.use(cookieParser())
 app.use('/product', productRoutes)

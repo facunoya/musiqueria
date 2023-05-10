@@ -35,6 +35,30 @@ const userControllers = {
             .then((users) => {
                 return res.send(users)
             })
+    },
+    getRegister: (req, res) => {
+        res.render('./user/register')
+    },
+    register: async (req, res) => {
+
+        //Falta encriptar contraseña 
+        //Falta configurar Multer y pasar el input a tipo File
+        //Falta configurar express-validator para las validaciones
+        //Faltan la validaciones del front con onsubmit,supongo que usando .fetch para comparar datos con el usuario de base de datos.
+
+
+        const data = { ...req.body }
+        const allUsers = await db.Users.findAll()
+        const dBUser = allUsers.filter(x => x.email == data.email)
+        if (dBUser != "") {
+            res.send("Ese correo ya se encuentra registrado")
+        } else {
+            db.Users.create(
+                { ...data }
+            )
+            res.send('usuario creado con èxito')
+        }
+
     }
 
 }
