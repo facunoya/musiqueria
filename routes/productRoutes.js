@@ -16,10 +16,16 @@ const storage = multer.diskStorage({
     }
 });
 let fileUpload = multer({ storage: storage });
+router.use(methodOverride('_method'));
+router.use(express.urlencoded({ extended: false }));
+router.use(express.json())
+
 
 router.get('/all', productControllers.getProducts)
 router.get('/create', productControllers.getCreate)
 router.post('/create', productControllers.create)
+router.get('/modifyproduct/:id', productControllers.getEdit)
+router.put('/modifyproduct/:id', productControllers.edit)
 
 
 

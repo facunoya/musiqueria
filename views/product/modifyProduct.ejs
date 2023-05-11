@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto</title>
+</head>
+
+<body>
+    <div id="cardProduct" class="card">
+        <h2>Aca iria el producto</h2>
+        <% if(producto){ %>
+            <form action="/product/modifyproduct/<%= producto[0].product_id  %>?_method=PUT" method="POST"
+                id="editProductForm" class="editProdForm">
+                <label for="">Id del producto</label>
+                <input type="text" name="product_id" value=<%=producto[0].product_id %>>
+                <br><br>
+                <label for="">Nombre</label>
+                <input type="text" name="name" value=<%=producto[0].name %>>
+                <br><br>
+                <label for="">Subcategoria</label>
+                <input type="text" name="subcategory_id" value=<%=producto[0].subcategory_id %>>
+                <br><br>
+                <label for="">Stock</label>
+                <input type="number" name="stock" value=<%=producto[0].stock %>>
+                <br><br>
+                <label for="">Descripcion</label>
+                <input type="text" name="description" value=<%=producto[0].name %>>
+                <br><br>
+                <label for="">Color</label>
+                <input type="text" name="colors" value=<%=producto[0].colors %>>
+                <br><br>
+                <label for="">Precio</label>
+                <input type="text" name="price" value=<%=producto[0].price %>>
+                <br><br>
+                <label for="">Marca</label>
+                <input type="text" name="brand" value=<%=producto[0].brand %>>
+                <br><br>
+                <label for="">Imagen</label>
+                <input type="text" name="productImg" value=<%=producto[0].productImg %>>
+                <br><br>
+                <input type="submit" value="Editar">
+                <input type="submit" value="Eliminar">
+                <br><br>
+
+            </form>
+            <%} %>
+                <br><br>
+                <a href="/">Volver</a>
+    </div>
+</body>
+
+</html>

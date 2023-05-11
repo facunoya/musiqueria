@@ -14,7 +14,8 @@
         <p>
             <%= product.name %>
         </p>
-        <input type="submit" id=<%=product.product_id %> value="Editar">
+        <button><a href="/product/modifyproduct/<%=product.product_id %>">Editar</a></button>
+        <input type="submit" id=<%=product.name %> value="Eliminar">
         <br><br>
         <%}); } %>
             <br><br>

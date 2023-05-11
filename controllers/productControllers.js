@@ -43,6 +43,19 @@ const productControllers = {
 
         return res.redirect('/product/all')
 
+    },
+    getEdit: async (req, res) => {
+        const allProducts = await db.Products.findAll()
+        const idUrl = req.params.id
+        const producto = allProducts.filter(x => x.product_id == idUrl)
+        console.log(producto)
+        return res.render('./product/modifyProduct', { producto })
+    },
+    edit: (req, res) => {
+
+        db.Products.update({ ...req.body }, { where: { product_id: req.body.product_id } })
+
+        res.redirect('/product/all')
     }
 
 }
