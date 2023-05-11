@@ -5,27 +5,9 @@ const sequelize = db.sequelize
 const { Op } = require('sequelize')
 
 const mainControllers = {
-    getSalesDetails: async (req, res) => {
-        await db.SalesDetails.findAll({
-            include: [{ association: "Products" }]
-        })
-            .then((sales) => {
-                return res.json(sales)
-            })
-
-
-    },
-    getSalesHeaders: async (req, res) => {
-        await db.SalesHeaders.findAll({
-            include: [{ association: "Users" }]
-        })
-            .then((sales) => {
-                return res.json(sales)
-            })
-
-
+    getIndex: (req, res) => {
+        res.render('index')
     }
-
 
 }
 module.exports = mainControllers

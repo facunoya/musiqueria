@@ -7,8 +7,8 @@ const { Op } = require('sequelize')
 const userControllers = {
     getUsers: (req, res) => {
         db.Users.findAll()
-            .then((users) => {
-                return res.send(users)
+            .then((usuarios) => {
+                return res.render('./user/users', { usuarios })
             })
 
 
@@ -56,7 +56,21 @@ const userControllers = {
             db.Users.create(
                 { ...data }
             )
-            res.send('usuario creado con èxito')
+            res.redirect('/user/login')
+        }
+
+    },
+    getLogin: (req, res) => {
+        res.render('./user/login')
+    },
+    login: async (req, res) => {
+        const allUsers = await db.Users.findAll()
+        const data = { ...req.body }
+        const dBUser = allUsers.filter(x => x.email == data.email)
+        if (dBUser != "") {
+            res.send("Bienvenid@: " + dBUser[0].name + "!")
+        } else {
+            res.send("No estas registrado")
         }
 
     }

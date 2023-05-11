@@ -22,7 +22,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use('/product', productRoutes)
 app.use('/user', userRoutes)
-app.use('/main', mainRoutes)
+app.use(mainRoutes)
 app.use('/api', apiRoutes)
 
 

@@ -45,7 +45,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         createdDate: {
             type: dataTypes.DATE,
-            allowNull: false
+            // allowNull: false
 
         },
 

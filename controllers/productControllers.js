@@ -10,7 +10,7 @@ const productControllers = {
             include: [{ association: "SubCategories" }]
         })
             .then((productos) => {
-                return res.json(productos)
+                return res.render('./product/products', { productos })
             })
 
 
@@ -23,6 +23,25 @@ const productControllers = {
                 return res.send(categories)
             })
 
+
+    },
+    getCreate: (req, res) => {
+        db.Products.findAll({
+            include: [{ association: "SubCategories" }]
+        })
+            .then((productos) => {
+                return res.render('./product/createProduct', { productos })
+            })
+
+    },
+    create: (req, res) => {
+        const data = { ...req.body }
+        db.Products.create(data)
+        db.Products.findAll({
+            include: [{ association: "SubCategories" }]
+        })
+
+        return res.redirect('/product/all')
 
     }
 
