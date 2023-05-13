@@ -85,13 +85,13 @@ const userControllers = {
 
         db.Users.update({ ...req.body }, { where: { user_id: req.body.user_id } })
 
-        res.redirect('/')
+        res.redirect('/user/all')
     },
     delete: (req, res) => {
         let result = req.params.id
         db.Users.destroy({ where: { user_id: result } })
 
-        res.redirect('/')
+        res.redirect('/user/all')
     }
 
 }
