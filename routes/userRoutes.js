@@ -28,5 +28,9 @@ router.post('/register', userControllers.register)
 router.get('/login', userControllers.getLogin)
 router.post('/login', userControllers.login)
 router.get('/all', userControllers.getUsers)
+router.get('/modifyuser/:id', userControllers.getEdit)
+router.put('/modifyuser/:id', userControllers.edit)
+router.delete('/modifyuser/:id', userControllers.delete)
+
 
 module.exports = router

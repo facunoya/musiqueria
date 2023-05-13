@@ -26,6 +26,7 @@ router.get('/create', productControllers.getCreate)
 router.post('/create', productControllers.create)
 router.get('/modifyproduct/:id', productControllers.getEdit)
 router.put('/modifyproduct/:id', productControllers.edit)
+router.delete('/modifyproduct/:id', productControllers.delete)
 
 
 

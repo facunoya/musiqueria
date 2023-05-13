@@ -73,6 +73,25 @@ const userControllers = {
             res.send("No estas registrado")
         }
 
+    },
+    getEdit: async (req, res) => {
+        const allUsers = await db.Users.findAll()
+        const idUrl = req.params.id
+        const usuario = allUsers.filter(x => x.user_id == idUrl)
+        console.log(usuario)
+        return res.render('./user/modifyUser', { usuario })
+    },
+    edit: (req, res) => {
+
+        db.Users.update({ ...req.body }, { where: { user_id: req.body.user_id } })
+
+        res.redirect('/')
+    },
+    delete: (req, res) => {
+        let result = req.params.id
+        db.Users.destroy({ where: { user_id: result } })
+
+        res.redirect('/')
     }
 
 }

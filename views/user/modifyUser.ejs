@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuario</title>
+</head>
+
+<body>
+    <div id="cardUser" class="card">
+        <h2>Modificar usuario</h2>
+        <% if(usuario){ %>
+            <form action="/user/modifyuser/<%= usuario[0].user_id  %>?_method=PUT" method="POST" id="editUserForm"
+                class="modifyUserForm">
+                <label for="">Id del usuario</label>
+                <input type="text" name="user_id" value=<%=usuario[0].user_id %>>
+                <br><br>
+                <label for="">Nombre</label>
+                <input type="text" name="name" value=<%=usuario[0].name %>>
+                <br><br>
+                <label for="">Correo</label>
+                <input type="email" name="email" value=<%=usuario[0].email %>>
+                <br><br>
+                <label for="">Contraseña</label>
+                <input type="text" name="password" value=<%=usuario[0].password %>>
+                <br><br>
+                <label for="">Imagen de perfil</label>
+                <input type="text" name="avatar" value=<%=usuario[0].avatar %>>
+                <br><br>
+                <label for="">Perfil</label>
+                <input type="text" name="profile" value=<%=usuario[0].profile %>>
+                <br><br>
+                <input type="submit" value="Editar">
+
+
+            </form>
+            <form action="/user/modifyuser/<%= usuario[0].user_id  %>?_method=DELETE" method="POST" id="deleteUserForm"
+                class="delUserForm">
+                <br>
+                <input type="submit" value="Eliminar">
+            </form>
+            <%} %>
+                <br><br>
+                <a href="/">Volver</a>
+    </div>
+</body>
+
+</html>

@@ -14,8 +14,7 @@
         <p>
             <%= usuario.name %>
         </p>
-        <input type="submit" id=<%=usuario.user_id %> value="Editar">
-        <input type="submit" id=<%=usuario.email %> value="Eliminar">
+        <button><a href="/user/modifyuser/<%=usuario.user_id %>">Modificar</a></button>
         <br><br>
         <%}); } %>
             <br><br>

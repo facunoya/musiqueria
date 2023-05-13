@@ -56,6 +56,12 @@ const productControllers = {
         db.Products.update({ ...req.body }, { where: { product_id: req.body.product_id } })
 
         res.redirect('/product/all')
+    },
+    delete: (req, res) => {
+        let result = req.params.id
+        db.Products.destroy({ where: { product_id: result } })
+
+        res.redirect('/product/all')
     }
 
 }

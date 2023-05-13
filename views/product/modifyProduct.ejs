@@ -42,9 +42,13 @@
                 <input type="text" name="productImg" value=<%=producto[0].productImg %>>
                 <br><br>
                 <input type="submit" value="Editar">
-                <input type="submit" value="Eliminar">
-                <br><br>
 
+
+            </form>
+            <form action="/product/modifyproduct/<%= producto[0].product_id  %>?_method=DELETE" method="POST"
+                id="deleteProductForm" class="delProdForm">
+                <br>
+                <input type="submit" value="Eliminar">
             </form>
             <%} %>
                 <br><br>
