@@ -29,8 +29,16 @@
                 <label for="">Imagen de perfil</label>
                 <input type="text" name="avatar" value=<%=usuario[0].avatar %>>
                 <br><br>
+                <!--Este select no es funcional-->
                 <label for="">Perfil</label>
-                <input type="text" name="profile" value=<%=usuario[0].profile %>>
+                <select name="profile" id="profile">
+                    <% let profile=['Cliente', 'Administrador' ] %>
+                        <% for(let i=0; i < profile.length; i++) {%>
+                            <option value="<%= profile[i] %>">
+                                <%= profile[i] %>
+                            </option>
+                            <% } %>
+                </select>
                 <br><br>
                 <input type="submit" value="Editar">
 

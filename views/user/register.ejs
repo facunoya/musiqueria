@@ -23,8 +23,15 @@
         <label for="avatar">Avatar</label>
         <input type="text" name="avatar">
         <br><br>
-        <label for="">Profile</label>
-        <input type="text" name="profile">
+        <label for="">Perfil</label>
+        <select name="profile" id="profile">
+            <% let profile=['Cliente', 'Administrador' ] %>
+                <% for(let i=0; i < profile.length; i++) {%>
+                    <option value="<%= profile[i] %>">
+                        <%= profile[i] %>
+                    </option>
+                    <% } %>
+        </select>
         <br><br>
         <input type="submit" value="Enviar">
         <br><br>

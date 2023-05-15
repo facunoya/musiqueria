@@ -7,6 +7,7 @@ const productRoutes = require('./routes/productRoutes')
 const userRoutes = require('./routes/userRoutes')
 const mainRoutes = require('./routes/mainRoutes')
 const apiRoutes = require('./routes/apiRoutes')
+const cartRoutes = require('./routes/cartRoutes')
 const methodOverride = require('method-override');
 
 app.use(express.static('public'));
@@ -24,7 +25,7 @@ app.use('/product', productRoutes)
 app.use('/user', userRoutes)
 app.use(mainRoutes)
 app.use('/api', apiRoutes)
-
+app.use('/cart', cartRoutes)
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
