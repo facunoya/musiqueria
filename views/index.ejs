@@ -9,17 +9,32 @@
 </head>
 
 <body>
-    <div id="mainContainer">
-        <h1 id="Musiqueria">Musiqueria</h1>
-        <nav id="navContainer" class="navbar">
-            <a href="/user/register">Registrarme</a>
-            <a href="/user/login">Iniciar Sesiòn</a>
-            <a href="/user/all">Usuarios</a>
-            <a href="/product/all">Productos</a>
-            <a href="/cart/cart">Carrito</a>
-        </nav>
-    </div>
+    <% if(user !=null){%>
+        <div id="mainContainer">
+            <h1 id="Musiqueria">Musiqueria</h1>
+            <p>Hola <%= user.name %>
+            </p>
+            <nav id="navContainer" class="navbar">
+                <a href="/user/register">Registrarme</a>
+                <a href="/user/all">Usuarios</a>
+                <a href="/product/all">Productos</a>
+                <a href="/cart/cart">Carrito</a>
+            </nav>
+        </div>
 
+        <%} else {%>
+            <div id="mainContainer">
+                <h1 id="Musiqueria">Musiqueria</h1>
+                <nav id="navContainer" class="navbar">
+                    <a href="/user/register">Registrarme</a>
+                    <a href="/user/login">Iniciar Sesiòn</a>
+                    <a href="/user/all">Usuarios</a>
+                    <a href="/product/all">Productos</a>
+                    <a href="/cart/cart">Carrito</a>
+                </nav>
+            </div>
+
+            <%}%>
 </body>
 
 </html>

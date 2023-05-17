@@ -6,7 +6,14 @@ const { Op } = require('sequelize')
 
 const mainControllers = {
     getIndex: (req, res) => {
-        res.render('index')
+        if (req.session.userLogged != undefined) {
+            const user = req.session.userLogged
+            res.render('index', { user })
+        }
+        else {
+            const user = null
+            res.render('index', { user })
+        }
     }
 
 }

@@ -13,7 +13,7 @@ const methodOverride = require('method-override');
 app.use(express.static('public'));
 app.use(session({
     secret: 'Mi string secreto',
-    expires: new Date(Date.now() + (30 * 86400 * 1000))
+    expires: new Date(Date.now() + (30 * 60000 * 60 * 1000))
 }))
 app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: false }));

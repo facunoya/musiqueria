@@ -18,6 +18,10 @@
             <%= product.SubCategories.name %>
         </p>
         <button><a href="/product/modifyproduct/<%=product.product_id %>">Modificar</a></button>
+        <form action="/product/all" method="POST">
+            <button type="submit" value=<%=product.product_id %> name="product_id">Comprar</button>
+
+        </form>
         <br><br>
         <%}); } %>
             <br><br>

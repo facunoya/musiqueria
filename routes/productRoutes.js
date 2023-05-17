@@ -22,6 +22,7 @@ router.use(express.json())
 
 
 router.get('/all', productControllers.getProducts)
+router.post('/all', productControllers.product)
 router.get('/create', productControllers.getCreate)
 router.post('/create', productControllers.create)
 router.get('/modifyproduct/:id', productControllers.getEdit)

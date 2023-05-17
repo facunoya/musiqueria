@@ -68,7 +68,14 @@ const userControllers = {
         const data = { ...req.body }
         const dBUser = allUsers.filter(x => x.email == data.email)
         if (dBUser != "") {
-            res.send("Bienvenid@: " + dBUser[0].name + "!")
+            if (dBUser[0].password == data.password) {
+                req.session.userLogged = dBUser[0]
+                res.redirect('/')
+
+            } else {
+                res.send('Contraseña incorrecta')
+            }
+
         } else {
             res.send("No estas registrado")
         }

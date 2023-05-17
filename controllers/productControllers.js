@@ -15,6 +15,23 @@ const productControllers = {
 
 
     },
+    //Esta es la función de comprar
+    product: (req, res) => {
+        if (req.session.userLogged != undefined) {
+            const id = req.session.userLogged.user_id
+            const result = { ...req.body }
+            const data = {
+                product_id: result.product_id,
+                user_id: id,
+                quantity: 1
+            }
+            db.Carts.create(data)
+
+            res.redirect('/cart/cart')
+        } else {
+            res.send('debes loguearte para poder comprar')
+        }
+    },
     getSubCategories: (req, res) => {
         db.SubCategories.findAll({
             include: [{ association: "Categories" }]
