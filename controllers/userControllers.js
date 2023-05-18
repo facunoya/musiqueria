@@ -70,6 +70,9 @@ const userControllers = {
         if (dBUser != "") {
             if (dBUser[0].password == data.password) {
                 req.session.userLogged = dBUser[0]
+                if (req.body.remember != undefined) {
+                    res.cookie('remember', dBUser[0].email, { maxAge: 6 * 10000 * 60 * 24 * 10 })
+                }
                 res.redirect('/')
 
             } else {

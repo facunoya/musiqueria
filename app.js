@@ -9,6 +9,7 @@ const mainRoutes = require('./routes/mainRoutes')
 const apiRoutes = require('./routes/apiRoutes')
 const cartRoutes = require('./routes/cartRoutes')
 const methodOverride = require('method-override');
+const recordameMiddleware = require('./middlewares/cookieAuthMiddleware')
 
 app.use(express.static('public'));
 app.use(session({
@@ -21,6 +22,7 @@ app.use(express.json())
 
 
 app.use(cookieParser())
+app.use(recordameMiddleware)
 app.use('/product', productRoutes)
 app.use('/user', userRoutes)
 app.use(mainRoutes)
