@@ -11,8 +11,20 @@ const cartControllers = {
                 include: [{ association: "Products" }, { association: "Users" }]
             }
         )
-        console.log(carrito)
-        res.render('./cart/cart', { carrito })
+
+        let user = req.session.userLogged
+        let miCarrito = carrito.filter(x => x.dataValues.Users.email == user.email)
+        if (miCarrito != "") {
+            console.log(miCarrito)
+            res.render('./cart/cart', { miCarrito })
+        } else {
+            console.log(carrito[0].dataValues.Users.email)
+            console.log(user.email)
+            console.log('no tiene productos en su carrito')
+            res.send('No tiene productos en su carrito')
+        }
+
+
     }
 
 }
