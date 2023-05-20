@@ -16,16 +16,36 @@ const productControllers = {
 
     },
     //Esta es la función de comprar
-    product: (req, res) => {
+    product: async (req, res) => {
         if (req.session.userLogged != undefined) {
             const id = req.session.userLogged.user_id
             const result = { ...req.body }
+            const allCarts = await db.Carts.findAll()
+            const userFilter = await allCarts.filter(x => x.user_id == id)
+            const productFilter = await userFilter.filter(x => x.product_id == result.product_id)
+
             const data = {
                 product_id: result.product_id,
                 user_id: id,
                 quantity: 1
             }
-            db.Carts.create(data)
+
+
+
+            if (userFilter != "") {
+                if (productFilter != "") {
+                    let acum = productFilter[0].quantity + 1
+                    data.quantity = acum
+                    db.Carts.update({ ...data }, { where: { cart_id: productFilter[0].cart_id } })
+                } else {
+
+                    db.Carts.create(data)
+                }
+            } else {
+                db.Carts.create(data)
+            }
+
+
 
             res.redirect('/cart/cart')
         } else {
