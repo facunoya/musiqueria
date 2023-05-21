@@ -12,8 +12,7 @@ const cookieAuthMiddleware = async (req, res, next) => {
         if (findUser != "") {
             req.session.userLogged = findUser[0].dataValues
         }
-        console.log(findUser[0].dataValues)
-        console.log(req.session.userLogged.name)
+
     }
     next()
 }
