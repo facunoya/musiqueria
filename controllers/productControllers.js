@@ -15,8 +15,9 @@ const productControllers = {
 
 
     },
-    //Esta es la función de comprar
-    //Anda pero se rompe cuando el stock del producto llega a 0, despues de que envia el mensaje
+
+    //Esta es la función de COMPRAR
+    //Anda, pero se rompe cuando el stock del producto llega a 0, después de que envía el mensaje, si vuelvo a hacer un npm test no tiene problemas
     product: async (req, res) => {
         if (req.session.userLogged != undefined) {
             const id = req.session.userLogged.user_id
@@ -32,7 +33,7 @@ const productControllers = {
                 quantity: 1
             }
 
-            if (userFilter != "") {
+            if (userFilter != "" || userFilter != undefined) {
                 if (selectedProducts.stock >= 1) {
                     if (productFilter != "") {
 
@@ -52,9 +53,8 @@ const productControllers = {
 
                     res.send('no hay stock de este producto!')
                 }
+
             }
-
-
 
             res.redirect('/cart/cart')
         } else {
