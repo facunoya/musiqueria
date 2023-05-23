@@ -19,6 +19,6 @@ let fileUpload = multer({ storage: storage });
 
 
 router.get('/', mainControllers.getIndex)
-
+router.post('/', mainControllers.logOut)
 
 module.exports = router
