@@ -21,5 +21,6 @@ router.use(express.urlencoded({ extended: false }));
 router.use(express.json())
 
 router.get('/cart', cartControllers.getCart)
+router.post('/cart', cartControllers.endSale)
 
 module.exports = router

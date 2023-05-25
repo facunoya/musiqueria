@@ -22,7 +22,10 @@
         <p>Cantidad:
             <%= carro.quantity%>
         </p>
-        <input type="submit" value="Comprar">
+        <form action="/cart/cart" method="POST">
+            <button type="submit" value="<%= carro.cart_id %>" name="cart_id">Comprar</button>
+
+        </form>
         <br><br>
         <% })} %>
             <a href="/">Volver</a>

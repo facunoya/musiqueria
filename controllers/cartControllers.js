@@ -25,6 +25,37 @@ const cartControllers = {
         }
 
 
+    },
+
+    //la funcion de la fecha esta mal, y no econtre la relacion entre el salesheader_id y el salesdetails_id
+    endSale: async (req, res) => {
+        const idCompra = req.body.cart_id
+        const compraSeleccionada = await db.Carts.findByPk(idCompra)
+        const productoSeleccionado = await db.Products.findByPk(compraSeleccionada.product_id)
+
+
+        const salesHeader = {
+            user_id: compraSeleccionada.user_id,
+            dateSale: Date.now(),
+            total: productoSeleccionado.dataValues.price
+        }
+        await db.SalesHeaders.create(salesHeader)
+        const sheader = await db.SalesHeaders.findAll()
+        // const salesDetails = {
+        //     salesheader_id
+        // }
+        const ultimoId = sheader.pop().salesheader_id
+        const salesDetail = {
+            product_id: compraSeleccionada.product_id,
+            salesheader_id: ultimoId,
+            price: (productoSeleccionado.dataValues.price * compraSeleccionada.quantity),
+            quantity: compraSeleccionada.quantity
+        }
+        await db.SalesDetails.create(salesDetail)
+
+        return res.json(salesDetail)
+
+
     }
 
 }
