@@ -11,6 +11,7 @@ const cartRoutes = require('./routes/cartRoutes')
 const methodOverride = require('method-override');
 const recordameMiddleware = require('./middlewares/cookieAuthMiddleware')
 
+
 app.use(express.static('public'));
 app.use(session({
     secret: 'Mi string secreto',

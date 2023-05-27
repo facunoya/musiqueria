@@ -4,6 +4,7 @@ const methodOverride = require('method-override');
 const multer = require('multer');
 const path = require('path');
 const userControllers = require('../controllers/userControllers');
+const profileAuthMiddleware = require('../middlewares/profileAuthMiddleware')
 
 
 const storage = multer.diskStorage({
@@ -28,9 +29,9 @@ router.post('/register', userControllers.register)
 router.get('/login', userControllers.getLogin)
 router.post('/login', userControllers.login)
 router.get('/all', userControllers.getUsers)
-router.get('/modifyuser/:id', userControllers.getEdit)
-router.put('/modifyuser/:id', userControllers.edit)
-router.delete('/modifyuser/:id', userControllers.delete)
+router.get('/modifyuser/:id', profileAuthMiddleware, userControllers.getEdit)
+router.put('/modifyuser/:id', profileAuthMiddleware, userControllers.edit)
+router.delete('/modifyuser/:id', profileAuthMiddleware, userControllers.delete)
 
 
 module.exports = router

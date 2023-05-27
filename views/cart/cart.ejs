@@ -10,7 +10,7 @@
 
 <body>
     <h1>Hola soy el carrito!</h1>
-    <% if(miCarrito){ miCarrito.forEach(carro=> {
+    <% if(userCart){ userCart.forEach(carro=> {
 
         %>
         <h4>Compra: <%= carro.cart_id%>
@@ -23,12 +23,21 @@
             <%= carro.quantity%>
         </p>
         <form action="/cart/cart" method="POST">
+            <input type="text" value="<%= carro.Users.user_id%>" name="user_id" />
             <button type="submit" value="<%= carro.cart_id %>" name="cart_id">Comprar</button>
 
         </form>
+
         <br><br>
-        <% })} %>
-            <a href="/">Volver</a>
+        <% })%>
+            <form action="/cart/fullSale" method="POST">
+                <input type="text" value="<%= userCart[0].user_id%>" name="user_id" />
+                <button type="submit">Comprar todo el carrito</button>
+
+            </form>
+            <% } %>
+
+                <a href="/">Volver</a>
 </body>
 
 </html>

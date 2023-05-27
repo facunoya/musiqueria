@@ -3,6 +3,7 @@ const path = require('path');
 const db = require('../database/models')
 const sequelize = db.sequelize
 const { Op } = require('sequelize')
+const bcryptjs = require('bcryptjs')
 
 const userControllers = {
     getUsers: (req, res) => {
@@ -47,7 +48,7 @@ const userControllers = {
         //Faltan la validaciones del front con onsubmit,supongo que usando .fetch para comparar datos con el usuario de base de datos.
 
 
-        const data = { ...req.body }
+        const data = { ...req.body, password: bcryptjs.hashSync(req.body.password, 10) }
         const allUsers = await db.Users.findAll()
         const dBUser = allUsers.filter(x => x.email == data.email)
         if (dBUser != "") {
@@ -68,7 +69,8 @@ const userControllers = {
         const data = { ...req.body }
         const dBUser = allUsers.filter(x => x.email == data.email)
         if (dBUser != "") {
-            if (dBUser[0].password == data.password) {
+            let isMatch = bcryptjs.compareSync(req.body.password, dBUser[0].password)
+            if (isMatch) {
                 req.session.userLogged = dBUser[0]
                 if (req.body.remember != undefined) {
                     res.cookie('remember', dBUser[0].email, { maxAge: 6 * 10000 * 60 * 24 * 10 })
@@ -93,7 +95,7 @@ const userControllers = {
     },
     edit: (req, res) => {
 
-        db.Users.update({ ...req.body }, { where: { user_id: req.body.user_id } })
+        db.Users.update({ ...req.body, password: bcryptjs.hashSync(req.body.password, 10) }, { where: { user_id: req.body.user_id } })
 
         res.redirect('/user/all')
     },

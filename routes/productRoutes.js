@@ -4,6 +4,8 @@ const methodOverride = require('method-override');
 const multer = require('multer');
 const path = require('path');
 const productControllers = require('../controllers/productControllers')
+const profileAuthMiddleware = require('../middlewares/profileAuthMiddleware')
+
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
@@ -23,11 +25,11 @@ router.use(express.json())
 
 router.get('/all', productControllers.getProducts)
 router.post('/all', productControllers.product)
-router.get('/create', productControllers.getCreate)
-router.post('/create', productControllers.create)
-router.get('/modifyproduct/:id', productControllers.getEdit)
-router.put('/modifyproduct/:id', productControllers.edit)
-router.delete('/modifyproduct/:id', productControllers.delete)
+router.get('/create', profileAuthMiddleware, productControllers.getCreate)
+router.post('/create', profileAuthMiddleware, productControllers.create)
+router.get('/modifyproduct/:id', profileAuthMiddleware, productControllers.getEdit)
+router.put('/modifyproduct/:id', profileAuthMiddleware, productControllers.edit)
+router.delete('/modifyproduct/:id', profileAuthMiddleware, productControllers.delete)
 
 
 
