@@ -17,6 +17,8 @@
         <p>
             <%= product.SubCategories.name %>
         </p>
+        <img src="/img/<%=product.productImg %>" class="productImg" width="100px" height="100px" alt="">
+        <br>
         <button><a href="/product/modifyproduct/<%=product.product_id %>">Modificar</a></button>
         <form action="/product/all" method="POST">
             <button type="submit" value=<%=product.product_id %> name="product_id">Comprar</button>

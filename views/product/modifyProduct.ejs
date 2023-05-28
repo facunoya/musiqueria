@@ -12,7 +12,8 @@
     <div id="cardProduct" class="card">
         <h2>Aca iria el producto</h2>
         <% if(producto){ %>
-            <form action="/product/modifyproduct/<%= producto[0].product_id  %>?_method=PUT" method="POST"
+            <form enctype="multipart/form-data"
+                action="/product/modifyproduct/<%= producto[0].product_id  %>?_method=PUT" method="POST"
                 id="editProductForm" class="editProdForm">
                 <label for="">Id del producto</label>
                 <input type="text" name="product_id" value=<%=producto[0].product_id %>>
@@ -39,7 +40,7 @@
                 <input type="text" name="brand" value=<%=producto[0].brand %>>
                 <br><br>
                 <label for="">Imagen</label>
-                <input type="text" name="productImg" value=<%=producto[0].productImg %>>
+                <input type="file" name="productImg">
                 <br><br>
                 <input type="submit" value="Editar">
 

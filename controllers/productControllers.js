@@ -81,7 +81,8 @@ const productControllers = {
 
     },
     create: (req, res) => {
-        const data = { ...req.body }
+        const productImg = req.file.filename
+        const data = { ...req.body, productImg: productImg }
         db.Products.create(data)
         db.Products.findAll({
             include: [{ association: "SubCategories" }]
@@ -98,8 +99,8 @@ const productControllers = {
         return res.render('./product/modifyProduct', { producto })
     },
     edit: (req, res) => {
-
-        db.Products.update({ ...req.body }, { where: { product_id: req.body.product_id } })
+        const productImg = req.file.filename
+        db.Products.update({ ...req.body, productImg: productImg }, { where: { product_id: req.body.product_id } })
 
         res.redirect('/product/all')
     },

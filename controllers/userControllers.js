@@ -47,8 +47,8 @@ const userControllers = {
         //Falta configurar express-validator para las validaciones
         //Faltan la validaciones del front con onsubmit,supongo que usando .fetch para comparar datos con el usuario de base de datos.
 
-
-        const data = { ...req.body, password: bcryptjs.hashSync(req.body.password, 10) }
+        const avatar = req.file.filename
+        const data = { ...req.body, password: bcryptjs.hashSync(req.body.password, 10), avatar: avatar }
         const allUsers = await db.Users.findAll()
         const dBUser = allUsers.filter(x => x.email == data.email)
         if (dBUser != "") {
@@ -94,8 +94,8 @@ const userControllers = {
         return res.render('./user/modifyUser', { usuario })
     },
     edit: (req, res) => {
-
-        db.Users.update({ ...req.body, password: bcryptjs.hashSync(req.body.password, 10) }, { where: { user_id: req.body.user_id } })
+        const avatar = req.file.filename
+        db.Users.update({ ...req.body, password: bcryptjs.hashSync(req.body.password, 10), avatar: avatar }, { where: { user_id: req.body.user_id } })
 
         res.redirect('/user/all')
     },

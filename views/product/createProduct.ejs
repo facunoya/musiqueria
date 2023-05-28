@@ -20,7 +20,8 @@
     <div>
         <h1>Crear Producto</h1>
 
-        <form action="/product/create" method="POST" id="createProductForm" class="createProdForm">
+        <form enctype="multipart/form-data" action="/product/create" method="POST" id="createProductForm"
+            class="createProdForm">
             <label for="">Nombre</label>
             <input type="text" name="name">
             <br><br>
@@ -43,7 +44,7 @@
             <input type="text" name="brand">
             <br><br>
             <label for="">Imagen</label>
-            <input type="text" name="productImg">
+            <input type="file" name="productImg">
             <br><br>
             <input type="submit" value="Enviar">
             <br><br>

@@ -12,8 +12,8 @@
     <div id="cardUser" class="card">
         <h2>Modificar usuario</h2>
         <% if(usuario){ %>
-            <form action="/user/modifyuser/<%= usuario[0].user_id  %>?_method=PUT" method="POST" id="editUserForm"
-                class="modifyUserForm">
+            <form enctype="multipart/form-data" action="/user/modifyuser/<%= usuario[0].user_id  %>?_method=PUT"
+                method="POST" id="editUserForm" class="modifyUserForm">
                 <label for="">Id del usuario</label>
                 <input type="text" name="user_id" value=<%=usuario[0].user_id %>>
                 <br><br>
@@ -27,7 +27,7 @@
                 <input type="text" name="password" value=<%=usuario[0].password %>>
                 <br><br>
                 <label for="">Imagen de perfil</label>
-                <input type="text" name="avatar" value=<%=usuario[0].avatar %>>
+                <input type="file" name="avatar" %>
                 <br><br>
                 <!--Este select no es funcional-->
                 <label for="">Perfil</label>
