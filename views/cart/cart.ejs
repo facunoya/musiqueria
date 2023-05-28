@@ -9,7 +9,9 @@
 </head>
 
 <body>
-    <h1>Hola soy el carrito!</h1>
+    <h1>Carrito de <%= userCart[0].Users.name%>!</h1>
+    <img src="/img/<%=userCart[0].Users.avatar %>" class="avatar" width="150px" height="100px" alt="">
+    <br>
     <% if(userCart){ userCart.forEach(carro=> {
 
         %>
@@ -17,6 +19,8 @@
         </h4>
         <p>Producto: <%= carro.Products.name%>
         </p>
+        <img src="/img/<%=carro.Products.productImg %>" class="productImg" width="100px" height="100px" alt="">
+        <br>
         <p>Usuario: <%= carro.Users.name%>
         </p>
         <p>Cantidad:
