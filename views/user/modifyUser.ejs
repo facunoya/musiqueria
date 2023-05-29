@@ -27,17 +27,23 @@
                 <input type="text" name="password" value=<%=usuario[0].password %>>
                 <br><br>
                 <label for="">Imagen de perfil</label>
-                <input type="file" name="avatar" %>
+                <input type="file" name="avatar" value=<%=usuario[0].avatar %> %>
                 <br><br>
                 <!--Este select no es funcional-->
                 <label for="">Perfil</label>
                 <select name="profile" id="profile">
                     <% let profile=['Cliente', 'Administrador' ] %>
-                        <% for(let i=0; i < profile.length; i++) {%>
-                            <option value="<%= profile[i] %>">
+                        <% for(let i=0; i < profile.length; i++) { if(profile[i]==usuario[0].profile){%>
+
+                            <option value="<%= profile[i] %>" selected>
                                 <%= profile[i] %>
                             </option>
-                            <% } %>
+
+                            <%} else {%>
+                                <option value="<%= profile[i] %>">
+                                    <%= profile[i] %>
+                                </option>
+                                <% }} %>
                 </select>
                 <br><br>
                 <input type="submit" value="Editar">
