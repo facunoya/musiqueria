@@ -7,9 +7,18 @@ const bcryptjs = require('bcryptjs')
 
 const userControllers = {
     getUsers: (req, res) => {
+        let profile;
+        if (req.session.userLogged != undefined) {
+
+            profile = req.session.userLogged.profile
+        } else {
+            profile = null
+        }
+
+        //ACA poner el perfil de usuario para el boton editar
         db.Users.findAll()
             .then((usuarios) => {
-                return res.render('./user/users', { usuarios })
+                return res.render('./user/users', { usuarios, profile })
             })
 
 

@@ -19,16 +19,20 @@
         </p>
         <img src="/img/<%=product.productImg %>" class="productImg" width="100px" height="100px" alt="">
         <br>
-        <button><a href="/product/modifyproduct/<%=product.product_id %>">Modificar</a></button>
-        <form action="/product/all" method="POST">
-            <button type="submit" value=<%=product.product_id %> name="product_id">Comprar</button>
+        <% if(profile !=null){ if( profile=="Administrador" ) {%>
 
-        </form>
-        <br><br>
-        <%}); } %>
-            <br><br>
-            <a href="/">Volver</a>
-            <a href="/product/create">Agregar producto</a>
+            <button><a href="/product/modifyproduct/<%=product.product_id %>">Editar</a></button>
+            <%} %>
+
+                <form action="/product/all" method="POST">
+                    <button type="submit" value=<%=product.product_id %> name="product_id">Comprar</button>
+
+                </form>
+                <br><br>
+                <%}}); } %>
+                    <br><br>
+                    <a href="/">Volver</a>
+                    <a href="/product/create">Agregar producto</a>
 </body>
 
 </html>

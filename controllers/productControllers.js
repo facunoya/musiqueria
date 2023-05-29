@@ -6,11 +6,18 @@ const { Op } = require('sequelize')
 
 const productControllers = {
     getProducts: (req, res) => {
+        let profile;
+        if (req.session.userLogged != undefined) {
+
+            profile = req.session.userLogged.profile
+        } else {
+            profile = null
+        }
         db.Products.findAll({
             include: [{ association: "SubCategories" }]
         })
             .then((productos) => {
-                return res.render('./product/products', { productos })
+                return res.render('./product/products', { productos, profile })
             })
 
 

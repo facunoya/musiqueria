@@ -14,12 +14,15 @@
         <p>
             <%= usuario.name %>
         </p>
-        <img src="/img/<%=usuario.avatar %>" class="avatar" width="150px" height="100px" alt="">
-        <button><a href="/user/modifyuser/<%=usuario.user_id %>">Modificar</a></button>
-        <br><br>
-        <%}); } %>
-            <br><br>
-            <a href="/">Volver</a>
+        <img src="/img/<%=usuario.avatar %>" class="avatar" width="75px" height="50px" alt="">
+        <% if(profile !=null){ if( profile=="Administrador" ) {%>
+
+            <button><a href="/user/modifyuser/<%=usuario.user_id %>">Editar</a></button>
+            <%} %>
+                <br><br>
+                <%}}); } %>
+                    <br><br>
+                    <a href="/">Volver</a>
 </body>
 
 </html>
