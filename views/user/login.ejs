@@ -10,30 +10,25 @@
 
 <body>
     <h1>Iniciar sesion</h1>
-    <!-- <% if(locals.errors) { errors.forEach(err=> { %>
-        <p style="color: orange">
-            <%= err.msg %>
-        </p>
-        <% console.log(err.path)});}%> -->
+
 
     <form action="/user/login" method="POST" id="loginForm" class="logForm">
         <label for="">Correo</label>
-        <input type="email" name="email">
-        <% if(locals.errors) { errors.forEach(err=> {
-            if(err.path == "email"){%>
+        <input type="email" name="email"
+            value="<%= locals.old ? old.email : null %>"><!--Este locals.old es para que guarde los datos que envíe en old, en el controlador del get-->
+        <% if(locals.errors && errors.email) {%>
             <p class="msgErrEmail">
-                <%= err.msg %>
+                <%= errors.email.msg %>
             </p>
-            <%} } )}%>
+            <%}%>
                 <br><br>
                 <label for="">Contraseña</label>
                 <input type="password" name="password">
-                <% if(locals.errors) { errors.forEach(err=> {
-                    if(err.path == "password"){%>
+                <% if(locals.errors && errors.password) {%>
                     <p class="msgErrPassword">
-                        <%= err.msg %>
+                        <%= errors.password.msg %>
                     </p>
-                    <%} } )}%>
+                    <%}%>
                         <br><br>
                         <label for="">Recordarme</label>
                         <input type="checkbox" name="remember">

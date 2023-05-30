@@ -100,7 +100,7 @@ const userControllers = {
             }
 
         } else {
-            res.render('user/login', { "errors": errors.array(), "old": req.body })
+            res.render('user/login', { "errors": errors.mapped(), "old": req.body })
         }
 
 
