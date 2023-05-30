@@ -5,6 +5,11 @@ const multer = require('multer');
 const path = require('path');
 const userControllers = require('../controllers/userControllers');
 const profileAuthMiddleware = require('../middlewares/profileAuthMiddleware')
+const { body } = require('express-validator')
+const userLoginValidation = [
+    body('email').notEmpty().withMessage('Debes ingresar un Correo').isEmail().withMessage(' '),
+    body('password').notEmpty().withMessage('Debes ingresar una contraseña')
+]
 
 
 const usersStorage = multer.diskStorage({
@@ -28,7 +33,7 @@ router.use(express.json());
 router.get('/register', userFileUpload.single('avatar'), userControllers.getRegister)
 router.post('/register', userFileUpload.single('avatar'), userControllers.register)
 router.get('/login', userControllers.getLogin)
-router.post('/login', userControllers.login)
+router.post('/login', userLoginValidation, userControllers.login)
 router.get('/all', userControllers.getUsers)
 router.get('/modifyuser/:id', profileAuthMiddleware, userFileUpload.single('avatar'), userControllers.getEdit)
 router.put('/modifyuser/:id', profileAuthMiddleware, userFileUpload.single('avatar'), userControllers.edit)

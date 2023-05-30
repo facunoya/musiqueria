@@ -10,19 +10,37 @@
 
 <body>
     <h1>Iniciar sesion</h1>
+    <!-- <% if(locals.errors) { errors.forEach(err=> { %>
+        <p style="color: orange">
+            <%= err.msg %>
+        </p>
+        <% console.log(err.path)});}%> -->
+
     <form action="/user/login" method="POST" id="loginForm" class="logForm">
         <label for="">Correo</label>
         <input type="email" name="email">
-        <br><br>
-        <label for="">Contraseña</label>
-        <input type="password" name="password">
-        <br><br>
-        <label for="">Recordarme</label>
-        <input type="checkbox" name="remember">
-        <br><br>
-        <input type="submit" value="Iniciar">
-        <br><br>
-        <a href="/">Volver</a>
+        <% if(locals.errors) { errors.forEach(err=> {
+            if(err.path == "email"){%>
+            <p class="msgErrEmail">
+                <%= err.msg %>
+            </p>
+            <%} } )}%>
+                <br><br>
+                <label for="">Contraseña</label>
+                <input type="password" name="password">
+                <% if(locals.errors) { errors.forEach(err=> {
+                    if(err.path == "password"){%>
+                    <p class="msgErrPassword">
+                        <%= err.msg %>
+                    </p>
+                    <%} } )}%>
+                        <br><br>
+                        <label for="">Recordarme</label>
+                        <input type="checkbox" name="remember">
+                        <br><br>
+                        <input type="submit" value="Iniciar">
+                        <br><br>
+                        <a href="/">Volver</a>
     </form>
 </body>
 

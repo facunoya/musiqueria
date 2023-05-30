@@ -4,6 +4,7 @@ const db = require('../database/models')
 const sequelize = db.sequelize
 const { Op } = require('sequelize')
 const bcryptjs = require('bcryptjs')
+const { validationResult } = require('express-validator')
 
 const userControllers = {
     getUsers: (req, res) => {
@@ -74,25 +75,35 @@ const userControllers = {
         res.render('./user/login')
     },
     login: async (req, res) => {
-        const allUsers = await db.Users.findAll()
-        const data = { ...req.body }
-        const dBUser = allUsers.filter(x => x.email == data.email)
-        if (dBUser != "") {
-            let isMatch = bcryptjs.compareSync(req.body.password, dBUser[0].password)
-            if (isMatch) {
-                req.session.userLogged = dBUser[0]
-                if (req.body.remember != undefined) {
-                    res.cookie('remember', dBUser[0].email, { maxAge: 6 * 10000 * 60 * 24 * 10 })
+        let errors = validationResult(req)
+
+
+        if (errors.isEmpty()) {
+            const allUsers = await db.Users.findAll()
+            const data = { ...req.body }
+            const dBUser = allUsers.filter(x => x.email == data.email)
+            if (dBUser != "") {
+                let isMatch = bcryptjs.compareSync(req.body.password, dBUser[0].password)
+                if (isMatch) {
+                    req.session.userLogged = dBUser[0]
+                    if (req.body.remember != undefined) {
+                        res.cookie('remember', dBUser[0].email, { maxAge: 6 * 10000 * 60 * 24 * 10 })
+                    }
+                    res.redirect('/')
+
+                } else {
+                    res.send('Contraseña incorrecta')
                 }
-                res.redirect('/')
 
             } else {
-                res.send('Contraseña incorrecta')
+                res.send("No estas registrado")
             }
 
         } else {
-            res.send("No estas registrado")
+            res.render('user/login', { "errors": errors.array(), "old": req.body })
         }
+
+
 
     },
     getEdit: async (req, res) => {
