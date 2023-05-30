@@ -52,22 +52,27 @@ const userControllers = {
     },
     register: async (req, res) => {
 
-        //Falta encriptar contraseña 
-        //Falta configurar Multer y pasar el input a tipo File
+
         //Falta configurar express-validator para las validaciones
         //Faltan la validaciones del front con onsubmit,supongo que usando .fetch para comparar datos con el usuario de base de datos.
+        let errors = validationResult(req)
 
-        const avatar = req.file.filename
-        const data = { ...req.body, password: bcryptjs.hashSync(req.body.password, 10), avatar: avatar }
-        const allUsers = await db.Users.findAll()
-        const dBUser = allUsers.filter(x => x.email == data.email)
-        if (dBUser != "") {
-            res.send("Ese correo ya se encuentra registrado")
+
+        if (errors.isEmpty()) {
+            const avatar = req.file.filename
+            const data = { ...req.body, password: bcryptjs.hashSync(req.body.password, 10), avatar: avatar }
+            const allUsers = await db.Users.findAll()
+            const dBUser = allUsers.filter(x => x.email == data.email)
+            if (dBUser != "") {
+                res.send("Ese correo ya se encuentra registrado")
+            } else {
+                db.Users.create(
+                    { ...data }
+                )
+                res.redirect('/user/login')
+            }
         } else {
-            db.Users.create(
-                { ...data }
-            )
-            res.redirect('/user/login')
+            res.render('user/register', { "errors": errors.mapped(), "old": req.body })
         }
 
     },

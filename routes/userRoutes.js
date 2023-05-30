@@ -11,6 +11,12 @@ const userLoginValidation = [
     body('password').notEmpty().withMessage('Debes ingresar una contraseña')
 ]
 
+const userRegisterValidation = [
+    body('name').isLength({ min: 3 }).withMessage('Al menos debe tener 3 caracteres'),
+    body('email').notEmpty().withMessage('Debes ingresar un Correo').isEmail().withMessage(' '),
+    body('password').isLength({ min: 6 }).withMessage('Al menos debe tener 6 caracteres')
+]
+
 
 const usersStorage = multer.diskStorage({
     destination: (req, file, callback) => {
@@ -31,7 +37,7 @@ router.use(express.json());
 
 // router.get('/create', userControllers.createUser) // anda pero crea por el hecho de entrar usarla cuando sea necesario
 router.get('/register', userFileUpload.single('avatar'), userControllers.getRegister)
-router.post('/register', userFileUpload.single('avatar'), userControllers.register)
+router.post('/register', userFileUpload.single('avatar'), userRegisterValidation, userControllers.register)
 router.get('/login', userControllers.getLogin)
 router.post('/login', userLoginValidation, userControllers.login)
 router.get('/all', userControllers.getUsers)

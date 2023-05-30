@@ -12,30 +12,45 @@
     <h1>Formulario de registro</h1>
     <form enctype="multipart/form-data" action="/user/register" method="POST" id="registerForm" class="regForm">
         <label for="">Nombre</label>
-        <input type="text" name="name">
-        <br><br>
-        <label for="">Correo</label>
-        <input type="email" name="email">
-        <br><br>
-        <label for="">Contraseña</label>
-        <input type="password" name="password">
-        <br><br>
-        <label for="avatar">Imagen de perfil</label>
-        <input type="file" name="avatar">
-        <br><br>
-        <label for="">Perfil</label>
-        <select name="profile" id="profile">
-            <% let profile=['Cliente', 'Administrador' ] %>
-                <% for(let i=0; i < profile.length; i++) {%>
-                    <option value="<%= profile[i] %>">
-                        <%= profile[i] %>
-                    </option>
-                    <% } %>
-        </select>
-        <br><br>
-        <input type="submit" value="Enviar">
-        <br><br>
-        <a href="/">Volver</a>
+        <input type="text" name="name" value="<%= locals.old ? old.name : null %>">
+        <% if(locals.errors && errors.name) {%>
+            <p class="nameErrorMsg">
+                <%= errors.name.msg %>
+            </p>
+            <%}%>
+                <br><br>
+                <label for="">Correo</label>
+                <input type="email" name="email" value="<%= locals.old ? old.email : null %>">
+                <% if(locals.errors && errors.email) {%>
+                    <p class="emailErrorMsg">
+                        <%= errors.email.msg %>
+                    </p>
+                    <%}%>
+                        <br><br>
+                        <label for="">Contraseña</label>
+                        <input type="password" name="password">
+                        <% if(locals.errors && errors.password) {%>
+                            <p class="passwordErrorMsg">
+                                <%= errors.password.msg %>
+                            </p>
+                            <%}%>
+                                <br><br>
+                                <label for="avatar">Imagen de perfil</label>
+                                <input type="file" name="avatar">
+                                <br><br>
+                                <label for="">Perfil</label>
+                                <select name="profile" id="profile">
+                                    <% let profile=['Cliente', 'Administrador' ] %>
+                                        <% for(let i=0; i < profile.length; i++) {%>
+                                            <option value="<%= profile[i] %>">
+                                                <%= profile[i] %>
+                                            </option>
+                                            <% } %>
+                                </select>
+                                <br><br>
+                                <input type="submit" value="Enviar">
+                                <br><br>
+                                <a href="/">Volver</a>
     </form>
 </body>
 
