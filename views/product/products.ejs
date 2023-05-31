@@ -23,9 +23,13 @@
 
             <button><a href="/product/modifyproduct/<%=product.product_id %>">Editar</a></button>
             <%} %>
-
+                <div>
+                    <label for="">Cantidad</label>
+                    <button class="decrease">-</button><input type="text" class="quantity" name="quantity"
+                        value="1"><button class="increase">+</button>
+                </div>
                 <form action="/product/all" method="POST">
-                    <button type="submit" value=<%=product.product_id %> name="product_id">Comprar</button>
+                    <button type="submit" value=<%=product.product_id %> name="product_id">Agregar al carrito</button>
 
                 </form>
                 <br><br>
@@ -34,5 +38,6 @@
                     <a href="/">Volver</a>
                     <a href="/product/create">Agregar producto</a>
 </body>
+<script src="/js/shortFunctions/counterButton.js"></script>
 
 </html>
