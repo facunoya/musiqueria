@@ -24,11 +24,16 @@
             <button><a href="/product/modifyproduct/<%=product.product_id %>">Editar</a></button>
             <%} %>
                 <div>
+                    <input type="submit" value="<%= product.stock %>" class="stock">
+                    <p>Sotck: <%= product.stock %>
+                    </p>
+                </div>
+                <div>
                     <label for="">Cantidad</label>
-                    <button class="decrease">-</button><input type="text" class="quantity" name="quantity"
-                        value="1"><button class="increase">+</button>
+                    <button class="decrease">-</button><button class="increase">+</button>
                 </div>
                 <form action="/product/all" method="POST">
+                    <input type="number" class="quantity" name="quantity" value="1">
                     <button type="submit" value=<%=product.product_id %> name="product_id">Agregar al carrito</button>
 
                 </form>

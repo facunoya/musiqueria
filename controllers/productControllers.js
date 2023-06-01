@@ -41,16 +41,21 @@ const productControllers = {
 
             if (userFilter != "" || userFilter != undefined) {
                 if (selectedProducts.stock >= 1) {
+                    let cantidad = req.body.quantity
                     if (productFilter != "") {
-
-                        let acum = productFilter[0].quantity + 1
-                        selectedProducts.stock--
+                        console.log("<------------ CANTIDAD: " + cantidad + "---------------->")
+                        let cantidadAnterior = parseInt(productFilter[0].quantity)
+                        let algo = parseInt(cantidad)
+                        let acum = cantidadAnterior + algo
+                        selectedProducts.stock = selectedProducts.stock - cantidad
                         data.quantity = acum
                         await selectedProducts
                         db.Products.update({ ...selectedProducts.dataValues }, { where: { product_id: selectedProducts.dataValues.product_id } })
                         db.Carts.update({ ...data }, { where: { cart_id: productFilter[0].cart_id } })
                     } else {
-                        selectedProducts.stock--
+                        console.log("<------------- CANTIDAD: " + cantidad + "---------------->")
+                        data.quantity = cantidad
+                        selectedProducts.stock = selectedProducts.stock - cantidad
                         await selectedProducts
                         db.Products.update({ ...selectedProducts.dataValues }, { where: { product_id: selectedProducts.dataValues.product_id } })
                         db.Carts.create(data)
