@@ -1,5 +1,4 @@
 window.onload = function () {
-    let counter = 1
     const decrease = document.querySelector('.decrease')
     const increase = document.querySelector('.increase')
     const frontQuantity = document.querySelector('.quantity')
@@ -25,14 +24,11 @@ window.onload = function () {
             quantity++
             console.log("stock: " + stock + " quantity: " + quantity)
             if (quantity <= stock2) {
-
                 frontQuantity.value = quantity + 1
             } else {
                 frontQuantity.value = quantity
             }
-
         } else {
-
             console.log("stock: " + stock + " quantity: " + quantity)
         }
     })

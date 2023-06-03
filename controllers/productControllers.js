@@ -32,13 +32,11 @@ const productControllers = {
             const userFilter = await allCarts.filter(x => x.user_id == id)
             const productFilter = await userFilter.filter(x => x.product_id == result.product_id)
             const selectedProducts = await db.Products.findByPk(result.product_id)
-
             const data = {
                 product_id: result.product_id,
                 user_id: id,
                 quantity: 1
             }
-
             if (userFilter != "" || userFilter != undefined) {
                 if (selectedProducts.stock >= 1) {
                     let cantidad = req.body.quantity
@@ -59,15 +57,11 @@ const productControllers = {
                         await selectedProducts
                         db.Products.update({ ...selectedProducts.dataValues }, { where: { product_id: selectedProducts.dataValues.product_id } })
                         db.Carts.create(data)
-
                     }
                 } else {
-
                     return res.send('No queda stock de ese producto')
                 }
-
             }
-
             res.redirect('/cart/cart')
         } else {
             res.send('debes loguearte para poder comprar')
