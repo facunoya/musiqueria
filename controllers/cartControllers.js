@@ -97,6 +97,27 @@ const cartControllers = {
         })
 
         return await res.redirect('/cart/cart')
+    },
+    deleteSale: async (req, res) => {
+        const id = req.params.id
+        const cart = await db.Carts.findByPk(id)
+        const selectedProduct = await db.Products.findByPk(cart.product_id)
+
+        if (cart) {
+            console.log('VAMOS por ACA: cantidad:', cart.quantity)
+            console.log('VAMOS por ACA: stock:', selectedProduct.dataValues.stock)
+            let quantity = cart.quantity
+            let oldStock = selectedProduct.dataValues.stock
+            let newStock = quantity + oldStock
+            console.log("el nuevo stock es: ", newStock)
+            db.Products.update({ stock: newStock }, { where: { product_id: cart.product_id } })
+            db.Carts.destroy({
+                where: {
+                    cart_id: cart.cart_id
+                }
+            })
+        }
+        res.send('Producto eliminado de su carrito')
     }
 }
 module.exports = cartControllers

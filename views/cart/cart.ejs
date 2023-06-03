@@ -27,9 +27,16 @@
             <%= carro.quantity%>
         </p>
         <form action="/cart/cart" method="POST">
-            <input type="text" value="<%= carro.Users.user_id%>" name="user_id" />
+            <input type="text" value="<%= carro.Users.user_id%>" name="user_id" /> c-----Esto no se tiene que ver
+            <p>
+                Precio de esta compra: $<%= parseInt(carro.Products.price) * parseInt(carro.quantity)%>
+            </p>
             <button type="submit" value="<%= carro.cart_id %>" name="cart_id">Comprar</button>
 
+        </form>
+        <form id="deleteCartForm" class="delCartForm" action="/cart/cart/<%= carro.cart_id%>?_method=DELETE"
+            method="POST">
+            <input type="submit" value="Eliminar">
         </form>
 
         <br><br>

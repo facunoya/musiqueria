@@ -22,17 +22,19 @@
         <% if(profile !=null){ if( profile=="Administrador" ) {%>
             <button><a href="/product/modifyproduct/<%=product.product_id %>">Editar</a></button>
             <% } %>
+                <p>Precio: $<%= product.price %>
+                </p>
                 <div>
                     <p>Sotck: <input type="number" name="stock" class="stock" value="<%= product.stock %>">
                     </p>
                 </div>
                 <div>
+                    <p class="noSee">
+                        <%=product.product_id%>
+                    </p>
                     <label for="">Cantidad</label>
                     <button class="decrease " value="<%=product.product_id %>">-</button><button class="increase"
                         value="<%=product.product_id %>">+</button>
-                    <p>
-                        <%=product.product_id%>
-                    </p>
                 </div>
                 <form action="/product/all" method="POST">
                     <input type="number" class="quantity" id="<%=product.product_id %>" name="quantity" value="1">

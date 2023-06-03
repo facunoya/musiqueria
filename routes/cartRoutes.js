@@ -22,6 +22,7 @@ router.use(express.json())
 
 router.get('/cart', cartControllers.getCart)
 router.post('/cart', cartControllers.endSale)
+router.delete('/cart/:id', cartControllers.deleteSale)
 router.post('/fullSale', cartControllers.endFullSale)
 
 module.exports = router
