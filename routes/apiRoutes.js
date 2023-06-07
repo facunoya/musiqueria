@@ -4,6 +4,7 @@ const methodOverride = require('method-override');
 const multer = require('multer');
 const path = require('path');
 const apiControllers = require('../controllers/apiContollers')
+const apiUser = require('../controllers/api/apiUser')
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
@@ -23,6 +24,9 @@ router.get('/carts', apiControllers.getCarts)
 router.get('/subcategories', apiControllers.getSubCategories)
 router.get('/allproducts', apiControllers.getProducts)
 router.get('/allusers', apiControllers.getUsers)
+router.get('/api/users', apiUser.getUsers)
+router.get('/api/cart', apiUser.getCarts)
+router.get('/api/edituser/:id', apiUser.getEdit)
 
 
 

@@ -20,7 +20,12 @@ const apiControllers = {
             include: [{ association: "Users" }]
         })
             .then((sales) => {
-                return res.json(sales)
+                return res.status(404).json(sales)
+            })
+            .catch((e) => {
+                return res.status(404).send({
+                    "message": "Error mony" + e
+                })
             })
 
 
