@@ -15,12 +15,12 @@ const apiUser = {
         } else {
             profile = null
         }
-
-        //ACA poner el perfil de usuario para el boton editar
         db.Users.findAll()
             .then((usuarios) => {
                 return res.json({ usuarios, profile })
             })
+            /*NO anda el catch */
+            .catch((e) => { return res.status(404).send({ "message": "Error " + e }) })
 
 
     },
@@ -31,6 +31,8 @@ const apiUser = {
             .then((carts) => {
                 return res.json({ carts })
             })
+            /*NO anda el catch */
+            .catch((e) => { return res.send({ "message": "Error " + e }) })
 
 
     },
@@ -112,12 +114,19 @@ const apiUser = {
 
     },*/
     getEdit: async (req, res) => {
-        º
-        const allUsers = await db.Users.findAll()
-        const idUrl = req.params.id
-        const usuario = allUsers.filter(x => x.user_id == idUrl)
-        console.log(usuario)
-        return res.json({ usuario })
+
+        await db.Users.findAll()
+            .then(async (res) => {
+
+                const idUrl = req.params.id
+                const usuario = await res.filter(x => x.user_id == idUrl)
+                return usuario
+            })
+            .then(user => {
+                return res.json({ user })
+            })
+            //el catch no atrapa los errores
+            .catch((e) => { return res.status(404).send({ "message": "Error " + e }) })
     }
     /*edit: (req, res) => {
         const avatar = req.file.filename

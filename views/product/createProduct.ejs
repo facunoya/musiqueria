@@ -19,35 +19,78 @@
     </ul>
     <div>
         <h1>Crear Producto</h1>
-
         <form enctype="multipart/form-data" action="/product/create" method="POST" id="createProductForm"
             class="createProdForm">
             <label for="">Nombre</label>
-            <input type="text" name="name">
-            <br><br>
-            <label for="">Subcategoria</label>
-            <input type="text" name="subcategory_id">
-            <br><br>
-            <label for="">Stock</label>
-            <input type="number" name="stock">
-            <br><br>
-            <label for="">Descripcion</label>
-            <input type="text" name="description">
-            <br><br>
-            <label for="">Color</label>
-            <input type="text" name="colors">
-            <br><br>
-            <label for="">Precio</label>
-            <input type="text" name="price">
-            <br><br>
-            <label for="">Marca</label>
-            <input type="text" name="brand">
-            <br><br>
-            <label for="">Imagen</label>
-            <input type="file" name="productImg">
-            <br><br>
-            <input type="submit" value="Enviar">
-            <br><br>
+            <input type="text" name="name" value="<%= locals.old ? old.name : null%>">
+            <% if(locals.errors && errors.name) {%>
+                <p class="nameErrorMsg">
+                    <%= errors.name.msg %>
+                </p>
+                <%}%>
+                    <br><br>
+                    <label for="">Subcategoria</label>
+                    <input type="text" name="subcategory_id" value="<%= locals.old ? old.subcategory_id : null%>">
+                    <% if(locals.errors && errors.subcategory_id) {%>
+                        <p class="subcategory_idErrorMsg">
+                            <%= errors.subcategory_id.msg %>
+                        </p>
+                        <%}%>
+                            <br><br>
+                            <label for="">Stock</label>
+                            <input type="number" name="stock" value="<%= locals.old ? old.stock : null%>">
+                            <% if(locals.errors && errors.stock) {%>
+                                <p class="stockErrorMsg">
+                                    <%= errors.stock.msg %>
+                                </p>
+                                <%}%>
+                                    <br><br>
+                                    <label for="">Descripcion</label>
+                                    <input type="text" name="description"
+                                        value="<%= locals.old ? old.description : null%>">
+                                    <% if(locals.errors && errors.description) {%>
+                                        <p class="descriptionErrorMsg">
+                                            <%= errors.description.msg %>
+                                        </p>
+                                        <%}%>
+                                            <br><br>
+                                            <label for="">Color</label>
+                                            <input type="text" name="colors"
+                                                value="<%= locals.old ? old.colors : null%>">
+                                            <% if(locals.errors && errors.colors) {%>
+                                                <p class="colorsErrorMsg">
+                                                    <%= errors.colors.msg %>
+                                                </p>
+                                                <%}%>
+                                                    <br><br>
+                                                    <label for="">Precio</label>
+                                                    <input type="text" name="price"
+                                                        value="<%= locals.old ? old.price : null%>">
+                                                    <% if(locals.errors && errors.price) {%>
+                                                        <p class="priceErrorMsg">
+                                                            <%= errors.price.msg %>
+                                                        </p>
+                                                        <%}%>
+                                                            <br><br>
+                                                            <label for="">Marca</label>
+                                                            <input type="text" name="brand"
+                                                                value="<%= locals.old ? old.brand : null%>">
+                                                            <% if(locals.errors && errors.brand) {%>
+                                                                <p class="brandErrorMsg">
+                                                                    <%= errors.brand.msg %>
+                                                                </p>
+                                                                <%}%>
+                                                                    <br><br>
+                                                                    <label for="">Imagen</label>
+                                                                    <input type="file" name="productImg">
+                                                                    <% if(locals.errors && errors.productImg) {%>
+                                                                        <p class="productImgErrorMsg">
+                                                                            <%= errors.productImg.msg %>
+                                                                        </p>
+                                                                        <%}%>
+                                                                            <br><br>
+                                                                            <input type="submit" value="Enviar">
+                                                                            <br><br>
         </form>
         <br><br>
         <a href="/">Volver</a>

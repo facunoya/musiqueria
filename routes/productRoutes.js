@@ -5,7 +5,17 @@ const multer = require('multer');
 const path = require('path');
 const productControllers = require('../controllers/productControllers')
 const profileAuthMiddleware = require('../middlewares/profileAuthMiddleware')
-
+const { body } = require('express-validator')
+const createValidations = [
+    body('name').notEmpty().withMessage('El producto debe tener un nombre'),
+    body('subcategory_id').notEmpty().withMessage('Por favor, ingrese la subcategoria'),
+    body('stock').notEmpty().withMessage('debe tener un stock'),
+    body('description').notEmpty().withMessage('El producto debe tener una descripción'),
+    body('colors').notEmpty().withMessage('El producto debe tener un color'),
+    body('price').notEmpty().withMessage('El producto debe tener un precio'),
+    body('brand').notEmpty().withMessage('El producto debe tener una marca'),
+    body('productImg').notEmpty().withMessage('El producto debe tener una imagen'),
+]
 
 const productsStorage = multer.diskStorage({
     destination: (req, file, callback) => {
@@ -28,7 +38,7 @@ router.use(express.json())
 router.get('/all', productControllers.getProducts)
 router.post('/all', productControllers.product)
 router.get('/create', profileAuthMiddleware, productControllers.getCreate)
-router.post('/create', profileAuthMiddleware, productsFileUpload.single('productImg'), productControllers.create)
+router.post('/create', profileAuthMiddleware, productsFileUpload.single('productImg'), createValidations, productControllers.create)
 router.get('/modifyproduct/:id', profileAuthMiddleware, productControllers.getEdit)
 router.put('/modifyproduct/:id', profileAuthMiddleware, productsFileUpload.single('productImg'), productControllers.edit)
 router.delete('/modifyproduct/:id', profileAuthMiddleware, productControllers.delete)

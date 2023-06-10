@@ -3,6 +3,7 @@ const path = require('path');
 const db = require('../database/models')
 const sequelize = db.sequelize
 const { Op } = require('sequelize')
+const { validationResult } = require('express-validator')
 
 const productControllers = {
     getProducts: (req, res) => {
@@ -87,14 +88,26 @@ const productControllers = {
 
     },
     create: (req, res) => {
-        const productImg = req.file.filename
-        const data = { ...req.body, productImg: productImg }
-        db.Products.create(data)
-        db.Products.findAll({
-            include: [{ association: "SubCategories" }]
-        })
+        let errors = validationResult(req)
+        if (errors.isEmpty()) {
 
-        return res.redirect('/product/all')
+            const productImg = req.file.filename
+            const data = { ...req.body, productImg: productImg }
+            db.Products.create(data)
+            db.Products.findAll({
+                include: [{ association: "SubCategories" }]
+            })
+
+            return res.redirect('/product/all')
+        } else {
+            db.Products.findAll({
+                include: [{ association: "SubCategories" }]
+            })
+                .then((productos) => {
+                    return res.render('product/createProduct', { "errors": errors.mapped(), "old": req.body, productos })
+                })
+
+        }
 
     },
     getEdit: async (req, res) => {
