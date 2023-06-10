@@ -36,83 +36,31 @@ const apiUser = {
 
 
     },
-    /*createUser: async (req, res) => {
-        await db.Users.create({
-            "name": "Agostina",
-            "email": "agos@gmail.com",
-            "password": "123456",
-            "avatar": "Agos.jpg",
-            "profile": "Administrador"
-        })
-        db.Users.findAll()
-            .then((users) => {
-                return res.send(users)
-            })
-    },
-    getRegister: (req, res) => {
-        res.render('./user/register')
-    },
-    register: async (req, res) => {
-
-
-        //Falta configurar express-validator para las validaciones
-        //Faltan la validaciones del front con onsubmit,supongo que usando .fetch para comparar datos con el usuario de base de datos.
-        let errors = validationResult(req)
-
-
-        if (errors.isEmpty()) {
-            const avatar = req.file.filename
-            const data = { ...req.body, password: bcryptjs.hashSync(req.body.password, 10), avatar: avatar }
-            const allUsers = await db.Users.findAll()
-            const dBUser = allUsers.filter(x => x.email == data.email)
-            if (dBUser != "") {
-                res.send("Ese correo ya se encuentra registrado")
-            } else {
-                db.Users.create(
-                    { ...data }
-                )
-                res.redirect('/user/login')
+    getOneCart: (req, res) => {
+        let id = req.params.id
+        db.Carts.findAll({
+            include: [{ association: "Products" }, { association: "Users" }],
+            where: {
+                user_id: id
             }
-        } else {
-            res.render('user/register', { "errors": errors.mapped(), "old": req.body })
-        }
+        })
+            .then((carts) => {
+                if (carts != "") {
 
-    },*/
+                    return res.json({ carts })
+                }
+                res.send("no tiene compras y no deberia hsber llegado aqui")
+            })
+            /*NO anda el catch */
+            .catch((e) => { return res.send({ "message": "Error " + e }) })
+
+
+    },
+
     getLogin: (req, res) => {
         res.render('./user/login')
     },
-    /*login: async (req, res) => {
-        let errors = validationResult(req)
 
-
-        if (errors.isEmpty()) {
-            const allUsers = await db.Users.findAll()
-            const data = { ...req.body }
-            const dBUser = allUsers.filter(x => x.email == data.email)
-            if (dBUser != "") {
-                let isMatch = bcryptjs.compareSync(req.body.password, dBUser[0].password)
-                if (isMatch) {
-                    req.session.userLogged = dBUser[0]
-                    if (req.body.remember != undefined) {
-                        res.cookie('remember', dBUser[0].email, { maxAge: 6 * 10000 * 60 * 24 * 10 })
-                    }
-                    res.redirect('/')
-
-                } else {
-                    res.send('Contraseña incorrecta')
-                }
-
-            } else {
-                res.send("No estas registrado")
-            }
-
-        } else {
-            res.render('user/login', { "errors": errors.mapped(), "old": req.body })
-        }
-
-
-
-    },*/
     getEdit: async (req, res) => {
 
         await db.Users.findAll()
@@ -128,18 +76,7 @@ const apiUser = {
             //el catch no atrapa los errores
             .catch((e) => { return res.status(404).send({ "message": "Error " + e }) })
     }
-    /*edit: (req, res) => {
-        const avatar = req.file.filename
-        db.Users.update({ ...req.body, password: bcryptjs.hashSync(req.body.password, 10), avatar: avatar }, { where: { user_id: req.body.user_id } })
 
-        res.redirect('/user/all')
-    },
-    delete: (req, res) => {
-        let result = req.params.id
-        db.Users.destroy({ where: { user_id: result } })
-
-        res.redirect('/user/all')
-    }*/
 
 }
 module.exports = apiUser

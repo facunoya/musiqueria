@@ -46,6 +46,9 @@
                 <button type="submit">Comprar todo el carrito</button>
 
             </form>
+            <form action="/api/api/onecart/<%= userCart[0].user_id%>" method="GET">
+                <button type="submit">Mis Compras</button>
+            </form>
             <% } %>
 
                 <a href="/">Volver</a>
