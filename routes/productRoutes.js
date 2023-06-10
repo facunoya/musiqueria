@@ -40,7 +40,7 @@ router.post('/all', productControllers.product)
 router.get('/create', profileAuthMiddleware, productControllers.getCreate)
 router.post('/create', profileAuthMiddleware, productsFileUpload.single('productImg'), createValidations, productControllers.create)
 router.get('/modifyproduct/:id', profileAuthMiddleware, productControllers.getEdit)
-router.put('/modifyproduct/:id', profileAuthMiddleware, productsFileUpload.single('productImg'), productControllers.edit)
+router.put('/modifyproduct/:id', profileAuthMiddleware, productsFileUpload.single('productImg'), createValidations, productControllers.edit)
 router.delete('/modifyproduct/:id', profileAuthMiddleware, productControllers.delete)
 
 

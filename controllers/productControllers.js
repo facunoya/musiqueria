@@ -117,11 +117,21 @@ const productControllers = {
         console.log(producto)
         return res.render('./product/modifyProduct', { producto })
     },
-    edit: (req, res) => {
-        const productImg = req.file.filename
-        db.Products.update({ ...req.body, productImg: productImg }, { where: { product_id: req.body.product_id } })
+    edit: async (req, res) => {
+        let errors = validationResult(req)
+        if (errors.isEmpty()) {
 
-        res.redirect('/product/all')
+            const productImg = req.file.filename
+            db.Products.update({ ...req.body, productImg: productImg }, { where: { product_id: req.body.product_id } })
+
+            res.redirect('/product/all')
+        } else {
+            const allProducts = await db.Products.findAll()
+            const idUrl = req.params.id
+            const producto = allProducts.filter(x => x.product_id == idUrl)
+            console.log(producto)
+            return res.render('./product/modifyProduct', { "errors": errors.mapped(), producto })
+        }
     },
     delete: (req, res) => {
         let result = req.params.id
