@@ -56,11 +56,6 @@ const apiUser = {
 
 
     },
-
-    getLogin: (req, res) => {
-        res.render('./user/login')
-    },
-
     getEdit: async (req, res) => {
 
         await db.Users.findAll()
