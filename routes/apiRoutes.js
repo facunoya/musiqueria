@@ -21,6 +21,7 @@ const storage = multer.diskStorage({
 let fileUpload = multer({ storage: storage });
 
 router.get('/salesdetails', apiControllers.getSalesDetails)
+router.get('/top3', apiControllers.tresMasVendidos)
 router.get('/salesheaders', apiControllers.getSalesHeaders)
 router.get('/carts', apiControllers.getCarts)
 router.get('/subcategories', apiControllers.getSubCategories)

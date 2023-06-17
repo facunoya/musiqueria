@@ -156,3 +156,26 @@ li a {
 
 
 /*---        HASTA ACA ES EL HEADER         ----*/
+
+
+/*SERVICIO*/
+
+.contendor-servicio {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+
+.service {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10%;
+}
+
+.service img {
+    width: 40%;
+    margin: auto;
+
+}

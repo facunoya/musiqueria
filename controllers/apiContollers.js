@@ -20,7 +20,7 @@ const apiControllers = {
             include: [{ association: "Users" }]
         })
             .then((sales) => {
-                return res.status(404).json(sales)
+                return res.status(200).json(sales)
             })
             /*NO anda el catch */
             .catch((e) => {
@@ -28,8 +28,44 @@ const apiControllers = {
                     "message": "Error mony" + e
                 })
             })
-
-
+    },
+    tresMasVendidos: async (req, res) => {
+        const arreglo = []
+        await db.SalesDetails.findAll({
+            include: [{ association: "Products" }]
+        })
+            .then(data => {
+                data.forEach(element => {
+                    arreglo.push(element.Products.product_id)
+                });
+            })
+        arreglo.sort()
+        let unicosElementos = []
+        let almacenadorDeVecesRepetidas = []
+        let contador = 1;
+        for (let i = 0; i < arreglo.length; i++) {
+            if (arreglo[i + 1] == arreglo[i]) {
+                contador++;
+            } else {
+                unicosElementos.push(arreglo[i])
+                almacenadorDeVecesRepetidas.push(contador);
+                contador = 1
+            }
+        }
+        const productosVendidos = []
+        const tresMasVendidos = []
+        for (let j = 0; j < unicosElementos.length; j++) {
+            const prod = {
+                id: unicosElementos[j],
+                cuantity: almacenadorDeVecesRepetidas[j]
+            }
+            productosVendidos.push(prod)
+        }
+        productosVendidos.sort((a, b) => a.cuantity - b.cuantity)
+        tresMasVendidos.push(productosVendidos.pop())
+        tresMasVendidos.push(productosVendidos.pop())
+        tresMasVendidos.push(productosVendidos.pop())
+        res.send(tresMasVendidos)
     },
     getProducts: (req, res) => {
         db.Products.findAll({

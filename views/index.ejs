@@ -15,8 +15,8 @@
 
 <body class="body">
     <% if(user !=null){%>
-        <div class="ayudante-de-header">
-            <header id="inicio" class="header">
+        <div id="inicio" class="ayudante-de-header">
+            <header class="header">
                 <!-- <img src="/img/hamburguesa.svg" alt="" class="hamburger"> -->
                 <ul id="navContainer" class="navbar">
                     <li class="boton-barra">
@@ -108,20 +108,24 @@
             </header>
             <%}%>
                 <main>
-                    <section class="contenedor" id="servicio">
+                    <section class="contenedor servicio" id="servicio">
                         <h2 class="subtitulo">3 mas vendidos</h2>
                         <div class="contendor-servicio">
-                            <p>Aca iria la descripcion del producto seleccionado Lorem, ipsum dolor sit amet consectetur
+                            <p class="descripcion-producto-seleccionado">Aca iria la descripcion del producto
+                                seleccionado Lorem, ipsum dolor sit amet consectetur
                                 adipisicing elit. Ab, unde!</p>
                             <div class="checklist-servicio">
                                 <div class="service">
                                     <img src="/img/lin.jpeg" alt="">
+                                    <p class="product-name">Nombre del producto</p>
                                 </div>
                                 <div class="service">
                                     <img src="/img/lin.jpeg" alt="">
+                                    <p class="product-name">Nombre del producto</p>
                                 </div>
                                 <div class="service">
                                     <img src="/img/lin.jpeg" alt="">
+                                    <p class="product-name">Nombre del producto</p>
                                 </div>
                             </div>
                         </div>
@@ -194,7 +198,7 @@
                     </div>
                     <div class="line"></div>
                 </footer>
-                <script src="/js/shortFunctions/menu.js"></script>
+                <!-- <script src="/js/shortFunctions/menu.js"></script> -->
 
 </body>
 
