@@ -14,6 +14,7 @@
 </head>
 
 <body class="body">
+
     <% if(user !=null){%>
         <div id="inicio" class="ayudante-de-header">
             <header class="header">
@@ -69,43 +70,45 @@
 
 
         <%} else {%>
-            <header id="inicio" class="header">
-                <!-- <img src="/img/hamburguesa.svg" alt="" class="hamburger"> -->
-                <ul id="navContainer" class="navbar">
-                    <li class="boton-barra">
-                        <a href="#inicio">Inicio</a>
-                    </li>
-                    <li class="boton-barra">
-                        <a href="#servicio">Servicio</a>
-                    </li>
-                    <li class="boton-barra">
-                        <a href="#portafolio">Populares</a>
-                    </li>
-                    <li class="boton-barra">
-                        <a href="#contacto">Contacto</a>
-                    </li>
-                    <li class="boton-barra">
-                        <a href="/user/all">Usuarios</a>
-                    </li>
-                    <li class="boton-barra">
-                        <a href="/product/all">Productos</a>
-                    </li>
-                </ul>
-                <div class="header-up-container">
-                    <ul class="user-nav">
-                        <li class="user-boton">
-                            <a href="/user/register">Registrarme</a>
+            <div class="ayudante-de-header">
+                <header id="inicio" class="header">
+                    <!-- <img src="/img/hamburguesa.svg" alt="" class="hamburger"> -->
+                    <ul id="navContainer" class="navbar">
+                        <li class="boton-barra">
+                            <a href="#inicio">Inicio</a>
                         </li>
-                        <li class="user-boton">
-                            <a href="/user/login">Iniciar Sesiòn</a>
+                        <li class="boton-barra">
+                            <a href="#servicio">Servicio</a>
+                        </li>
+                        <li class="boton-barra">
+                            <a href="#portafolio">Populares</a>
+                        </li>
+                        <li class="boton-barra">
+                            <a href="#contacto">Contacto</a>
+                        </li>
+                        <li class="boton-barra">
+                            <a href="/user/all">Usuarios</a>
+                        </li>
+                        <li class="boton-barra">
+                            <a href="/product/all">Productos</a>
                         </li>
                     </ul>
-                    <div class="container head">
-                        <h1 class="titulo">Musiquería</h1>
-                        <img src="/img/logo002.png" alt="" width="45px">
+                    <div class="header-up-container">
+                        <ul class="user-nav">
+                            <li class="user-boton">
+                                <a href="/user/register">Registrarme</a>
+                            </li>
+                            <li class="user-boton">
+                                <a href="/user/login">Iniciar Sesiòn</a>
+                            </li>
+                        </ul>
+                        <div class="container head">
+                            <h1 class="titulo">Musiquería</h1>
+                            <img src="/img/logo002.png" alt="" width="45px">
+                        </div>
                     </div>
-                </div>
-            </header>
+                </header>
+            </div>
             <%}%>
                 <main>
                     <section class="contenedor servicio" id="servicio">
