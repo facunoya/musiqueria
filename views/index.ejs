@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/index2.css">
+    <link rel="stylesheet" href="/css/carrousel.css">
     <title>Musiqueria</title>
 </head>
 
@@ -24,10 +25,10 @@
                         <a href="#inicio">Inicio</a>
                     </li>
                     <li class="boton-barra">
-                        <a href="#servicio">Servicio</a>
+                        <a href="#portafolio">Populares</a>
                     </li>
                     <li class="boton-barra">
-                        <a href="#portafolio">Populares</a>
+                        <a href="#servicio">Ofertas</a>
                     </li>
                     <li class="boton-barra">
                         <a href="#contacto">Contacto</a>
@@ -70,18 +71,18 @@
 
 
         <%} else {%>
-            <div class="ayudante-de-header">
-                <header id="inicio" class="header">
+            <div class="ayudante-de-header" id="inicio">
+                <header class="header">
                     <!-- <img src="/img/hamburguesa.svg" alt="" class="hamburger"> -->
                     <ul id="navContainer" class="navbar">
                         <li class="boton-barra">
                             <a href="#inicio">Inicio</a>
                         </li>
                         <li class="boton-barra">
-                            <a href="#servicio">Servicio</a>
+                            <a href="#portafolio">Populares</a>
                         </li>
                         <li class="boton-barra">
-                            <a href="#portafolio">Populares</a>
+                            <a href="#servicio">Ofertas</a>
                         </li>
                         <li class="boton-barra">
                             <a href="#contacto">Contacto</a>
@@ -111,75 +112,80 @@
             </div>
             <%}%>
                 <main>
-                    <section class="contenedor servicio" id="servicio">
-                        <h2 class="subtitulo">3 mas vendidos</h2>
-                        <div class="contendor-servicio">
-                            <p class="descripcion-producto-seleccionado">Aca iria la descripcion del producto
-                                seleccionado Lorem, ipsum dolor sit amet consectetur
-                                adipisicing elit. Ab, unde!</p>
-                            <div class="checklist-servicio">
-                                <div class="service">
-                                    <img src="/img/lin.jpeg" alt="">
-                                    <p class="product-name">Nombre del producto</p>
+                    <%- include('./partials/carrousel.ejs') %>
+                        <section class="gallery contenedor" id="portafolio">
+                            <h2 class="subtitulo">Nuestros productos</h2>
+                            <div class=" galeria">
+                                <div>
+                                    <h2>Luna</h2>
+                                    <img src="/img/luna.jpg" alt="" class="img-galeria">
+                                    <button>agregar</button>
                                 </div>
-                                <div class="service">
-                                    <img src="/img/lin.jpeg" alt="">
-                                    <p class="product-name">Nombre del producto</p>
+                                <div>
+                                    <h2>Luna</h2>
+                                    <img src="/img/luna.jpg" alt="" class="img-galeria">
+                                    <button>agregar</button>
                                 </div>
-                                <div class="service">
-                                    <img src="/img/lin.jpeg" alt="">
-                                    <p class="product-name">Nombre del producto</p>
+                                <div>
+                                    <h2>Luna</h2>
+                                    <img src="/img/luna.jpg" alt="" class="img-galeria">
+                                    <button>agregar</button>
                                 </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="gallery" id="portafolio">
-                        <h2 class="subtitulo">Nuestros productos</h2>
-                        <div class="contenedor galeria">
-                            <div>
-                                <h2>Luna</h2>
-                                <img src="/img/luna.jpg" alt="" class="img-galeria">
-                                <button>agregar</button>
-                            </div>
-                            <div>
-                                <h2>Luna</h2>
-                                <img src="/img/luna.jpg" alt="" class="img-galeria">
-                                <button>agregar</button>
-                            </div>
-                            <div>
-                                <h2>Luna</h2>
-                                <img src="/img/luna.jpg" alt="" class="img-galeria">
-                                <button>agregar</button>
-                            </div>
-                            <div>
-                                <h2>Luna</h2>
-                                <img src="/img/luna.jpg" alt="" class="img-galeria">
-                                <button>agregar</button>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="imagen-light"><!--Este puede que este de más-->
-                        <img src="img/close.svg" alt="" class="close">
-                        <img src="img/woman.jpg" alt="" class="agregar-imagen">
-                    </section>
-                    <section class="contenedor" id="expertos">
-                        <h2 class="subtitulo">Categorias:</h2>
-                        <section class="experts">
-                            <div class="cont-expert">
-                                <img src="/img/bajo.jpg" alt="">
-                                <h3 class="n-expert">Instrumentos</h3>
-                            </div>
-                            <div class="cont-expert">
-                                <img src="/img/parlantes.webp" alt="">
-                                <h3 class="n-expert">Sonido</h3>
-                            </div>
-                            <div class="cont-expert">
-                                <img src="/img/auriculares.jpg" alt="">
-                                <h3 class="n-expert">Accesorios</h3>
+                                <div>
+                                    <h2>Luna</h2>
+                                    <img src="/img/luna.jpg" alt="" class="img-galeria">
+                                    <button>agregar</button>
+                                </div>
+                                <div>
+                                    <h2>Luna</h2>
+                                    <img src="/img/luna.jpg" alt="" class="img-galeria">
+                                    <button>agregar</button>
+                                </div>
+                                <div>
+                                    <h2>Luna</h2>
+                                    <img src="/img/luna.jpg" alt="" class="img-galeria">
+                                    <button>agregar</button>
+                                </div>
+                                <div>
+                                    <h2>Luna</h2>
+                                    <img src="/img/luna.jpg" alt="" class="img-galeria">
+                                    <button>agregar</button>
+                                </div>
+                                <div>
+                                    <h2>Luna</h2>
+                                    <img src="/img/luna.jpg" alt="" class="img-galeria">
+                                    <button>agregar</button>
+                                </div>
                             </div>
                         </section>
-
-                    </section>
+                        <section class="contenedor gallery" id="servicio">
+                            <h2 class="subtitulo">Ofertas</h2>
+                            <div class=" galeria">
+                                <div>
+                                    <h2>auriculares</h2>
+                                    <img src="/img/auriculares.jpg" alt="" class="img-galeria">
+                                    <button>agregar</button>
+                                </div>
+                                <div>
+                                    <h2>auriculares</h2>
+                                    <img src="/img/auriculares.jpg" alt="" class="img-galeria">
+                                    <button>agregar</button>
+                                </div>
+                                <div>
+                                    <h2>auriculares</h2>
+                                    <img src="/img/auriculares.jpg" alt="" class="img-galeria">
+                                    <button>agregar</button>
+                                </div>
+                                <div>
+                                    <h2>auriculares</h2>
+                                    <img src="/img/auriculares.jpg" alt="" class="img-galeria">
+                                    <button>agregar</button>
+                                </div>
+                        </section>
+                        <section class="imagen-light"><!--Este puede que este de más-->
+                            <img src="img/close.svg" alt="" class="close">
+                            <img src="img/woman.jpg" alt="" class="agregar-imagen">
+                        </section>
                 </main>
                 <footer id="contacto">
                     <div class="contenedor footer-content">
@@ -202,7 +208,7 @@
                     <div class="line"></div>
                 </footer>
                 <!-- <script src="/js/shortFunctions/menu.js"></script> -->
-
+                <script src="/js/shortFunctions/carrousel.js"></script>
 </body>
 
 </html>

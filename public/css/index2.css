@@ -15,13 +15,17 @@
 }
 
 .body {
-    background-image: linear-gradient(to top, rgba(120, 108, 73, 0.112) 0%, rgba(141, 78, 6, 0.194) 100%);
-    ;
+    background-color: #efefef;
     font-family: 'Open Sans', sans-serif;
 }
 
 .container {
     display: flex;
+}
+
+.servicio h2 {
+    text-align: center;
+    margin: 2em;
 }
 
 .contenedor {
@@ -31,6 +35,11 @@
     margin-top: 1rem;
     margin: auto;
     padding: 60px 0;
+}
+
+.servicio {
+    padding: 0;
+    margin: 0;
 }
 
 .ayudante-de-header {
@@ -47,6 +56,7 @@ header {
     display: flex;
     flex-direction: column-reverse;
     position: fixed;
+    z-index: 100;
 }
 
 .navbar {
@@ -180,34 +190,29 @@ li a {
 
 }
 
-/*CARROUSEL*/
-.experts {
-    height: 50vh;
-    width: 80vw;
+/*GALERIA*/
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.galeria div {
+    width: 23%;
+    margin-bottom: 1rem;
+    /* border: solid 2px black; */
+    border-radius: 4px;
+    text-align: center;
+    padding: 1rem;
+    background-color: #fff;
+    -webkit-box-shadow: 4px 4px 29px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 4px 4px 29px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px 4px 29px -8px rgba(0, 0, 0, 0.75);
+}
+
+.img-galeria {
     margin: auto;
-}
-
-.img-category {
-    width: 400px;
-    height: 40vh;
-    margin: auto;
-}
-
-.carousel-caption p {
-    color: black;
-}
-
-.carousel-caption h5 {
-    color: black;
-}
-
-span.carousel-control-prev-icon {
-    color: black;
-    background-color: red;
-
-}
-
-span.carousel-control-next-icon {
-    background-color: red;
-
+    width: 90%;
+    height: 200px;
+    border-radius: 4px;
 }
