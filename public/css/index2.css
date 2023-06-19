@@ -12,6 +12,7 @@
     --gray: #666;
     --secundario: #fff;
     --tercero: linear-gradient(to top, #0fd850 0%, #f9f047 100%);
+    --footer: lightslategray;
 }
 
 .body {
@@ -190,7 +191,7 @@ li a {
 
 }
 
-/*GALERIA*/
+/*GALERIA / TAREJTAS*/
 .galeria {
     display: flex;
     flex-wrap: wrap;
@@ -215,4 +216,74 @@ li a {
     width: 90%;
     height: 200px;
     border-radius: 4px;
+}
+
+
+/*FOOTER*/
+
+
+footer {
+    background: var(--footer);
+    padding-bottom: 0.1px;
+    opacity: 0.8;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    /*para que si un elemento, ya no entra, pase abajo*/
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.contact-us {
+    width: 40%;
+    color: #fff;
+}
+
+.brand {
+    font-weight: 500;
+    font-size: 40px;
+}
+
+.brand+p {
+    font-weight: 500;
+}
+
+.social-media {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.social-media-icon {
+    display: inline-block;
+    margin-left: 20px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+}
+
+.social-media-icon:hover {
+    background: #fff;
+    color: var(--footer);
+}
+
+.social-media-icon i {
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.line {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 2px;
+    background: #fff;
+    margin-bottom: 30px;
 }
