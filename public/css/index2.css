@@ -12,12 +12,16 @@
     --gray: #666;
     --secundario: #fff;
     --tercero: linear-gradient(to top, #0fd850 0%, #f9f047 100%);
-    --footer: lightslategray;
+    --footer: rgb(46, 11, 46);
+    --body: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%)
 }
 
 .body {
-    background-color: #efefef;
+    /* background-color: #efefef; */
+    background-image: var(--body);
+
     font-family: 'Open Sans', sans-serif;
+
 }
 
 .container {
@@ -192,50 +196,167 @@ li a {
 }
 
 /*GALERIA / TAREJTAS*/
+
+.gallery {
+    width: 90%;
+    margin: auto;
+    /* background-color: aquamarine; */
+    text-align: center;
+}
+
+.gallery .subtitulo {
+    margin-bottom: 2rem;
+}
+
 .galeria {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
-.galeria div {
-    width: 23%;
-    margin-bottom: 1rem;
+.contendedor-producto {
+    width: 20%;
+    margin: 1.5rem;
     /* border: solid 2px black; */
     border-radius: 4px;
     text-align: center;
-    padding: 1rem;
+    padding-bottom: 0.5rem;
     background-color: #fff;
+    /* -webkit-box-shadow: 4px 4px 29px -8px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 4px 4px 29px -8px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px 4px 29px -8px rgba(0, 0, 0, 0.75); */
+    /* height: 340px; */
+}
+
+.contendedor-producto:hover {
+    transition: 0.5s;
     -webkit-box-shadow: 4px 4px 29px -8px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 4px 4px 29px -8px rgba(0, 0, 0, 0.75);
     box-shadow: 4px 4px 29px -8px rgba(0, 0, 0, 0.75);
 }
 
+
 .img-galeria {
     margin: auto;
-    width: 90%;
+    width: 100%;
     height: 200px;
     border-radius: 4px;
+    opacity: 0.9;
 }
+
+.contendedor-producto p {
+    margin: auto;
+    text-align: start;
+    padding-left: 0.5rem;
+}
+
+.name-brand {
+    font-weight: bold;
+}
+
+.description {
+    font-size: 14px;
+    color: #666;
+
+}
+
+.price {
+    display: flex;
+    font-size: 19px;
+    flex-direction: row-reverse;
+    padding-right: 1rem;
+    color: #200fd8;
+    padding-top: 0.5rem;
+}
+
+/*botones*/
+.buttons {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.cart-product-button {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+
+
+}
+
+
+.cart-product-button i {
+    width: 1.7rem;
+    height: 1.7rem;
+    /* border: solid 2px black; */
+    /* border-radius: 50%; */
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    justify-content: center;
+    font-weight: bold;
+    color: black;
+
+}
+
+.cart-product-button i:hover {
+    transition: 0.2s;
+    background-color: white;
+    /* border: solid 2px #0fd850; */
+    color: #0fd850;
+    opacity: 0.9;
+}
+
+.product-button {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-left: 0.5rem;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 0px;
+    color: black;
+}
+
+.offer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.OFF {
+    left: 0.5rem;
+    color: rgb(200, 46, 46);
+    font-size: 18px;
+    opacity: 0.7;
+}
+
+
 
 
 /*FOOTER*/
 
 
 footer {
-    background: var(--footer);
+    background-image: linear-gradient(to top, #5f72bd 0%, #9b23ea 100%);
     padding-bottom: 0.1px;
     opacity: 0.8;
 }
 
 .footer-content {
+    width: 90%;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     /*para que si un elemento, ya no entra, pase abajo*/
-    padding-top: 60px;
-    padding-bottom: 40px;
+    padding-top: 50px;
+    padding-bottom: 25px;
 }
 
 .contact-us {
@@ -244,12 +365,12 @@ footer {
 }
 
 .brand {
-    font-weight: 500;
-    font-size: 40px;
+    font-weight: 300;
+    font-size: 30px;
 }
 
 .brand+p {
-    font-weight: 500;
+    font-weight: 200;
 }
 
 .social-media {
@@ -266,12 +387,14 @@ footer {
     border: 1px solid #fff;
     border-radius: 50%;
     text-align: center;
-    color: #fff;
+    /* background-image: linear-gradient(to top, #5f72bd 0%, #9b23ea 100%); */
+    background-color: white;
 }
 
 .social-media-icon:hover {
-    background: #fff;
-    color: var(--footer);
+    background-image: linear-gradient(to top, #5f72bd 0%, #9b23ea 100%);
+    /* color: var(--footer); */
+    color: white;
 }
 
 .social-media-icon i {
@@ -279,11 +402,11 @@ footer {
     line-height: 40px;
 }
 
-.line {
+/* .line {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
     height: 2px;
     background: #fff;
-    margin-bottom: 30px;
-}
+    margin-bottom: 15px;
+} */

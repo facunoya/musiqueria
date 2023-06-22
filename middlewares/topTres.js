@@ -1,9 +1,11 @@
+
+/*--------------Esta función es para los 4 mas vendidos!!------------*/
+
 const fs = require('fs');
+const { Op } = require('sequelize')
 const path = require('path');
 const db = require('../database/models')
 const sequelize = db.sequelize
-const { Op } = require('sequelize')
-
 
 const top3 =
     async (req, res) => {
@@ -39,6 +41,7 @@ const top3 =
             productosVendidos.push(prod)
         }
         productosVendidos.sort((a, b) => a.cuantity - b.cuantity)
+        tresMasVendidos.push(productosVendidos.pop())
         tresMasVendidos.push(productosVendidos.pop())
         tresMasVendidos.push(productosVendidos.pop())
         tresMasVendidos.push(productosVendidos.pop())
