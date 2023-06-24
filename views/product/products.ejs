@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <title>Productos</title>
-    <link rel="stylesheet" href="/css/products.css">
     <link rel="stylesheet" href="/css/headerGroupStyle.css">
+    <link rel="stylesheet" href="/css/products.css">
 </head>
 
 <body class="body">
@@ -62,7 +62,7 @@
                                     class="cart-product-button"><i class='bx bx-cart'></i></button>
                             </form>
                         </div>
-                        <% if(profile !=null){ if( profile=="Administrador" ) {%>
+                        <% if(profile !=null || profile==undefined){ if( profile=="Administrador" ) {%>
                             <button><a href="/product/modifyproduct/<%=product.product_id %>">Editar</a></button>
                             <% } %>
                     </div>
