@@ -7,6 +7,7 @@ const { Op } = require('sequelize')
 const cartControllers = {
     getCart: async (req, res) => {
         let user = req.session.userLogged
+        let profile = req.session.userLogged.profile
         const userCart = await db.Carts.findAll(
             {
                 include: [{ association: "Products" }, { association: "Users" }],
@@ -17,7 +18,7 @@ const cartControllers = {
         )
         if (userCart != "") {
             console.log(userCart)
-            res.render('./cart/cart', { userCart })
+            res.render('./cart/cart', { userCart, profile, user })
         } else {
             // console.log(userCart[0].dataValues.Users.email)
             console.log(user.email)

@@ -5,53 +5,88 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <title>Carrito</title>
+    <link rel="stylesheet" href="/css/headerGroupStyle.css">
+    <link rel="stylesheet" href="/css/cart.css">
 </head>
 
-<body>
-    <h1>Carrito de <%= userCart[0].Users.name%>!</h1>
-    <img src="/img/<%=userCart[0].Users.avatar %>" class="avatar" width="150px" height="100px" alt="">
-    <br>
-    <% if(userCart){ userCart.forEach(carro=> {
+<body class="body">
+    <%- include('../partials/header.ejs') %>
+        <div class="userDataValue">
+            <h1>Carrito de <%= userCart[0].Users.name%>!</h1>
+            <img src="/img/<%=userCart[0].Users.avatar %>" class="avatar" width="150px" height="100px" alt="">
+        </div>
 
-        %>
-        <h4>Compra: <%= carro.cart_id%>
-        </h4>
-        <p>Producto: <%= carro.Products.name%>
-        </p>
-        <img src="/img/<%=carro.Products.productImg %>" class="productImg" width="100px" height="100px" alt="">
-        <br>
-        <p>Usuario: <%= carro.Users.name%>
-        </p>
-        <p>Cantidad:
-            <%= carro.quantity%>
-        </p>
-        <form action="/cart/cart" method="POST">
-            <input type="text" value="<%= carro.Users.user_id%>" name="user_id" /> c-----Esto no se tiene que ver
-            <p>
-                Precio de esta compra: $<%= parseInt(carro.Products.price) * parseInt(carro.quantity)%>
-            </p>
-            <button type="submit" value="<%= carro.cart_id %>" name="cart_id">Comprar</button>
+        <div class="allCartsUser">
+            <% if(userCart){ userCart.forEach(carro=> {%>
+                <div class="tarjetaProducto">
+                    <div class="topCart">
+                        <img src="/img/<%=carro.Products.productImg %>" class="productImg" alt="">
+                    </div>
+                    <div class="bottomCart">
+                        <h4 class="subtitle">Nro de Operaciòn: <%= carro.cart_id%>
+                        </h4>
+                        <p class="productName principal">Producto
+                        <p class="secundario">
+                            <%= carro.Products.name%>
+                        </p>
+                        </p>
+                        <p class="brand principal">Marca
+                        <p class="secundario">
+                            <%= carro.Products.brand%>
+                        </p>
+                        </p>
+                        <p class="descripcion principal">
+                            Detalle
+                        <p class="secundario">
+                            <%= carro.Products.description%>
+                        </p>
+                        </p>
+                        <p class="user-name principal">Usuario
+                        <p class="secundario">
+                            <%= carro.Users.name%>
+                        </p>
+                        </p>
+                        <p class="quantity principal">Cantidad
+                            <span class="secundario">
+                                <%= carro.quantity%>
+                            </span>
+                        </p>
+                        <div class="forms-container">
+                            <form class="form-cart" action="/cart/cart" method="POST">
+                                <input type="text" class="user_id" value="<%= carro.Users.user_id%>" name="user_id" />
+                                <p class="price principal">
+                                    Total:
+                                    <span class="secundario">$<%= parseInt(carro.Products.price) *
+                                            parseInt(carro.quantity)%>
+                                    </span>
+                                </p>
+                                <button class="sell" type="submit" value="<%= carro.cart_id %>"
+                                    name="cart_id">Comprar</button>
 
-        </form>
-        <form id="deleteCartForm" class="delCartForm" action="/cart/cart/<%= carro.cart_id%>?_method=DELETE"
-            method="POST">
-            <input type="submit" value="Eliminar">
-        </form>
+                            </form>
+                            <form id="deleteCartForm" class="delCartForm"
+                                action="/cart/cart/<%= carro.cart_id%>?_method=DELETE" method="POST">
+                                <input class="delete" type="submit" value="Eliminar">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <% })%>
+                    <div class="end-cart">
+                        <form class="comprarTodo" action="/cart/fullSale" method="POST">
+                            <input class="user_id" type="text" value="<%= userCart[0].user_id%>" name="user_id" />
+                            <button type="submit">Comprar todo el carrito</button>
 
-        <br><br>
-        <% })%>
-            <form action="/cart/fullSale" method="POST">
-                <input type="text" value="<%= userCart[0].user_id%>" name="user_id" />
-                <button type="submit">Comprar todo el carrito</button>
-
-            </form>
-            <form action="/api/api/onecart/<%= userCart[0].user_id%>" method="GET">
-                <button type="submit">Mis Compras</button>
-            </form>
-            <% } %>
-
-                <a href="/">Volver</a>
+                        </form>
+                        <form class="misCompras" action="/api/api/onecart/<%= userCart[0].user_id%>" method="GET">
+                            <button type="submit">Mis Compras</button>
+                        </form>
+                    </div>
+                    <% } %>
+        </div>
+        <a href="/">Volver</a>
 </body>
 
 </html>
