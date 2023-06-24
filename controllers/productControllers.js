@@ -8,17 +8,20 @@ const { validationResult } = require('express-validator')
 const productControllers = {
     getProducts: (req, res) => {
         let profile;
+        let user;
         if (req.session.userLogged != undefined) {
-
+            user = req.session.userLogged
             profile = req.session.userLogged.profile
         } else {
             profile = null
+            user = null
         }
         db.Products.findAll({
             include: [{ association: "SubCategories" }]
         })
             .then((productos) => {
-                return res.render('./product/products', { productos, profile })
+                return res.render('./product/products', { productos, profile, user })
+
             })
 
 

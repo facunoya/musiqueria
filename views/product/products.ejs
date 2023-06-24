@@ -5,46 +5,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <title>Productos</title>
+    <link rel="stylesheet" href="/css/products.css">
+    <link rel="stylesheet" href="/css/headerGroupStyle.css">
 </head>
 
-<body>
-    <h2>Productos</h2>
-    <% if(productos){ productos.forEach(product=> { %>
-        <p>
-            <%= product.name %>
-        </p>
-        <p>
-            <%= product.SubCategories.name %>
-        </p>
-        <img src="/img/<%=product.productImg %>" class="productImg" width="100px" height="100px" alt="">
-        <br>
-        <% if(profile !=null){ if( profile=="Administrador" ) {%>
-            <button><a href="/product/modifyproduct/<%=product.product_id %>">Editar</a></button>
-            <% } %>
-                <p>Precio: $<%= product.price %>
-                </p>
-                <div>
-                    <p>Sotck: <input type="number" name="stock" class="stock" value="<%= product.stock %>">
-                    </p>
-                </div>
-                <div>
-                    <p class="noSee">
-                        <%=product.product_id%>
-                    </p>
-                    <label for="">Cantidad</label>
-                    <button class="decrease " value="<%=product.product_id %>">-</button><button class="increase"
-                        value="<%=product.product_id %>">+</button>
-                </div>
-                <form action="/product/all" method="POST">
-                    <input type="number" class="quantity" id="<%=product.product_id %>" name="quantity" value="1">
-                    <button type="submit" value=<%=product.product_id %> name="product_id">Agregar al carrito</button>
-                </form>
-                <br><br>
-                <%}}); } %>
+<body class="body">
+
+    <%- include('../partials/header.ejs') %>
+
+
+        <main class="body-container">
+            <h2 class="subtitle">Productos</h2>
+            <div class="cardsContainer">
+                <% if(productos){ productos.forEach(product=> { %>
+                    <div class="cardContainer">
+
+                        <img src="/img/<%=product.productImg %>" class="productImg" alt="">
+                        <p class="category-card">
+                            <%= product.SubCategories.name %>
+                        </p>
+                        <div class="principal">
+                            <p class="name">
+                                <%= product.name %>
+                            </p>
+                            <p class="brand">
+                                <%= product.brand %>
+                            </p>
+                        </div>
+                        <p class="description">
+                            <%= product.description%>
+                        </p>
+                        <p class="price">$<%= product.price %>
+                        </p>
+                        <p class="stock-2">Sotck: <input type="text" name="stock" class="stock"
+                                value="<%= product.stock %>">
+                        </p>
+
+                        <div class="bottomProd">
+                            <div class="max-min">
+                                <p class="noSee">
+                                    <%=product.product_id%>
+                                </p>
+                                <label for=""></label>
+                                <button class="decrease " value="<%=product.product_id %>">-</button><button
+                                    class="increase" value="<%=product.product_id %>">+</button>
+                            </div>
+                            <form action="/product/all" method="POST" class="form-cantidad">
+                                <input type="text" class="quantity" id="<%=product.product_id %>" name="quantity"
+                                    value="1">
+                                <button type="submit" value=<%=product.product_id %> name="product_id"
+                                    class="cart-product-button"><i class='bx bx-cart'></i></button>
+                            </form>
+                        </div>
+                        <% if(profile !=null){ if( profile=="Administrador" ) {%>
+                            <button><a href="/product/modifyproduct/<%=product.product_id %>">Editar</a></button>
+                            <% } %>
+                    </div>
                     <br><br>
-                    <a href="/">Volver</a>
-                    <a href="/product/create">Agregar producto</a>
+                    <%}}); } %>
+            </div>
+            <br><br>
+            <a href="/">Volver</a>
+            <a href="/product/create">Agregar producto</a>
+        </main>
 </body>
 <script src="/js/shortFunctions/counterQuantity.js"></script>
 

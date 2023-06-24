@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    scroll-behavior: smooth;
+    --yellow: #EAC926;
+    --dark-blue: #03264C;
+    --principal: linear-gradient(to top, rgba(120, 108, 73, 0.112) 0%, rgba(141, 78, 6, 0.194) 100%);
+    --gray: #666;
+    --secundario: #fff;
+    --tercero: linear-gradient(to top, #0fd850 0%, #f9f047 100%);
+    --footer: rgb(46, 11, 46);
+    --body: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%)
+}
+
+.body {
+    /* background-color: #efefef; */
+    background-image: var(--body);
+
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.container {
+    display: flex;
+}
+
+.servicio h2 {
+    text-align: center;
+    margin: 2em;
+}
+
+.contenedor {
+    width: 90%;
+    max-width: 100%;
+    overflow: hidden;
+    margin-top: 1rem;
+    margin: auto;
+    padding: 60px 0;
+}
+
+.servicio {
+    padding: 0;
+    margin: 0;
+}
+
+.ayudante-de-header {
+    height: 27vh;
+}
+
+
+header {
+    height: 27vh;
+    width: 100vw;
+    background-image: url(../img/musica001.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    position: fixed;
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    align-items: end;
+    text-decoration: none;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 0;
+    height: 27vh;
+
+}
+
+.login-nav {
+    display: flex;
+    margin-right: 0;
+    align-items: center;
+
+}
+
+.login-nav li {
+    margin-right: 10px;
+    height: max-content;
+}
+
+
+
+.boton-barra {
+    list-style: none;
+    color: var(--secundario);
+}
+
+.boton-barra:hover {
+    opacity: 0.7;
+}
+
+.navbar li {
+    margin-left: 10px;
+}
+
+.cerrar-sesion {
+    color: var(--secundario);
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--principal);
+    border: none;
+    box-shadow: none;
+    font-size: 16px;
+
+
+}
+
+.user-boton {
+    width: max-content;
+    height: max-content;
+    color: var(--secundario);
+
+}
+
+li a {
+    text-decoration: none;
+    color: var(--secundario);
+}
+
+.user-img-container {
+    background-color: none;
+}
+
+.avatar-log {
+    margin-right: 10px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.header-up-container {
+    position: relative;
+    display: flex;
+    margin: auto;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 1rem;
+}
+
+.header-up-container li {
+    list-style: none;
+}
+
+.user-nav {
+    display: flex;
+    margin-right: 2rem;
+}
+
+.user-nav li {
+    margin-right: 5px;
+}
+
+.user-nav li:hover {
+    opacity: 0.7;
+}
+
+.titulo {
+    color: var(--secundario);
+    font-weight: bolder;
+}

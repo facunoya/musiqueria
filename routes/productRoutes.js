@@ -30,12 +30,26 @@ const productsStorage = multer.diskStorage({
 
 let productsFileUpload = multer({ storage: productsStorage });
 
+const usersStorage = multer.diskStorage({
+    destination: (req, file, callback) => {
+        let folder = path.join(__dirname, '../public/img')
+        callback(null, folder)
+    },
+    filename: (req, file, callback) => {
+        let img = 'img-' + Date.now() + path.extname(file.originalname);
+        callback(null, img)
+    }
+});
+
+let userFileUpload = multer({ storage: usersStorage });
+
+
 router.use(methodOverride('_method'));
 router.use(express.urlencoded({ extended: false }));
 router.use(express.json())
 
 
-router.get('/all', productControllers.getProducts)
+router.get('/all', userFileUpload.single('avatar'), productControllers.getProducts)
 router.post('/all', productControllers.product)
 router.get('/create', profileAuthMiddleware, productControllers.getCreate)
 router.post('/create', profileAuthMiddleware, productsFileUpload.single('productImg'), createValidations, productControllers.create)
