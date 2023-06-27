@@ -48,7 +48,16 @@ const userControllers = {
             })
     },
     getRegister: (req, res) => {
-        res.render('./user/register')
+        let profile;
+        let user;
+        if (req.session.userLogged != undefined) {
+            user = req.session.userLogged
+            profile = req.session.userLogged.profile
+        } else {
+            profile = null
+            user = null
+        }
+        res.render('./user/register', { profile, user })
     },
     register: async (req, res) => {
 

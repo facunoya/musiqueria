@@ -28,12 +28,13 @@
 
 .subtitle {
     font-size: 40px;
+    color: rgb(185, 114, 185);
 }
 
 .cardsContainer {
     display: flex;
     flex-wrap: wrap;
-    border: solid 1px black;
+    /* border: solid 1px black; */
     width: 90%;
     margin: auto;
 }
