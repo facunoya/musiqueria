@@ -10,7 +10,7 @@
 
 <body>
     <div id="cardProduct" class="card">
-        <h2>Aca iria el producto</h2>
+        <h2>Editar producto</h2>
         <% if(producto){ %>
             <form enctype="multipart/form-data"
                 action="/product/modifyproduct/<%= producto[0].product_id  %>?_method=PUT" method="POST"

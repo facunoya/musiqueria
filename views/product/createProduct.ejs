@@ -6,95 +6,105 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
+    <link rel="stylesheet" href="/css/createProducts.css">
+    <link rel="stylesheet" href="/css/header2.css">
 </head>
 
-<body>
-    <h4>Productos</h4>
-    <ul>
-        <% if(productos){ productos.forEach(product=> { %>
-            <li>
-                <%= product.name %>
-            </li>
-            <%}); } %>
-    </ul>
-    <div>
-        <h1>Crear Producto</h1>
-        <form enctype="multipart/form-data" action="/product/create" method="POST" id="createProductForm"
-            class="createProdForm">
-            <label for="">Nombre</label>
-            <input type="text" name="name" value="<%= locals.old ? old.name : null%>">
-            <% if(locals.errors && errors.name) {%>
-                <p class="nameErrorMsg">
-                    <%= errors.name.msg %>
-                </p>
-                <%}%>
-                    <br><br>
-                    <label for="">Subcategoria</label>
-                    <input type="text" name="subcategory_id" value="<%= locals.old ? old.subcategory_id : null%>">
-                    <% if(locals.errors && errors.subcategory_id) {%>
-                        <p class="subcategory_idErrorMsg">
-                            <%= errors.subcategory_id.msg %>
-                        </p>
-                        <%}%>
-                            <br><br>
-                            <label for="">Stock</label>
-                            <input type="number" name="stock" value="<%= locals.old ? old.stock : null%>">
-                            <% if(locals.errors && errors.stock) {%>
-                                <p class="stockErrorMsg">
-                                    <%= errors.stock.msg %>
-                                </p>
-                                <%}%>
-                                    <br><br>
-                                    <label for="">Descripcion</label>
-                                    <input type="text" name="description"
-                                        value="<%= locals.old ? old.description : null%>">
-                                    <% if(locals.errors && errors.description) {%>
-                                        <p class="descriptionErrorMsg">
-                                            <%= errors.description.msg %>
-                                        </p>
-                                        <%}%>
-                                            <br><br>
-                                            <label for="">Color</label>
-                                            <input type="text" name="colors"
-                                                value="<%= locals.old ? old.colors : null%>">
-                                            <% if(locals.errors && errors.colors) {%>
-                                                <p class="colorsErrorMsg">
-                                                    <%= errors.colors.msg %>
-                                                </p>
-                                                <%}%>
-                                                    <br><br>
-                                                    <label for="">Precio</label>
-                                                    <input type="text" name="price"
-                                                        value="<%= locals.old ? old.price : null%>">
-                                                    <% if(locals.errors && errors.price) {%>
-                                                        <p class="priceErrorMsg">
-                                                            <%= errors.price.msg %>
-                                                        </p>
-                                                        <%}%>
-                                                            <br><br>
-                                                            <label for="">Marca</label>
-                                                            <input type="text" name="brand"
-                                                                value="<%= locals.old ? old.brand : null%>">
-                                                            <% if(locals.errors && errors.brand) {%>
-                                                                <p class="brandErrorMsg">
-                                                                    <%= errors.brand.msg %>
-                                                                </p>
-                                                                <%}%>
-                                                                    <br><br>
-                                                                    <label for="">Imagen</label>
-                                                                    <input type="file" name="productImg">
-                                                                    <% if(locals.errors && errors.productImg) {%>
-                                                                        <p class="productImgErrorMsg">
-                                                                            <%= errors.productImg.msg %>
-                                                                        </p>
-                                                                        <%}%>
-                                                                            <br><br>
-                                                                            <input type="submit" value="Enviar">
-                                                                            <br><br>
-        </form>
-        <br><br>
-        <a href="/">Volver</a>
-    </div>
+<body class="body">
+
+    <%- include('../partials/header2.ejs') %>
+        <div>
+            <h1 class="title">Crear Producto</h1>
+            <div class="form-container">
+                <form enctype="multipart/form-data" action="/product/create" method="POST" id="createProductForm"
+                    class="createProdForm">
+                    <div class="left-form">
+                        <label for="">Nombre</label>
+                        <br>
+                        <input class="inputclass" type="text" name="name" value="<%= locals.old ? old.name : null%>">
+                        <% if(locals.errors && errors.name) {%>
+                            <p class="nameErrorMsg">
+                                <%= errors.name.msg %>
+                            </p>
+                            <%}%>
+                                <br><br>
+                                <label for="">Subcategoria</label>
+                                <br>
+                                <input class="inputclass" type="text" name="subcategory_id"
+                                    value="<%= locals.old ? old.subcategory_id : null%>">
+                                <% if(locals.errors && errors.subcategory_id) {%>
+                                    <p class="subcategory_idErrorMsg">
+                                        <%= errors.subcategory_id.msg %>
+                                    </p>
+                                    <%}%>
+                                        <br><br>
+                                        <label for="">Stock</label>
+                                        <br>
+                                        <input class="inputclass" type="number" name="stock"
+                                            value="<%= locals.old ? old.stock : null%>">
+                                        <% if(locals.errors && errors.stock) {%>
+                                            <p class="stockErrorMsg">
+                                                <%= errors.stock.msg %>
+                                            </p>
+                                            <%}%>
+                                                <br><br>
+                                                <label for="">Descripcion</label>
+                                                <br>
+                                                <input class="inputclass" type="text" name="description"
+                                                    value="<%= locals.old ? old.description : null%>">
+                                                <% if(locals.errors && errors.description) {%>
+                                                    <p class="descriptionErrorMsg">
+                                                        <%= errors.description.msg %>
+                                                    </p>
+                                                    <%}%>
+                                                        <br><br>
+                                                        <label for="">Color</label>
+                                                        <br>
+                                                        <input class="inputclass" type="text" name="colors"
+                                                            value="<%= locals.old ? old.colors : null%>">
+                                                        <% if(locals.errors && errors.colors) {%>
+                                                            <p class="colorsErrorMsg">
+                                                                <%= errors.colors.msg %>
+                                                            </p>
+                                                            <%}%>
+                    </div>
+                    <div class="rigth-form">
+                        <label for="">Precio</label>
+                        <br>
+                        <input class="inputclass" type="text" name="price" value="<%= locals.old ? old.price : null%>">
+                        <% if(locals.errors && errors.price) {%>
+                            <p class="priceErrorMsg">
+                                <%= errors.price.msg %>
+                            </p>
+                            <%}%>
+                                <br><br>
+                                <label for="">Marca</label>
+                                <br>
+                                <input class="inputclass" type="text" name="brand"
+                                    value="<%= locals.old ? old.brand : null%>">
+                                <% if(locals.errors && errors.brand) {%>
+                                    <p class="brandErrorMsg">
+                                        <%= errors.brand.msg %>
+                                    </p>
+                                    <%}%>
+                                        <br><br>
+                                        <label for="">Imagen</label>
+                                        <br>
+                                        <input class="inputclass" type="file" name="productImg">
+                                        <% if(locals.errors && errors.productImg) {%>
+                                            <p class="productImgErrorMsg">
+                                                <%= errors.productImg.msg %>
+                                            </p>
+                                            <%}%>
+                                                <br><br>
+                                                <input class="btn-create" type="submit" value="Crear">
+                                                <br><br>
+                    </div>
+                </form>
+            </div>
+            <br><br>
+
+        </div>
 </body>
 
 </html>

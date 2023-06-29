@@ -63,14 +63,15 @@
                             </form>
                         </div>
                         <% if(profile !=null || profile==undefined){ if( profile=="Administrador" ) {%>
-                            <button><a href="/product/modifyproduct/<%=product.product_id %>">Editar</a></button>
+                            <button class="btn-edit"><a
+                                    href="/product/modifyproduct/<%=product.product_id %>">Editar</a></button>
                             <% } %>
                     </div>
                     <br><br>
                     <%}}); } %>
             </div>
             <br><br>
-            <a href="/">Volver</a>
+
             <a href="/product/create">Agregar producto</a>
         </main>
 </body>

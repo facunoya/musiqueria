@@ -6,59 +6,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuario</title>
+    <link rel="stylesheet" href="/css/modifyUser.css">
+    <link rel="stylesheet" href="/css/header2.css">
 </head>
 
-<body>
-    <div id="cardUser" class="card">
-        <h2>Modificar usuario</h2>
-        <% if(usuario){ %>
-            <form enctype="multipart/form-data" action="/user/modifyuser/<%= usuario[0].user_id  %>?_method=PUT"
-                method="POST" id="editUserForm" class="modifyUserForm">
-                <label for="">Id del usuario</label>
-                <input type="text" name="user_id" value=<%=usuario[0].user_id %>>
-                <br><br>
-                <label for="">Nombre</label>
-                <input type="text" name="name" value=<%=usuario[0].name %>>
-                <br><br>
-                <label for="">Correo</label>
-                <input type="email" name="email" value=<%=usuario[0].email %>>
-                <br><br>
-                <label for="">Contraseña</label>
-                <input type="text" name="password">
-                <br><br>
-                <label for="">Imagen de perfil</label>
-                <input type="file" name="avatar" value=<%=usuario[0].avatar %> %>
-                <br><br>
-                <!--Este select no es funcional-->
-                <label for="">Perfil</label>
-                <select name="profile" id="profile">
-                    <% let profile=['Cliente', 'Administrador' ] %>
-                        <% for(let i=0; i < profile.length; i++) { if(profile[i]==usuario[0].profile){%>
+<body class="body">
+    <%- include('../partials/header2.ejs') %>
+        <div id="cardUser" class="card">
+            <h2 class="title">Modificar usuario</h2>
+            <% if(usuario){ %>
+                <div class="modify-form-container">
+                    <form class="edit-form" enctype="multipart/form-data"
+                        action="/user/modifyuser/<%= usuario[0].user_id  %>?_method=PUT" method="POST" id="editUserForm"
+                        class="modifyUserForm">
+                        <label for="">Id del usuario</label>
+                        <br>
+                        <input class="inputclass" type="text" name="user_id" value=<%=usuario[0].user_id %>>
+                        <br>
+                        <label for="">Nombre</label>
+                        <br>
+                        <input class="inputclass" type="text" name="name" value=<%=usuario[0].name %>>
+                        <br>
+                        <label for="">Correo</label>
+                        <br>
+                        <input class="inputclass" type="email" name="email" value=<%=usuario[0].email %>>
+                        <br>
+                        <label for="">Contraseña</label>
+                        <br>
+                        <input class="inputclass" type="text" name="password">
+                        <br>
+                        <label for="">Imagen de perfil</label>
+                        <br>
+                        <input class="inputclass" type="file" name="avatar" value=<%=usuario[0].avatar %> %>
+                        <br>
+                        <!--Este select no es funcional-->
+                        <label for="">Perfil</label>
+                        <select name="profile" id="profile">
+                            <% let profile=['Cliente', 'Administrador' ] %>
+                                <% for(let i=0; i < profile.length; i++) { if(profile[i]==usuario[0].profile){%>
 
-                            <option value="<%= profile[i] %>" selected>
-                                <%= profile[i] %>
-                            </option>
+                                    <option value="<%= profile[i] %>" selected>
+                                        <%= profile[i] %>
+                                    </option>
 
-                            <%} else {%>
-                                <option value="<%= profile[i] %>">
-                                    <%= profile[i] %>
-                                </option>
-                                <% }} %>
-                </select>
-                <br><br>
-                <input type="submit" value="Editar">
+                                    <%} else {%>
+                                        <option value="<%= profile[i] %>">
+                                            <%= profile[i] %>
+                                        </option>
+                                        <% }} %>
+                        </select>
+                        <br><br>
+                        <input class="edit-btn" type="submit" value="Editar">
 
 
-            </form>
-            <form action="/user/modifyuser/<%= usuario[0].user_id  %>?_method=DELETE" method="POST" id="deleteUserForm"
-                class="delUserForm">
-                <br>
-                <input type="submit" value="Eliminar">
-            </form>
-            <%} %>
-                <br><br>
-                <a href="/">Volver</a>
-    </div>
+                    </form>
+                    <form class="del-form" action="/user/modifyuser/<%= usuario[0].user_id  %>?_method=DELETE"
+                        method="POST" id="deleteUserForm" class="delUserForm">
+
+                        <input class="delete-btn" type="submit" value="Eliminar">
+                    </form>
+                </div>
+                <%} %>
+
+        </div>
 </body>
 
 </html>

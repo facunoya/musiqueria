@@ -13,7 +13,8 @@
     --secundario: #fff;
     --tercero: linear-gradient(to top, #0fd850 0%, #f9f047 100%);
     --footer: rgb(46, 11, 46);
-    --body: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%)
+    --body: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    --violeta: rgb(185, 114, 185);
 }
 
 .body {
@@ -28,7 +29,7 @@
 
 .subtitle {
     font-size: 40px;
-    color: rgb(185, 114, 185);
+    color: var(--violeta);
 }
 
 .cardsContainer {
@@ -43,15 +44,20 @@
     width: 20%;
     margin: 1.5rem;
     padding-left: 0.5rem;
-    border: solid 2px black;
+    /* border: solid 2px black; */
     text-align: left;
     border-radius: 8px;
     padding-bottom: 0.5rem;
     background-color: #fff;
+
+
+}
+
+.cardContainer:hover {
+    transition: 0.3s;
     -webkit-box-shadow: 4px 4px 29px -8px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 4px 4px 29px -8px rgba(0, 0, 0, 0.75);
     box-shadow: 4px 4px 29px -8px rgba(0, 0, 0, 0.75);
-
 }
 
 
@@ -178,4 +184,24 @@ input.stock {
     background-color: white;
     color: #0fd850;
     opacity: 0.9;
+}
+
+.btn-edit {
+    border: none;
+    background-color: none;
+}
+
+.btn-edit:hover {
+    cursor: pointer;
+}
+
+.btn-edit a {
+    list-style: none;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 4px;
+    background-color: #2233c7;
+    color: aliceblue;
+    border: none;
+    border-radius: 4px;
 }

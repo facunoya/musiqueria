@@ -13,7 +13,8 @@
     --secundario: #fff;
     --tercero: linear-gradient(to top, #0fd850 0%, #f9f047 100%);
     --footer: rgb(46, 11, 46);
-    --body: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%)
+    --body: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    --violeta: rgb(185, 114, 185);
 }
 
 .body {
@@ -91,7 +92,7 @@ li a {
     width: 400px;
     padding: 1rem;
     margin: auto;
-    background-color: #fff;
+    background-image: var(--body);
 }
 
 .regForm p {
@@ -179,6 +180,18 @@ li a {
     padding: 4px;
     font-size: 16px;
     width: 100px;
+    background-color: #2233c7;
+    color: aliceblue;
+    /* font-weight: bold; */
+    border: none;
+    border-radius: 4px;
+}
+
+input #file-upload-button {
+
+    padding: 4px;
+    font-size: 16px;
+    width: 200px;
     background-color: #2233c7;
     color: aliceblue;
     /* font-weight: bold; */

@@ -6,23 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios</title>
+    <link rel="stylesheet" href="/css/header2.css">
+    <link rel="stylesheet" href="/css/users.css">
 </head>
 
-<body>
-    <h2>Usuarios</h2>
-    <% if(usuarios){ usuarios.forEach(usuario=> { %>
-        <p>
-            <%= usuario.name %>
-        </p>
-        <img src="/img/<%=usuario.avatar %>" class="avatar" width="75px" height="50px" alt="">
-        <% if(profile !=null){ if( profile=="Administrador" ) {%>
+<body class="body">
+    <%- include('../partials/header2.ejs') %>
+        <h2 class="title">Usuarios</h2>
+        <section class="section-container">
+            <% if(usuarios){ usuarios.forEach(usuario=> { %>
+                <div class="user-container">
+                    <img src="/img/<%=usuario.avatar %>" class="avatar" width="75px" height="50px" alt="">
+                    <p>
+                        <%= usuario.name %>
+                    </p>
 
-            <button><a href="/user/modifyuser/<%=usuario.user_id %>">Editar</a></button>
-            <%} %>
-                <br><br>
-                <%}}); } %>
-                    <br><br>
-                    <a href="/">Volver</a>
+                    <% if(profile !=null){ if( profile=="Administrador" ) {%>
+
+                        <div class="button-container">
+                            <button class="btn-edit"><a
+                                    href="/user/modifyuser/<%=usuario.user_id %>">Editar</a></button>
+                        </div>
+                        <%} %>
+                            <%}%>
+                </div>
+                <% }); } %>
+        </section>
+
+
 </body>
 
 </html>

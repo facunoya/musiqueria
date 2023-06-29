@@ -13,7 +13,8 @@
     --secundario: #fff;
     --tercero: linear-gradient(to top, #0fd850 0%, #f9f047 100%);
     --footer: rgb(46, 11, 46);
-    --body: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%)
+    --body: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    --violeta: rgb(185, 114, 185);
 }
 
 .body {
@@ -91,7 +92,8 @@ li a {
     width: 400px;
     padding: 1.5rem;
     margin: auto;
-    background-color: #fff;
+    background-image: var(--body);
+    text-align: left;
 }
 
 .logForm p {
@@ -100,7 +102,7 @@ li a {
 }
 
 .container-form {
-    text-align: left;
+    text-align: center;
     /* border: solid 1px black; */
     padding: 10px;
     font-size: 18px;
@@ -125,7 +127,7 @@ li a {
     margin: 5px auto 5px auto;
     font-size: 16px;
     border-radius: 4px;
-    border: solid 1px gray;
+    border: solid 1px lightslategray
 }
 
 

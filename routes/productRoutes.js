@@ -14,7 +14,7 @@ const createValidations = [
     body('colors').notEmpty().withMessage('El producto debe tener un color'),
     body('price').notEmpty().withMessage('El producto debe tener un precio'),
     body('brand').notEmpty().withMessage('El producto debe tener una marca'),
-    body('productImg').notEmpty().withMessage('El producto debe tener una imagen'),
+    // body('productImg').notEmpty().withMessage('El producto debe tener una imagen'),
 ]
 
 const productsStorage = multer.diskStorage({

@@ -11,78 +11,70 @@
 </head>
 
 <body class="body">
-    <div id="inicio" class="ayudante-de-header">
-        <header>
-            <ul id="navContainer" class="navbar">
-                <li class="boton-barra">
-                    <a href="/#inicio">Volver al Inicio</a>
-                </li>
-            </ul>
-        </header>
-    </div>
-    <section class="container-section">
-        <!-- <h1>Crea tu cuenta y unete a la comunidad</h1> -->
-        <div class="div-container">
-            <div class="container-form">
-                <form enctype="multipart/form-data" action="/user/register" method="POST" id="registerForm"
-                    class="regForm">
-                    <label for="">Nombre</label>
-                    <br>
-                    <input class="inputclass" type="text" name="name" value="<%= locals.old ? old.name : null %>">
-                    <% if(locals.errors && errors.name) {%>
-                        <p class="nameErrorMsg">
-                            <%= errors.name.msg %>
-                        </p>
-                        <%}%>
-                            <br><br>
-                            <label for="">Correo</label>
-                            <br>
-                            <input class="inputclass" type="email" name="email"
-                                value="<%= locals.old ? old.email : null %>">
-                            <% if(locals.errors && errors.email) {%>
-                                <p class="emailErrorMsg">
-                                    <%= errors.email.msg %>
-                                </p>
-                                <%}%>
-                                    <br><br>
-                                    <label for="">Contraseña</label>
-                                    <br>
-                                    <input class="inputclass" type="password" name="password">
-                                    <% if(locals.errors && errors.password) {%>
-                                        <p class="passwordErrorMsg">
-                                            <%= errors.password.msg %>
-                                        </p>
-                                        <%}%>
-                                            <br><br>
-                                            <label for="avatar">Imagen de perfil</label>
-                                            <br>
-                                            <input type="file" name="avatar">
-                                            <br><br>
-                                            <label for="">Perfil</label>
-                                            <select name="profile" id="profile">
-                                                <% let profile=['Cliente', 'Administrador' ] %>
-                                                    <% for(let i=0; i < profile.length; i++) {%>
-                                                        <option value="<%= profile[i] %>">
-                                                            <%= profile[i] %>
-                                                        </option>
-                                                        <% } %>
-                                            </select>
-                                            <br><br>
-                                            <input type="submit" value="Crear" class="crear-btn">
+    <%- include('../partials/header2.ejs') %>
+        <section class="container-section">
+            <!-- <h1>Crea tu cuenta y unete a la comunidad</h1> -->
+            <div class="div-container">
+                <div class="container-form">
+                    <form enctype="multipart/form-data" action="/user/register" method="POST" id="registerForm"
+                        class="regForm">
+                        <label for="">Nombre</label>
+                        <br>
+                        <input class="inputclass" type="text" name="name" value="<%= locals.old ? old.name : null %>">
+                        <% if(locals.errors && errors.name) {%>
+                            <p class="nameErrorMsg">
+                                <%= errors.name.msg %>
+                            </p>
+                            <%}%>
+                                <br><br>
+                                <label for="">Correo</label>
+                                <br>
+                                <input class="inputclass" type="email" name="email"
+                                    value="<%= locals.old ? old.email : null %>">
+                                <% if(locals.errors && errors.email) {%>
+                                    <p class="emailErrorMsg">
+                                        <%= errors.email.msg %>
+                                    </p>
+                                    <%}%>
+                                        <br><br>
+                                        <label for="">Contraseña</label>
+                                        <br>
+                                        <input class="inputclass" type="password" name="password">
+                                        <% if(locals.errors && errors.password) {%>
+                                            <p class="passwordErrorMsg">
+                                                <%= errors.password.msg %>
+                                            </p>
+                                            <%}%>
+                                                <br><br>
+                                                <label for="avatar">Imagen de perfil</label>
+                                                <br>
+                                                <input class="btn-avatar" type="file" name="avatar">
+                                                <br><br>
+                                                <label for="">Perfil</label>
+                                                <select name="profile" id="profile">
+                                                    <% let profile=['Cliente', 'Administrador' ] %>
+                                                        <% for(let i=0; i < profile.length; i++) {%>
+                                                            <option value="<%= profile[i] %>">
+                                                                <%= profile[i] %>
+                                                            </option>
+                                                            <% } %>
+                                                </select>
+                                                <br><br>
+                                                <input type="submit" value="Crear" class="crear-btn">
 
-                </form>
-            </div>
-            <div class="lateral">
-                <img class="lateral-img" src="/img/logo002.png" alt="">
-                <!-- <h1 class="title">Musiquería</p> -->
-                <div class="publicidad">
-                    <img src="/img/cort.png" alt="">
-                    <img src="/img/gibson.jpg" alt="">
-                    <img src="/img/zildjian.png" alt="">
+                    </form>
+                </div>
+                <div class="lateral">
+                    <img class="lateral-img" src="/img/logo002.png" alt="">
+                    <!-- <h1 class="title">Musiquería</p> -->
+                    <div class="publicidad">
+                        <img src="/img/cort.png" alt="">
+                        <img src="/img/gibson.jpg" alt="">
+                        <img src="/img/zildjian.png" alt="">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
 </body>
 
