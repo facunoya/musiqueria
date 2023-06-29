@@ -6,96 +6,118 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Producto</title>
+    <link rel="stylesheet" href="/css/modifyProduct.css">
+    <link rel="stylesheet" href="/css/header2.css">
 </head>
 
-<body>
-    <div id="cardProduct" class="card">
-        <h2>Editar producto</h2>
-        <% if(producto){ %>
-            <form enctype="multipart/form-data"
-                action="/product/modifyproduct/<%= producto[0].product_id  %>?_method=PUT" method="POST"
-                id="editProductForm" class="editProdForm">
-                <label for="">Id del producto</label>
-                <input type="text" name="product_id" value=<%=producto[0].product_id %>>
-                <br><br>
-                <label for="">Nombre</label>
-                <input type="text" name="name" value=<%=producto[0].name %>>
-                <% if(locals.errors && errors.name) {%>
-                    <p class="nameErrorMsg">
-                        <%= errors.name.msg %>
-                    </p>
-                    <%}%>
-                        <br><br>
-                        <label for="">Subcategoria</label>
-                        <input type="text" name="subcategory_id" value=<%=producto[0].subcategory_id %>>
-                        <% if(locals.errors && errors.subcategory_id) {%>
-                            <p class="subcategory_idErrorMsg">
-                                <%= errors.subcategory_id.msg %>
-                            </p>
-                            <%}%>
+<body class="body">
+    <%- include('../partials/header2.ejs') %>
+        <div id="cardProduct" class="card">
+            <h2 class="title">Editar producto</h2>
+            <% if(producto){ %>
+                <div class="form-container">
+                    <form enctype="multipart/form-data"
+                        action="/product/modifyproduct/<%= producto[0].product_id  %>?_method=PUT" method="POST"
+                        id="editProductForm" class="editProdForm">
+                        <div class="left-form">
+                            <div class="noSee">
+                                <label for="">Id del producto</label>
+                                <br>
+                                <input class="inputclass" type="text" name="product_id" value=<%=producto[0].product_id
+                                    %>>
                                 <br><br>
-                                <label for="">Stock</label>
-                                <input type="number" name="stock" value=<%=producto[0].stock %>>
-                                <% if(locals.errors && errors.stock) {%>
-                                    <p class="stockErrorMsg">
-                                        <%= errors.stock.msg %>
-                                    </p>
-                                    <%}%>
-                                        <br><br>
-                                        <label for="">Descripcion</label>
-                                        <input type="text" name="description" value=<%=producto[0].name %>>
-                                        <% if(locals.errors && errors.description) {%>
-                                            <p class="descriptionErrorMsg">
-                                                <%= errors.description.msg %>
-                                            </p>
-                                            <%}%>
-                                                <br><br>
-                                                <label for="">Color</label>
-                                                <input type="text" name="colors" value=<%=producto[0].colors %>>
-                                                <% if(locals.errors && errors.colors) {%>
-                                                    <p class="colorsErrorMsg">
-                                                        <%= errors.colors.msg %>
-                                                    </p>
-                                                    <%}%>
-                                                        <br><br>
-                                                        <label for="">Precio</label>
-                                                        <input type="text" name="price" value=<%=producto[0].price %>>
-                                                        <% if(locals.errors && errors.price) {%>
-                                                            <p class="priceErrorMsg">
-                                                                <%= errors.price.msg %>
-                                                            </p>
-                                                            <%}%>
-                                                                <br><br>
-                                                                <label for="">Marca</label>
-                                                                <input type="text" name="brand"
-                                                                    value=<%=producto[0].brand %>>
-                                                                <% if(locals.errors && errors.brand) {%>
-                                                                    <p class="brandErrorMsg">
-                                                                        <%= errors.brand.msg %>
-                                                                    </p>
-                                                                    <%}%>
-                                                                        <br><br>
-                                                                        <label for="">Imagen</label>
-                                                                        <input type="file" name="productImg">
-                                                                        <% if(locals.errors && errors.productImg) {%>
-                                                                            <p class="productImgErrorMsg">
-                                                                                <%= errors.productImg.msg %>
-                                                                            </p>
-                                                                            <%}%>
-                                                                                <br><br>
-                                                                                <input type="submit" value="Editar">
+                            </div>
+                            <label for="">Nombre</label>
+                            <br>
+                            <input class="inputclass" type="text" name="name" value=<%=producto[0].name %>>
+                            <% if(locals.errors && errors.name) {%>
+                                <p class="nameErrorMsg">
+                                    <%= errors.name.msg %>
+                                </p>
+                                <%}%>
+                                    <br><br>
+                                    <label for="">Subcategoria</label>
+                                    <br>
+                                    <input class="inputclass" type="text" name="subcategory_id"
+                                        value=<%=producto[0].subcategory_id %>>
+                                    <% if(locals.errors && errors.subcategory_id) {%>
+                                        <p class="subcategory_idErrorMsg">
+                                            <%= errors.subcategory_id.msg %>
+                                        </p>
+                                        <%}%>
+                                            <br><br>
+                                            <label for="">Stock</label>
+                                            <br>
+                                            <input class="inputclass" type="number" name="stock"
+                                                value=<%=producto[0].stock %>>
+                                            <% if(locals.errors && errors.stock) {%>
+                                                <p class="stockErrorMsg">
+                                                    <%= errors.stock.msg %>
+                                                </p>
+                                                <%}%>
+                                                    <br><br>
+                                                    <label for="">Descripcion</label>
+                                                    <br>
+                                                    <input class="inputclass" type="text" name="description"
+                                                        value=<%=producto[0].name %>>
+                                                    <% if(locals.errors && errors.description) {%>
+                                                        <p class="descriptionErrorMsg">
+                                                            <%= errors.description.msg %>
+                                                        </p>
+                                                        <%}%>
+                                                            <br><br>
+                                                            <label for="">Color</label>
+                                                            <br>
+                                                            <input class="inputclass" type="text" name="colors"
+                                                                value=<%=producto[0].colors %>>
+                                                            <% if(locals.errors && errors.colors) {%>
+                                                                <p class="colorsErrorMsg">
+                                                                    <%= errors.colors.msg %>
+                                                                </p>
+                                                                <%}%>
+                        </div>
+
+                        <div class="rigth-form">
+                            <label for="">Precio</label>
+                            <br>
+                            <input class="inputclass" type="text" name="price" value=<%=producto[0].price %>>
+                            <% if(locals.errors && errors.price) {%>
+                                <p class="priceErrorMsg">
+                                    <%= errors.price.msg %>
+                                </p>
+                                <%}%>
+                                    <br><br>
+                                    <label for="">Marca</label>
+                                    <br>
+                                    <input class="inputclass" type="text" name="brand" value=<%=producto[0].brand %>>
+                                    <% if(locals.errors && errors.brand) {%>
+                                        <p class="brandErrorMsg">
+                                            <%= errors.brand.msg %>
+                                        </p>
+                                        <%}%>
+                                            <br><br>
+                                            <label for="">Imagen</label>
+                                            <input type="file" name="productImg">
+                                            <% if(locals.errors && errors.productImg) {%>
+                                                <p class="productImgErrorMsg">
+                                                    <%= errors.productImg.msg %>
+                                                </p>
+                                                <%}%>
+                                                    <br><br>
+                                                    <input class="btn-edit" type="submit" value="Editar">
 
 
-            </form>
-            <form action="/product/modifyproduct/<%= producto[0].product_id  %>?_method=DELETE" method="POST"
-                id="deleteProductForm" class="delProdForm">
-                <br>
-                <input type="submit" value="Eliminar">
-            </form>
-            <%} %>
-                <br><br>
-                <a href="/">Volver</a>
-    </div>
+                    </form>
+                    <form action="/product/modifyproduct/<%= producto[0].product_id  %>?_method=DELETE" method="POST"
+                        id="deleteProductForm" class="delProdForm">
+                        <br>
+                        <input class="btn-delete" type="submit" value="Eliminar">
+                    </form>
+                </div>
+        </div>
+        <%} %>
+
+            </div>
 </body>
 
 </html>

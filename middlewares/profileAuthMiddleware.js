@@ -13,11 +13,11 @@ const profileAuthMiddleware = async (req, res, next) => {
 
             next()
         } else {
-            return res.send('No tienes permisos de Administrador')
+            return res.render('./partials/401')
         }
     } else {
 
-        return res.send('No tienes permisos de Administrador')
+        return res.render('./partials/401')
     }
 
 }

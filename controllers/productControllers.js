@@ -68,7 +68,7 @@ const productControllers = {
             }
             res.redirect('/cart/cart')
         } else {
-            res.send('debes loguearte para poder comprar')
+            res.redirect('/user/login')
         }
     },
     getSubCategories: (req, res) => {
