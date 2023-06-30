@@ -92,3 +92,9 @@
     }
 
 }
+
+@media (max-width: 425px) {
+    .modify-form-container {
+        width: 100%;
+    }
+}

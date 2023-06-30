@@ -112,3 +112,27 @@ label {
         min-height: 100vh;
     }
 }
+
+@media (max-width: 425px) {
+    .editProdForm {
+        width: 100%;
+        flex-direction: column;
+        padding: 0.5rem;
+
+    }
+
+    .inputclass {
+        width: 100%;
+
+    }
+
+    .left-form {
+        width: 100%;
+
+    }
+
+    .rigth-form {
+        width: 100%;
+
+    }
+}
