@@ -77,3 +77,9 @@ label {
 .btn-create:hover {
     cursor: pointer;
 }
+
+@media (max-width: 930px) {
+    .body {
+        min-height: 100vh;
+    }
+}

@@ -68,3 +68,90 @@
 .carrousel .punto.activo {
     background-color: rgb(216, 125, 13);
 }
+
+
+@media (max-width: 920px) {
+    .carrousel {
+        width: 100%;
+        max-width: 120em;
+        background-color: #fff;
+        padding: 1em;
+        overflow: hidden;
+        margin: auto;
+    }
+
+    .carrousel .grande {
+        width: 300%;
+        /* background-color: orange; */
+        z-index: 50;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 3em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        transition: all .5s ease;
+        transform: translate(0%);
+    }
+
+    .carrousel .chico {
+        width: calc(100% / 3 - 3em);
+        /* background-color: lime; */
+        max-height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+    }
+
+    .chico .img {
+        /**/
+        width: 30%;
+        height: 30vh;
+        border-radius: 4px;
+    }
+
+    .chico p {
+        font-size: 14px;
+        /**/
+    }
+
+    .chico .descripcion {
+        /**/
+        width: 70%;
+        padding: 0.5em 2em;
+
+    }
+
+    .carrousel .puntos {
+        width: 100%;
+        /* background-color: red; */
+        margin: .2em 0 0;
+        padding: .4em;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+    }
+
+    .carrousel .punto {
+        width: .5em;
+        height: .5em;
+        background-color: grey;
+        opacity: 0.3;
+        margin: .2em;
+        border-radius: 50%;
+    }
+
+    .carrousel .punto.activo {
+        background-color: rgb(216, 125, 13);
+    }
+}
+
+@media (max-width: 425px) {
+    .carrousel {
+        display: none;
+    }
+}

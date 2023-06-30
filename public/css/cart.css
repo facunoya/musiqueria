@@ -178,3 +178,13 @@
     cursor: pointer;
     opacity: 0.9;
 }
+
+@media (max-width: 930px) {
+    .body {
+        min-height: 100vh;
+    }
+
+    .allCartsUser {
+        width: 100%;
+    }
+}

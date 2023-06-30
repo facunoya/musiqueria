@@ -53,6 +53,10 @@
 
 }
 
+.cardContainer img {
+    padding-right: 0.5rem;
+}
+
 .cardContainer:hover {
     transition: 0.3s;
     -webkit-box-shadow: 4px 4px 29px -8px rgba(0, 0, 0, 0.75);
@@ -204,4 +208,22 @@ input.stock {
     color: aliceblue;
     border: none;
     border-radius: 4px;
+}
+
+@media (max-width: 930px) {
+
+    .cardsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        /* border: solid 1px black; */
+        width: 90%;
+        justify-content: space-around;
+
+
+    }
+
+    .cardContainer {
+
+        width: 35%;
+    }
 }

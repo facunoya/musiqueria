@@ -81,3 +81,14 @@
     margin-top: -1.6rem;
     right: 0rem;
 }
+
+@media (max-width: 930px) {
+    .body {
+        min-height: 100vh;
+    }
+
+    .modify-form-container {
+        width: 400px;
+    }
+
+}

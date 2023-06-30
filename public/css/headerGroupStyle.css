@@ -169,3 +169,10 @@ li a {
     color: var(--secundario);
     font-weight: bolder;
 }
+
+
+@media (max-width: 930px) {
+    .header {
+        height: 200px;
+    }
+}

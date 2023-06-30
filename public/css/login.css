@@ -191,3 +191,30 @@ li a {
 .crear-btn:hover {
     cursor: pointer;
 }
+
+@media (max-width: 930px) {
+    .body {
+        min-height: 100vh;
+    }
+
+    .container-section {
+        width: 100%;
+    }
+
+    .div-container {
+        width: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .lateral {
+        width: 100%;
+    }
+
+    .lateral img {
+        width: 150px;
+    }
+}
