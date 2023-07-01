@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-05-2023 a las 12:10:02
+-- Tiempo de generación: 01-07-2023 a las 20:52:00
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -20,11 +20,16 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `musiqueria`
 --
+CREATE DATABASE IF NOT EXISTS `musiqueria` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `musiqueria`;
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `carts`
+--
+-- Creación: 15-06-2023 a las 22:48:25
+-- Última actualización: 01-07-2023 a las 17:59:28
 --
 
 CREATE TABLE `carts` (
@@ -35,39 +40,80 @@ CREATE TABLE `carts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- RELACIONES PARA LA TABLA `carts`:
---   `product_id`
---       `products` -> `product_id`
---   `user_id`
---       `users` -> `user_id`
---
-
---
 -- Volcado de datos para la tabla `carts`
 --
 
 INSERT INTO `carts` (`cart_id`, `user_id`, `product_id`, `quantity`) VALUES
-(1, 1, 1, 1),
-(2, 2, 2, 1),
+(1, 1, 1, 4),
 (3, 3, 1, 2),
-(4, 9, 5, 1),
-(5, 9, 1, 1),
-(6, 3, 5, 1);
+(32, 1, 2, 1),
+(33, 1, 3, 1),
+(34, 21, 5, 2),
+(41, 21, 8, 1),
+(42, 21, 3, 1),
+(51, 28, 1, 1),
+(52, 28, 2, 2),
+(53, 23, 2, 1),
+(54, 20, 5, 1),
+(55, 23, 8, 1),
+(56, 3, 5, 1),
+(81, 30, 1, 1),
+(86, 2, 1, 1),
+(90, 20, 1, 1),
+(91, 20, 10, 1),
+(95, 32, 2, 1),
+(96, 32, 10, 1),
+(120, 33, 1, 7),
+(121, 33, 5, 4),
+(122, 33, 8, 1),
+(124, 9, 2, 4),
+(129, 25, 5, 2),
+(130, 25, 8, 3),
+(131, 25, 3, 1),
+(132, 25, 10, 1),
+(133, 25, 1, 5),
+(135, 24, 5, 2),
+(136, 24, 1, 3),
+(137, 24, 8, 1),
+(138, 9, 1, 10),
+(139, 22, 5, 2),
+(140, 22, 3, 2),
+(141, 22, 2, 4),
+(142, 34, 1, 1),
+(143, 34, 11, 5),
+(144, 31, 1, 3),
+(146, 35, 8, 1),
+(147, 22, 1, 12),
+(148, 22, 10, 6),
+(149, 22, 11, 5),
+(150, 1, 10, 3),
+(153, 36, 11, 1),
+(154, 36, 2, 1),
+(155, 36, 1, 1),
+(157, 29, 11, 3),
+(158, 9, 20, 2),
+(159, 21, 21, 1),
+(160, 2, 5, 1),
+(161, 39, 5, 1),
+(162, 39, 18, 2),
+(163, 39, 21, 1),
+(164, 2, 21, 1),
+(165, 40, 5, 1),
+(166, 40, 18, 2),
+(167, 40, 21, 1);
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `categories`
 --
+-- Creación: 15-06-2023 a las 22:48:25
+--
 
 CREATE TABLE `categories` (
   `category_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- RELACIONES PARA LA TABLA `categories`:
---
 
 --
 -- Volcado de datos para la tabla `categories`
@@ -82,6 +128,9 @@ INSERT INTO `categories` (`category_id`, `name`) VALUES
 
 --
 -- Estructura de tabla para la tabla `products`
+--
+-- Creación: 15-06-2023 a las 22:48:25
+-- Última actualización: 01-07-2023 a las 17:59:28
 --
 
 CREATE TABLE `products` (
@@ -98,26 +147,27 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- RELACIONES PARA LA TABLA `products`:
---   `subcategory_id`
---       `subcategories` -> `subcategory_id`
---
-
---
 -- Volcado de datos para la tabla `products`
 --
 
 INSERT INTO `products` (`product_id`, `name`, `subcategory_id`, `stock`, `description`, `colors`, `price`, `brand`, `productImg`, `createdDate`) VALUES
-(1, 'Guitarra elèctrica', 1, 5, 'Guitarra electrica, Les Paul', 'Rojo', '15320', 'Gibson', 'guitarra.jpg', '2005-07-23'),
-(2, 'Parlantes', 2, 4, 'Parlantes', 'Azul', '12490', 'Edifer', 'parlantes.jpg', '2005-07-23'),
-(3, 'Bajo acústico', 1, 3, 'bajo cort ', 'rojo', '23555', 'cort', 'bajo.jpg', '0000-00-00'),
-(5, 'Bateria', 1, 7, 'Bateria artesanl', 'Brillante', '23555', 'Tama', 'bata.jpg', '0000-00-00'),
-(8, 'Amplificador', 2, 4, 'Amplificador', 'Negro', '54789', 'Marshal', 'ampli.jpg', '0000-00-00');
+(1, 'Guitarra', 1, 42, 'Guitarra Texas Mod.04 crazy sounds!', 'Azul', '25000', 'Gibson', 'img-1685743810754.jpg', '2005-07-23'),
+(2, 'Parlantes', 2, 17, 'Parlantes Edifier M201bt Audio 2.1 -subwooferbluetooth 5.0', 'Azul', '12490', 'Edifer', 'img-1685750412885.webp', '2005-07-23'),
+(3, 'Bajo', 1, 36, 'Bajo eléctrico de 4 cuerdas - Activo. Electrónica: 2 pastillas Powersound PSEB4-4/F y PSEB1-4/R', 'Rojo', '23555', 'Cort', 'img-1685310362172.jpg', '0000-00-00'),
+(5, 'Bateria', 1, 37, 'Una batería innovadora con un tono brillante y expansivo', 'Rojo', '23555', 'Tama', 'img-1685310272930.png', '0000-00-00'),
+(8, 'Amplificador', 2, 16, 'Amplificador Guitarra Eléctrica Marshall Gold Mg15g 15w', 'Negro', '54789', 'Marshal', 'img-1685310401825.jpg', '0000-00-00'),
+(10, 'Auriculares', 2, 37, 'Auriculares Ovansu 2.5mts de cable', 'Azul', '7000', 'Ovansu', 'img-1685310542983.jpg', '0000-00-00'),
+(11, 'Piano', 1, 16, 'Piano Medeli Modelo Sp4000', 'Negro', '54789', 'Medeli', 'img-1685413087146.jpg', '0000-00-00'),
+(18, 'Palillos', 1, 16, 'La linea STD de Sambys madera Guatambú es un palillo versatil para bateristas', 'Marrón', '1500', 'Sam Bys', 'img-1688002785539.webp', '0000-00-00'),
+(20, 'Puas', 3, 98, 'Distintas varidiedades inculye 20 unidades por compra', 'Todos', '100', 'Stone', 'img-1688003016067.webp', '0000-00-00'),
+(21, 'Banco para bateria', 3, 11, 'Asiento para Baterista DS550 Yamaha Asiento redondo Ajuste de la altura del tornillo', 'Negro', '1500', 'Yamaha', 'img-1688075494003.jpg', '0000-00-00');
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `salesdetails`
+--
+-- Creación: 15-06-2023 a las 22:48:25
 --
 
 CREATE TABLE `salesdetails` (
@@ -129,17 +179,97 @@ CREATE TABLE `salesdetails` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- RELACIONES PARA LA TABLA `salesdetails`:
---   `salesheader_id`
---       `salesheaders` -> `salesheader_id`
---   `product_id`
---       `products` -> `product_id`
+-- Volcado de datos para la tabla `salesdetails`
 --
+
+INSERT INTO `salesdetails` (`salesdetail_id`, `product_id`, `salesheader_id`, `price`, `quantity`) VALUES
+(1, 5, 8, '23555', 1),
+(2, 5, 9, '23555', 2),
+(3, 5, 10, '47110', 2),
+(4, 5, 11, '23555', 1),
+(5, 1, 12, '30640', 2),
+(6, 1, 13, '15000', 1),
+(7, 1, 14, '15000', 1),
+(8, 1, 15, '15000', 1),
+(9, 1, 16, '15000', 1),
+(10, 1, 17, '15000', 1),
+(11, 3, 18, '23555', 1),
+(12, 1, 19, '15000', 1),
+(13, 3, 22, '23555', 1),
+(14, 5, 22, '23555', 1),
+(15, 1, 22, '15000', 1),
+(16, 1, 23, '15000', 1),
+(17, 2, 23, '12490', 1),
+(18, 5, 23, '23555', 1),
+(19, 1, 24, '15000', 1),
+(20, 2, 24, '12490', 1),
+(21, 3, 24, '23555', 1),
+(22, 1, 25, '25000', 1),
+(23, 3, 25, '23555', 1),
+(24, 3, 26, '23555', 1),
+(25, 5, 26, '23555', 1),
+(26, 5, 27, '23555', 1),
+(27, 8, 28, '54789', 1),
+(28, 3, 29, '47110', 2),
+(29, 1, 30, '50000', 2),
+(30, 1, 31, '50000', 2),
+(31, 1, 32, '75000', 3),
+(32, 1, 33, '50000', 2),
+(33, 5, 33, '23555', 1),
+(34, 2, 34, '12490', 1),
+(35, 5, 35, '47110', 2),
+(36, 2, 36, '12490', 1),
+(37, 8, 37, '54789', 1),
+(38, 5, 37, '47110', 2),
+(39, 5, 38, '23555', 1),
+(40, 1, 39, '25000', 1),
+(41, 10, 40, '7000', 1),
+(42, 2, 41, '12490', 1),
+(43, 5, 42, '23555', 1),
+(44, 10, 42, '7000', 1),
+(45, 3, 42, '23555', 1),
+(46, 1, 42, '75000', 3),
+(47, 1, 43, '25000', 1),
+(48, 11, 44, '54789', 1),
+(49, 10, 45, '7000', 1),
+(50, 10, 46, '7000', 1),
+(51, 11, 46, '54789', 1),
+(52, 1, 47, '50000', 2),
+(53, 3, 48, '23555', 1),
+(54, 5, 49, '23555', 1),
+(55, 1, 50, '350000', 14),
+(56, 1, 51, '75000', 3),
+(57, 1, 52, '75000', 3),
+(58, 1, 53, '25000', 1),
+(59, 3, 54, '259105', 11),
+(60, 2, 55, '12490', 1),
+(61, 1, 56, '25000', 1),
+(62, 1, 57, '575000', 23),
+(63, 1, 58, '25000', 1),
+(64, 1, 59, '575000', 23),
+(65, 1, 60, '2050000', 82),
+(66, 1, 61, '400000', 16),
+(67, 1, 62, '375000', 15),
+(68, 1, 63, '150000', 6),
+(69, 1, 64, '50000', 2),
+(70, 3, 65, '23555', 1),
+(71, 1, 66, '75000', 3),
+(72, 2, 66, '12490', 1),
+(73, 2, 66, '12490', 1),
+(74, 1, 66, '50000', 2),
+(75, 1, 66, '75000', 3),
+(76, 5, 66, '23555', 1),
+(77, 1, 67, '50000', 2),
+(78, 1, 69, '50000', 2),
+(79, 8, 70, '54789', 1),
+(80, 2, 71, '37470', 3);
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `salesheaders`
+--
+-- Creación: 15-06-2023 a las 22:48:25
 --
 
 CREATE TABLE `salesheaders` (
@@ -150,15 +280,87 @@ CREATE TABLE `salesheaders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- RELACIONES PARA LA TABLA `salesheaders`:
---   `user_id`
---       `users` -> `user_id`
+-- Volcado de datos para la tabla `salesheaders`
 --
+
+INSERT INTO `salesheaders` (`salesheader_id`, `user_id`, `dateSale`, `total`) VALUES
+(1, 9, '2023-05-25', '23555'),
+(2, 9, '2023-05-25', '23555'),
+(3, 9, '2023-05-25', '23555'),
+(4, 9, '2023-05-25', '23555'),
+(5, 9, '2023-05-25', '23555'),
+(6, 9, '2023-05-25', '15320'),
+(7, 9, '2023-05-25', '23555'),
+(8, 9, '2023-05-25', '23555'),
+(9, 9, '2023-05-25', '23555'),
+(10, 9, '2023-05-25', '23555'),
+(11, 3, '2023-05-25', '23555'),
+(12, 3, '2023-05-25', '15320'),
+(13, 30, '2023-05-26', '15000'),
+(14, 30, '2023-05-26', '15000'),
+(15, 30, '2023-05-26', '15000'),
+(16, 30, '2023-05-26', '15000'),
+(17, 30, '2023-05-26', '15000'),
+(18, 30, '2023-05-26', '23555'),
+(19, 30, '2023-05-26', '15000'),
+(21, 30, '2023-05-26', '0'),
+(22, 30, '2023-05-26', '0'),
+(23, 30, '2023-05-26', '0'),
+(24, 30, '2023-05-26', '0'),
+(25, 30, '2023-05-26', '0'),
+(26, 30, '2023-05-26', '47110'),
+(27, 30, '2023-05-26', '23555'),
+(28, 30, '2023-05-26', '54789'),
+(29, 30, '2023-05-26', '23555'),
+(30, 30, '2023-05-26', '0'),
+(31, 30, '2023-05-26', '0'),
+(32, 30, '2023-05-26', '75000'),
+(33, 30, '2023-05-26', '73555'),
+(34, 30, '2023-05-27', '12490'),
+(35, 9, '2023-05-27', '23555'),
+(36, 2, '2023-05-27', '12490'),
+(37, 2, '2023-05-27', '101899'),
+(38, 31, '2023-05-30', '23555'),
+(39, 31, '2023-05-30', '25000'),
+(40, 31, '2023-05-30', '7000'),
+(41, 31, '2023-05-30', '12490'),
+(42, 29, '2023-05-30', '129110'),
+(43, 29, '2023-05-30', '25000'),
+(44, 29, '2023-05-30', '54789'),
+(45, 29, '2023-05-30', '7000'),
+(46, 33, '2023-05-30', '61789'),
+(47, 9, '2023-06-01', '25000'),
+(48, 9, '2023-06-01', '23555'),
+(49, 9, '2023-06-01', '23555'),
+(50, 9, '2023-06-01', '25000'),
+(51, 9, '2023-06-01', '25000'),
+(52, 9, '2023-06-01', '25000'),
+(53, 9, '2023-06-01', '25000'),
+(54, 9, '2023-06-01', '23555'),
+(55, 9, '2023-06-01', '12490'),
+(56, 9, '2023-06-01', '25000'),
+(57, 9, '2023-06-01', '25000'),
+(58, 9, '2023-06-01', '25000'),
+(59, 9, '2023-06-01', '25000'),
+(60, 9, '2023-06-01', '25000'),
+(61, 9, '2023-06-01', '25000'),
+(62, 9, '2023-06-02', '25000'),
+(63, 25, '2023-06-03', '25000'),
+(64, 25, '2023-06-03', '25000'),
+(65, 25, '2023-06-03', '23555'),
+(66, 24, '2023-06-04', '248535'),
+(67, 35, '2023-06-19', '50000'),
+(68, 35, '2023-06-19', '0'),
+(69, 29, '2023-06-24', '25000'),
+(70, 29, '2023-06-28', '54789'),
+(71, 29, '2023-06-28', '12490');
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `subcategories`
+--
+-- Creación: 15-06-2023 a las 22:48:25
 --
 
 CREATE TABLE `subcategories` (
@@ -168,24 +370,21 @@ CREATE TABLE `subcategories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- RELACIONES PARA LA TABLA `subcategories`:
---   `category_id`
---       `categories` -> `category_id`
---
-
---
 -- Volcado de datos para la tabla `subcategories`
 --
 
 INSERT INTO `subcategories` (`subcategory_id`, `name`, `category_id`) VALUES
-(1, 'Guitarra', 1),
-(2, 'Parlantes', 3),
-(3, 'Púas', 2);
+(1, 'Instrumentos', 1),
+(2, 'Sonido', 3),
+(3, 'Accesorios', 2);
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `users`
+--
+-- Creación: 15-06-2023 a las 22:48:25
+-- Última actualización: 01-07-2023 a las 18:18:16
 --
 
 CREATE TABLE `users` (
@@ -198,25 +397,33 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
--- RELACIONES PARA LA TABLA `users`:
---
-
---
 -- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `avatar`, `profile`) VALUES
-(1, 'Diego', 'diego@gmail.com', '123456', 'diego.jpg', 'Administrador'),
-(2, 'Fanku', 'facunoya@hotmail.com', '123456', 'Facu.jpg', 'Administrador'),
-(3, 'Agostina', 'agos@gmail.com', '123456', 'Agos.jpg', 'Administrador'),
-(9, 'Nina', 'snoya1987@gmail.com', '123456', 'algo.jpg', 'Usuario'),
-(20, 'Nina', 'nina@gmail.com', '123456', 'algo.jpg', 'Administrador'),
-(21, 'Lin', 'lin@gmail.com', '123456', 'algo.jpg', 'Administrador'),
-(22, 'Merlina', 'merli@gmail.com', '123456', 'algo.jpg', 'Administrador'),
-(23, 'Fanku 87', 'fanku@gmail.com', '123456', 'algo.jpg', ''),
-(24, 'Luis', 'nuez@gmail.com', '123456', 'algo.jpg', 'Administrador'),
-(25, 'Maxi', 'maxi@gmail.com', '123456', 'algo.jpg', 'Administrador'),
-(28, 'Luna', 'lunita@gmail.com', '123456', 'luna.jpg', 'Administrador');
+(1, 'Diego', 'diego@gmail.com', '$2a$10$Nr1jho6kt1kyw.n6f7m8eOYtNmcVFppD5upCixdgrgvlni1jQ8czO', 'img-1686490059643.jpeg', 'Administrador'),
+(2, 'Fanku', 'facunoya@hotmail.com', '$2a$10$LJunk9501ZDJ1uhwNG3.4u7Wjr1CgZnDprt9dd6WB1gBFh3QcxPq6', 'img-1685312901855.jpeg', 'Administrador'),
+(3, 'Agostina', 'agos@gmail.com', '$2a$10$rNau.Y0kHo2mqNHzJdDFX.LHJ1uk30KNzr1YSx5ANkuDJ2cgC8neO', 'img-1685399079814.jpeg', 'Administrador'),
+(9, 'Nina', 'snoya1987@gmail.com', '$2a$10$DSlPHQn1YQVU.7/Pd2DQ4utNDsKvX.f9MWa19M6z53rRVgmkZSC7W', 'img-1685312615326.jpeg', 'Administrador'),
+(20, 'Nina', 'nina@gmail.com', '$2a$10$2Llk4htJCbx5fzVeRM6ZEexqbak0rUmDhSgseSJEntt/mXFpSXODK', 'img-1688075562741.jpeg', 'Administrador'),
+(21, 'Lin', 'lin@gmail.com', '$2a$10$3HVvmHAKBWesCzuwezFVyuBIujGF2oJINahc0VHkwgdHnUzkvmB3K', 'lin.jpeg', 'Administrador'),
+(22, 'Merlina', 'merli@gmail.com', '$2a$10$MUaBmlEb.qylRegGq3y01uTxzk.BwdSJAy/6JZHltmF/70.tjNLAG', 'img-1685308854245.jpeg', 'Administrador'),
+(23, 'Fanku', 'fanku@gmail.com', '$2a$10$9n3SIdz0YYHNwObSyqE/O.RWVlhcicHLgenwW2zgYbqoUIQPi1ble', 'img-1688234026503.jpg', 'Administrador'),
+(24, 'Luis', 'nuez@gmail.com', '$2a$10$kYWT5LsCLCU2aGX3HyyCKOLg2CMvag8/eUj05cc9mnmJlzHTWgWzS', 'img-1685313542401.jpeg', 'Administrador'),
+(25, 'Maxi', 'maxi@gmail.com', '$2a$10$Ee739xLctiRV7slnYI4sye.5oJaZkifocSUzsOUg9Ympy2NrYO4US', 'img-1685313081116.jpeg', 'Administrador'),
+(28, 'Luna', 'lunita@gmail.com', '$2a$10$ZsYoHlLDtdsjgajIr1PGQuu0QiQRxp2SUlQ9LPZ4cHhMX21ingUge', 'luna.jpg', 'Cliente'),
+(29, 'Emilio', 'emilio@gmail.com', '$2a$10$m2QxoZ0QDG8FpPHBUeXvGe0n1aaZD9YEZ.wleb2AX3x2EaHyd31w2', 'img-1687570742684.jpg', 'Cliente'),
+(30, 'Ameo9', 'ameo@mail.com', '$2a$10$KauZoDYmDaIY4Swqg9Bcl.CUhut7Tz/FpUcMt7XcOL3MTCdqxh56u', 'img-1685413340645.png', 'Administrador'),
+(31, 'Belen', 'belen@gmail.com', '$2a$10$61tRVqYsKbTVDNARJ9/VdOQ7UVNIHWFmsi3OfvMMHqzl4DuMoYrxq', 'img-1688234170878.jpg', 'Cliente'),
+(32, 'Fanku87', 'fanku87@gmail.com', '$2a$10$dhjcuXxbwXzNENQXspgX0O3hVl0gg2VO2aPTXZPmr63zDrALOXQGW', 'img-1685413672918.jpg', 'Cliente'),
+(33, 'More', 'morena@gmail.com', '$2a$10$B.ZGX7SXWGbHCFZRcn53w.NBKLw.XxMRKstEITzqdjiWB3YrWEIwa', 'img-1685486522983.jpg', 'Cliente'),
+(34, 'Critian', 'cristian@gmail.com', '$2a$10$sus5DgXxdT8K1lF35W7V0.x13bHHg9z0l9xy4vMVrsS.Q8jwne5ZC', 'img-1686433322290.png', 'Cliente'),
+(35, 'Horacio', 'hnoya@gmail.com', '$2a$10$sAr2s6cgoXqEU7L05Yw0aertykaQPnEBPvJaSD.OJXdHVrI9pCbMq', 'img-1687196935958.jpg', 'Administrador'),
+(36, 'Maribe', 'maribe@gmail.com', '$2a$10$Kpk5Np5c52HR/1D3MRCPSu0pagkMBrToKqnb0IAE28wycYgR0wFY.', 'img-1687644382378.jpg', 'Cliente'),
+(37, 'Jeremias', 'gatofelix@gmail.com', '$2a$10$EncXeijZAblxwuoikSZ2KOE6NWrajpjczV2QRTcbtd5RAmCHEh2dO', 'img-1687998211809.png', 'Cliente'),
+(38, 'Bella', 'agostina@gmail.com', '$2a$10$NSobzroKzjrtsjVNljG.E.eSoGYQ0CA6ZfbIsdV5XRjMGLqOuk8lm', 'img-1688235496044.jpg', 'Administrador'),
+(39, 'Agustin', 'agustin@hotmail.com', '$2a$10$Orhe.031Y.BYAAAh5YZezuF.sKm4/1amoWx5dJtf/dYUKLfe1R1wG', 'img-1688235420452.jpg', 'Administrador'),
+(40, 'Franco', 'colo@gmail.com', '$2a$10$IpYuXYe9f3TkudyT5zaMw.O7Hz.2wHuma.RbcbNVEhQ4O.gCLxHf6', 'img-1688234306979.jpg', 'Administrador');
 
 --
 -- Índices para tablas volcadas
@@ -279,7 +486,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
 
 --
 -- AUTO_INCREMENT de la tabla `categories`
@@ -291,19 +498,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `salesdetails`
 --
 ALTER TABLE `salesdetails`
-  MODIFY `salesdetail_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `salesdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT de la tabla `salesheaders`
 --
 ALTER TABLE `salesheaders`
-  MODIFY `salesheader_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `salesheader_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT de la tabla `subcategories`
@@ -315,7 +522,7 @@ ALTER TABLE `subcategories`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- Restricciones para tablas volcadas
