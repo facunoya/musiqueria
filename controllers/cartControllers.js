@@ -118,7 +118,7 @@ const cartControllers = {
                 }
             })
         }
-        res.send('Producto eliminado de su carrito')
+        res.redirect('/cart/cart')
     }
 }
 module.exports = cartControllers

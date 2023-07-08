@@ -56,6 +56,27 @@ const apiUser = {
 
 
     },
+    seeYourBuy: (req, res) => {
+        let id = req.params.id
+        db.SalesHeaders.findAll({
+            include: [{ association: "Users" }, { association: "SalesDetails" }],
+            where: {
+                user_id: id
+            }
+        })
+            .then((carts) => {
+                if (carts != "") {
+
+                    //return res.render('./cart/myBuys', { carts })
+                    return res.json({ carts })
+                }
+                res.send("no tiene compras y no deberia hsber llegado aqui")
+            })
+
+            .catch((e) => { return res.send({ "message": "Error " + e }) })
+
+
+    },
     getEdit: async (req, res) => {
 
         await db.Users.findAll()

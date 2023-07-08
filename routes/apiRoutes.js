@@ -30,7 +30,7 @@ router.get('/allusers', apiControllers.getUsers)
 router.get('/api/users', apiUser.getUsers)
 router.get('/api/cart', apiUser.getCarts)
 router.get('/api/edituser/:id', apiUser.getEdit)
-router.get('/api/onecart/:id', logedMiddleware, apiUser.getOneCart)//se le podria agregar validaciones para que el GET de la url que este mas ligado, a si es su ID
+router.get('/api/onecart/:id', logedMiddleware, apiUser.seeYourBuy)//se le podria agregar validaciones para que el GET de la url que este mas ligado, a si es su ID
 
 
 
