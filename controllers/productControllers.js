@@ -136,11 +136,12 @@ const productControllers = {
             return res.render('./product/modifyProduct', { "errors": errors.mapped(), producto })
         }
     },
-    delete: (req, res) => {
-        let result = req.params.id
-        db.Products.destroy({ where: { product_id: result } })
+    delete: (req, res) => {//No funciona porque es FK, deberia borrarlo antes de todas las otras tablas
+        // let result = req.params.id
+        // db.Products.destroy({ where: { product_id: result } })
 
-        res.redirect('/product/all')
+        // res.redirect('/product/all')
+        res.send('Estamos trabajando en ello')
     }
 
 }

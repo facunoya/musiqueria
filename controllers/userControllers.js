@@ -133,11 +133,13 @@ const userControllers = {
 
         res.redirect('/user/all')
     },
-    delete: (req, res) => {
-        let result = req.params.id
-        db.Users.destroy({ where: { user_id: result } })
+    delete: async (req, res) => { //No funciona porque es FK, deberia borrarlo antes de todas las otras tablas
+        // let id = req.params.id
+        // let user_id = await db.Users.findByPk(id)
+        // db.Users.destroy({ where: { user_id: user_id } })
 
-        res.redirect('/user/all')
+        // res.redirect('/user/all')
+        res.send('Estamos trabajando en ello')
     }
 
 }
