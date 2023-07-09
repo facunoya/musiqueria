@@ -22,7 +22,7 @@ const apiControllers = {
             .then((sales) => {
                 return res.status(200).json(sales)
             })
-            /*NO anda el catch */
+
             .catch((e) => {
                 return res.status(404).send({
                     "message": "Error mony" + e

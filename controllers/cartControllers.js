@@ -29,7 +29,7 @@ const cartControllers = {
 
     },
 
-    //la funcion de la fecha esta mal, y no econtre la relacion entre el salesheader_id y el salesdetails_id
+
     endSale: async (req, res) => {
         const cart_id = req.body.cart_id
         const selectedCartProduct = await db.Carts.findByPk(cart_id)

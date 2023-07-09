@@ -19,7 +19,7 @@ const apiUser = {
             .then((usuarios) => {
                 return res.json({ usuarios, profile })
             })
-            /*NO anda el catch */
+
             .catch((e) => { return res.status(404).send({ "message": "Error " + e }) })
 
 
@@ -31,7 +31,7 @@ const apiUser = {
             .then((carts) => {
                 return res.json({ carts })
             })
-            /*NO anda el catch */
+
             .catch((e) => { return res.send({ "message": "Error " + e }) })
 
 
@@ -51,7 +51,7 @@ const apiUser = {
                 }
                 res.send("no tiene compras y no deberia hsber llegado aqui")
             })
-            /*NO anda el catch */
+
             .catch((e) => { return res.send({ "message": "Error " + e }) })
 
 

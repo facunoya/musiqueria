@@ -16,7 +16,7 @@ const userControllers = {
             profile = null
         }
 
-        //ACA poner el perfil de usuario para el boton editar
+
         db.Users.findAll()
             .then((usuarios) => {
                 return res.render('./user/users', { usuarios, profile })
@@ -62,8 +62,7 @@ const userControllers = {
     register: async (req, res) => {
 
 
-        //Falta configurar express-validator para las validaciones
-        //Faltan la validaciones del front con onsubmit,supongo que usando .fetch para comparar datos con el usuario de base de datos.
+
         let errors = validationResult(req)
 
 

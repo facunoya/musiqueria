@@ -16,7 +16,7 @@ const mainControllers = {
         }
     },
 
-    //Funcion de Leo Braña <3
+
     logOut: (req, res) => {
         res.clearCookie('remember')
         req.session.destroy()

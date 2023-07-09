@@ -35,7 +35,7 @@ router.use(methodOverride('_method'));
 router.use(express.urlencoded({ extended: false }));
 router.use(express.json());
 
-// router.get('/create', userControllers.createUser) // anda pero crea por el hecho de entrar usarla cuando sea necesario
+// router.get('/create', userControllers.createUser) // anda pero crea por el hecho de entrar, usarla cuando sea necesario
 router.get('/register', userFileUpload.single('avatar'), userControllers.getRegister)
 router.post('/register', userFileUpload.single('avatar'), userRegisterValidation, userControllers.register)
 router.get('/login', userControllers.getLogin)
