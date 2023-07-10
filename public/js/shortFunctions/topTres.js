@@ -4,7 +4,7 @@
 const fs = require('fs');
 const { Op } = require('sequelize')
 const path = require('path');
-const db = require('../database/models')
+const db = require('../../../database/models')
 const sequelize = db.sequelize
 
 const top3 =
@@ -45,7 +45,7 @@ const top3 =
         tresMasVendidos.push(productosVendidos.pop())
         tresMasVendidos.push(productosVendidos.pop())
         tresMasVendidos.push(productosVendidos.pop())
-        return tresMasVendidos, next()
+        res.json(tresMasVendidos)
 
 
     }

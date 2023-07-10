@@ -33,6 +33,10 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.DECIMAL(10, 0),
             allowNull: false
         },
+        offer: {
+            type: dataTypes.BIGINT(20),
+
+        },
         brand: {
             type: dataTypes.STRING(255),
             allowNull: false

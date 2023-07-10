@@ -87,24 +87,34 @@
                                 </p>
                                 <%}%>
                                     <br><br>
-                                    <label for="">Marca</label>
+                                    <label for="">Oferta</label>
                                     <br>
-                                    <input class="inputclass" type="text" name="brand" value=<%=producto[0].brand %>>
-                                    <% if(locals.errors && errors.brand) {%>
-                                        <p class="brandErrorMsg">
-                                            <%= errors.brand.msg %>
+                                    <input class="inputclass" type="text" name="offer" value=<%=producto[0].offer %>>
+                                    <% if(locals.errors && errors.offer) {%>
+                                        <p class="offerErrorMsg">
+                                            <%= errors.offer.msg %>
                                         </p>
                                         <%}%>
                                             <br><br>
-                                            <label for="">Imagen</label>
-                                            <input type="file" name="productImg">
-                                            <% if(locals.errors && errors.productImg) {%>
-                                                <p class="productImgErrorMsg">
-                                                    <%= errors.productImg.msg %>
+                                            <label for="">Marca</label>
+                                            <br>
+                                            <input class="inputclass" type="text" name="brand"
+                                                value=<%=producto[0].brand %>>
+                                            <% if(locals.errors && errors.brand) {%>
+                                                <p class="brandErrorMsg">
+                                                    <%= errors.brand.msg %>
                                                 </p>
                                                 <%}%>
                                                     <br><br>
-                                                    <input class="btn-edit" type="submit" value="Editar">
+                                                    <label for="">Imagen</label>
+                                                    <input type="file" name="productImg">
+                                                    <% if(locals.errors && errors.productImg) {%>
+                                                        <p class="productImgErrorMsg">
+                                                            <%= errors.productImg.msg %>
+                                                        </p>
+                                                        <%}%>
+                                                            <br><br>
+                                                            <input class="btn-edit" type="submit" value="Editar">
 
 
                     </form>

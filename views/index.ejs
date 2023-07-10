@@ -114,97 +114,54 @@
                 <main>
                     <%- include('./partials/carrousel.ejs') %>
                         <section class="gallery contenedor" id="portafolio">
-                            <h2 class="subtitulo">Nuestros productos</h2>
+                            <h2 class="subtitulo">Los más vendidos!</h2>
+
                             <div class=" galeria">
-                                <div class="contendedor-producto">
-                                    <img src="/img/auriculares.jpg" alt="" class="img-galeria">
-                                    <p class="name-brand">Auriculares Ovansu </p>
-                                    <p class="description">7.1 sound Gaming Headphone</p>
-                                    <p class="price">$15800</p>
-                                    <div class="buttons">
-                                        <a href="" class="cart-product-button"><i class='bx bx-cart'></i></a>
-                                        <a href="" class="product-button">Ir al detalle</a>
+                                <% if(cuatroMasVendidos){ cuatroMasVendidos.forEach(product=> { %>
+                                    <div class="contendedor-producto">
+                                        <img src="/img/<%=product.productImg %>" alt="" class="img-galeria">
+                                        <p class="name-brand">
+                                            <%= product.name %>
+                                                <%= product.brand %>
+                                        </p>
+                                        <p class="description">
+                                            <%= product.description %>
+                                        </p>
+                                        <p class="price">$<%= product.price %>
+                                        </p>
+                                        <div class="buttons">
+                                            <a href="" class="cart-product-button"><i class='bx bx-cart'></i></a>
+                                            <a href="" class="product-button">Ir al detalle</a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="contendedor-producto">
-                                    <img src="/img/bajo.jpg" alt="" class="img-galeria">
-                                    <p class="name-brand">Bajo Cort </p>
-                                    <p class="description">Bajo elèctrico de 4 cuerdas activo</p>
-                                    <p class="price">$17400</p>
-                                    <div class="buttons">
-                                        <a href="" class="cart-product-button"><i class='bx bx-cart'></i></a>
-                                        <a href="" class="product-button">Ir al detalle</a>
-                                    </div>
-                                </div>
-                                <div class="contendedor-producto">
-                                    <img src="/img/bateria.png" alt="" class="img-galeria">
-                                    <p class="name-brand">Batería Tama </p>
-                                    <p class="description">Una batería innovadora con un tono brillante y expansivo</p>
-                                    <p class="price">$22700</p>
-                                    <div class="buttons">
-                                        <a href="" class="cart-product-button"><i class='bx bx-cart'></i></a>
-                                        <a href="" class="product-button">Ir al detalle</a>
-                                    </div>
-                                </div>
-                                <div class="contendedor-producto">
-                                    <img src="/img/puas.webp" alt="" class="img-galeria">
-                                    <p class="name-brand">Puas Stone </p>
-                                    <p class="description">Distintas variedades, incluye 20 unidades por compra</p>
-                                    <p class="price">$1800</p>
-                                    <div class="buttons">
-                                        <a href="" class="cart-product-button"><i class='bx bx-cart'></i></a>
-                                        <a href="" class="product-button">Ir al detalle</a>
-                                    </div>
-                                </div>
+                                    <% })}%>
                             </div>
                         </section>
                         <section class="contenedor gallery" id="servicio">
                             <h2 class="subtitulo">Ofertas</h2>
                             <div class=" galeria">
-                                <div class="contendedor-producto">
-                                    <img src="/img/bateria.png" alt="" class="img-galeria">
+                                <% if(productos){ productos.forEach(product=> { %>
+                                    <% if(product.offer> 1 ) {%>
+                                        <div class="contendedor-producto">
+                                            <img src="/img/<%=product.productImg %>" alt="" class="img-galeria">
 
-                                    <p class="name-brand">Bateria thama </p>
-                                    <p class="description">7 Cuerpos parches de lihno</p>
-                                    <p class="price offer "> $15800 <b class="OFF">15% OFF</b> </p>
-                                    <div class="buttons">
-                                        <a href="" class="cart-product-button"><i class='bx bx-cart'></i></a>
-                                        <a href="" class="product-button">Ir al detalle</a>
-                                    </div>
-                                </div>
-                                <div class="contendedor-producto">
-                                    <img src="/img/bateria.png" alt="" class="img-galeria">
+                                            <p class="name-brand">
+                                                <%= product.name %>
+                                                    <%= product.brand %>
+                                            </p>
+                                            <p class="description">
+                                                <%= product.description%>
+                                            </p>
+                                            <p class="price offer "> $<%= product.price %> <b class="OFF">
+                                                        <%= product.offer %>% OFF
+                                                    </b> </p>
+                                            <div class="buttons">
+                                                <a href="" class="cart-product-button"><i class='bx bx-cart'></i></a>
+                                                <a href="" class="product-button">Ir al detalle</a>
+                                            </div>
+                                        </div>
+                                        <%}})}%>
 
-                                    <p class="name-brand">Bateria thama </p>
-                                    <p class="description">7 Cuerpos parches de lihno</p>
-                                    <p class="price offer "> $15800 <b class="OFF">15% OFF</b> </p>
-                                    <div class="buttons">
-                                        <a href="" class="cart-product-button"><i class='bx bx-cart'></i></a>
-                                        <a href="" class="product-button">Ir al detalle</a>
-                                    </div>
-                                </div>
-                                <div class="contendedor-producto">
-                                    <img src="/img/bateria.png" alt="" class="img-galeria">
-
-                                    <p class="name-brand">Bateria thama </p>
-                                    <p class="description">7 Cuerpos parches de lihno</p>
-                                    <p class="price offer "> $15800 <b class="OFF">15% OFF</b> </p>
-                                    <div class="buttons">
-                                        <a href="" class="cart-product-button"><i class='bx bx-cart'></i></a>
-                                        <a href="" class="product-button">Ir al detalle</a>
-                                    </div>
-                                </div>
-                                <div class="contendedor-producto">
-                                    <img src="/img/bateria.png" alt="" class="img-galeria">
-
-                                    <p class="name-brand">Bateria thama </p>
-                                    <p class="description">7 Cuerpos parches de lihno</p>
-                                    <p class="price offer "> $15800 <b class="OFF">15% OFF</b> </p>
-                                    <div class="buttons">
-                                        <a href="" class="cart-product-button"><i class='bx bx-cart'></i></a>
-                                        <a href="" class="product-button">Ir al detalle</a>
-                                    </div>
-                                </div>
 
 
                             </div>

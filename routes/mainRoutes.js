@@ -5,6 +5,7 @@ const multer = require('multer');
 const path = require('path');
 const mainControllers = require('../controllers/mainControllers')
 
+
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
         let folder = path.join(__dirname, '../public/img')
@@ -20,5 +21,6 @@ let fileUpload = multer({ storage: storage });
 
 router.get('/', mainControllers.getIndex)
 router.post('/', mainControllers.logOut)
+
 
 module.exports = router

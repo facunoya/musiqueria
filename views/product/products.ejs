@@ -42,30 +42,35 @@
                         </p>
                         <p class="price">$<%= product.price %>
                         </p>
-                        <p class="stock-2">Sotck: <input type="text" name="stock" class="stock"
-                                value="<%= product.stock %>">
-                        </p>
-
-                        <div class="bottomProd">
-                            <div class="max-min">
-                                <p class="noSee">
-                                    <%=product.product_id%>
+                        <%if(product.offer> 1){%>
+                            <p class="offer">
+                                <%= product.offer %>% OFF
+                            </p>
+                            <%}%>
+                                <p class="stock-2">Sotck: <input type="text" name="stock" class="stock"
+                                        value="<%= product.stock %>">
                                 </p>
-                                <label for=""></label>
-                                <button class="decrease " value="<%=product.product_id %>">-</button><button
-                                    class="increase" value="<%=product.product_id %>">+</button>
-                            </div>
-                            <form action="/product/all" method="POST" class="form-cantidad">
-                                <input type="text" class="quantity" id="<%=product.product_id %>" name="quantity"
-                                    value="1">
-                                <button type="submit" value=<%=product.product_id %> name="product_id"
-                                    class="cart-product-button"><i class='bx bx-cart'></i></button>
-                            </form>
-                        </div>
-                        <% if(profile !=null || profile==undefined){ if( profile=="Administrador" ) {%>
-                            <button class="btn-edit"><a
-                                    href="/product/modifyproduct/<%=product.product_id %>">Editar</a></button>
-                            <% } %>
+
+                                <div class="bottomProd">
+                                    <div class="max-min">
+                                        <p class="noSee">
+                                            <%=product.product_id%>
+                                        </p>
+                                        <label for=""></label>
+                                        <button class="decrease " value="<%=product.product_id %>">-</button><button
+                                            class="increase" value="<%=product.product_id %>">+</button>
+                                    </div>
+                                    <form action="/product/all" method="POST" class="form-cantidad">
+                                        <input type="text" class="quantity" id="<%=product.product_id %>"
+                                            name="quantity" value="1">
+                                        <button type="submit" value=<%=product.product_id %> name="product_id"
+                                            class="cart-product-button"><i class='bx bx-cart'></i></button>
+                                    </form>
+                                </div>
+                                <% if(profile !=null || profile==undefined){ if( profile=="Administrador" ) {%>
+                                    <button class="btn-edit"><a
+                                            href="/product/modifyproduct/<%=product.product_id %>">Editar</a></button>
+                                    <% } %>
                     </div>
                     <br><br>
                     <%}}); } %>

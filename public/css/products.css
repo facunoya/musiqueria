@@ -41,6 +41,7 @@
 }
 
 .cardContainer {
+    position: relative;
     width: 20%;
     margin: 1.5rem;
     padding-left: 0.5rem;
@@ -58,6 +59,7 @@
 }
 
 .cardContainer:hover {
+
     transition: 0.3s;
     -webkit-box-shadow: 4px 4px 29px -8px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 4px 4px 29px -8px rgba(0, 0, 0, 0.75);
@@ -103,6 +105,14 @@
     padding-right: 1rem;
     color: #200fd8;
     padding-top: 0.5rem;
+}
+
+.offer {
+    color: red;
+    font-size: 20px;
+    position: absolute;
+    bottom: .5rem;
+    right: 1rem;
 }
 
 
