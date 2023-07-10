@@ -294,6 +294,11 @@ input.stock {
         width: 70%;
     }
 
+    .offer {
+        position: absolute;
+        bottom: 3.5rem;
+    }
+
     .form-cantidad {
         width: 100px;
     }
