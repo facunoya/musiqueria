@@ -127,7 +127,12 @@
                                         <p class="description">
                                             <%= product.description %>
                                         </p>
-                                        <p class="price">$<%= product.price %>
+                                        <p class="price offer "> $<%= product.price %>
+                                                <% if(product.offer>1) {%>
+                                                    <b class="OFF">
+                                                        <%= product.offer %>% OFF
+                                                    </b>
+                                                    <%}%>
                                         </p>
                                         <div class="buttons">
                                             <a href="" class="cart-product-button"><i class='bx bx-cart'></i></a>

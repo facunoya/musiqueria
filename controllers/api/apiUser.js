@@ -49,10 +49,10 @@ const apiUser = {
 
                     return res.json({ carts })
                 }
-                res.send("no tiene compras y no deberia hsber llegado aqui")
+                res.status(401).send("no tiene compras y no deberia haber llegado aqui")
             })
 
-            .catch((e) => { return res.send({ "message": "Error " + e }) })
+            .catch((e) => { return res.status(500).send({ "message": "Error " + e }) })
 
 
     },
@@ -70,7 +70,7 @@ const apiUser = {
                     //return res.render('./cart/myBuys', { carts })
                     return res.json({ carts })
                 }
-                res.send("no tiene compras y no deberia hsber llegado aqui")
+                res.send("no tiene compras y no deberia haber llegado aqui")
             })
 
             .catch((e) => { return res.send({ "message": "Error " + e }) })
@@ -89,7 +89,7 @@ const apiUser = {
             .then(user => {
                 return res.json({ user })
             })
-            //el catch no atrapa los errores
+
             .catch((e) => { return res.status(404).send({ "message": "Error " + e }) })
     }
 

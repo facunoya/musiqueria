@@ -9,6 +9,7 @@ const productControllers = {
     getProducts: (req, res) => {
         let profile;
         let user;
+        let offset = 0; // Se modificarìa desde la Request
         if (req.session.userLogged != undefined) {
             user = req.session.userLogged
             profile = req.session.userLogged.profile
@@ -17,10 +18,15 @@ const productControllers = {
             user = null
         }
         db.Products.findAll({
-            include: [{ association: "SubCategories" }]
+            include: [{ association: "SubCategories" }],
+            order: [['subcategory_id']],
+            limit: 10,
+            offset: offset
+
         })
             .then((productos) => {
-                return res.render('./product/products', { productos, profile, user })
+
+                return res.render('./product/products', { productos, profile, user, })
 
             })
 
@@ -42,8 +48,8 @@ const productControllers = {
                 quantity: 1
             }
             if (userFilter != "" || userFilter != undefined) {
-                if (selectedProducts.stock >= 1) {
-                    let cantidad = req.body.quantity
+                let cantidad = req.body.quantity
+                if (selectedProducts.stock >= 1 && cantidad <= selectedProducts.stock) {
                     if (productFilter != "") {
                         console.log("<------------ CANTIDAD: " + cantidad + "---------------->")
                         let cantidadAnterior = parseInt(productFilter[0].quantity)
@@ -51,19 +57,22 @@ const productControllers = {
                         let acum = cantidadAnterior + algo
                         selectedProducts.stock = selectedProducts.stock - cantidad
                         data.quantity = acum
-                        await selectedProducts
+                        /*pasar esta linea al boton comprar del carrito*/
                         db.Products.update({ ...selectedProducts.dataValues }, { where: { product_id: selectedProducts.dataValues.product_id } })
                         db.Carts.update({ ...data }, { where: { cart_id: productFilter[0].cart_id } })
                     } else {
                         console.log("<------------- CANTIDAD: " + cantidad + "---------------->")
                         data.quantity = cantidad
                         selectedProducts.stock = selectedProducts.stock - cantidad
-                        await selectedProducts
+
+                        /*pasar esta linea al boton comprar del carrito*/
                         db.Products.update({ ...selectedProducts.dataValues }, { where: { product_id: selectedProducts.dataValues.product_id } })
                         db.Carts.create(data)
                     }
                 } else {
+
                     return res.send('No queda stock de ese producto')
+
                 }
             }
             res.redirect('/cart/cart')
