@@ -1,0 +1,15 @@
+-que tenga un logo
+-que tenga un cartel led de open u open24hs
+-que tenga un reloj en tiempo real que cambie los carteles
+
+
+
+
+Hola comunidad soy Facundo, Desarrollador Web en JavaScript. 
+Busco unirme a un equipo de trabajo.
+Les comparto mi perfil de LinkedIn: https://www.linkedin.com/in/facundonoya/
+y mi portfolio: https://github.com/facunoya , me serviría su feedback.
+Actualmente estoy a dispocisión para sumarme a un proyecto.
+
+
+Saludos!

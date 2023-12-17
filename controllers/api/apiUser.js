@@ -57,7 +57,8 @@ const apiUser = {
 
     },
     seeYourBuy: (req, res) => {
-        let id = req.params.id
+
+        let id = req.session.userLogged.user_id
         db.SalesHeaders.findAll({
             include: [{ association: "Users" }, { association: "SalesDetails" }],
             where: {
@@ -66,8 +67,9 @@ const apiUser = {
         })
             .then((carts) => {
                 if (carts != "") {
-
+                    console.log(carts[0].dataValues)
                     //return res.render('./cart/myBuys', { carts })
+
                     return res.json({ carts })
                 }
                 res.send("no tiene compras y no deberia haber llegado aqui")

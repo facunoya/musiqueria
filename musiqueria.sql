@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-07-2023 a las 20:52:00
+-- Tiempo de generación: 16-12-2023 a las 22:01:41
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.2.0
 
@@ -20,16 +20,11 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `musiqueria`
 --
-CREATE DATABASE IF NOT EXISTS `musiqueria` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `musiqueria`;
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `carts`
---
--- Creación: 15-06-2023 a las 22:48:25
--- Última actualización: 01-07-2023 a las 17:59:28
 --
 
 CREATE TABLE `carts` (
@@ -58,7 +53,6 @@ INSERT INTO `carts` (`cart_id`, `user_id`, `product_id`, `quantity`) VALUES
 (55, 23, 8, 1),
 (56, 3, 5, 1),
 (81, 30, 1, 1),
-(86, 2, 1, 1),
 (90, 20, 1, 1),
 (91, 20, 10, 1),
 (95, 32, 2, 1),
@@ -66,16 +60,12 @@ INSERT INTO `carts` (`cart_id`, `user_id`, `product_id`, `quantity`) VALUES
 (120, 33, 1, 7),
 (121, 33, 5, 4),
 (122, 33, 8, 1),
-(124, 9, 2, 4),
-(129, 25, 5, 2),
+(129, 25, 5, 5),
 (130, 25, 8, 3),
 (131, 25, 3, 1),
 (132, 25, 10, 1),
-(133, 25, 1, 5),
 (135, 24, 5, 2),
 (136, 24, 1, 3),
-(137, 24, 8, 1),
-(138, 9, 1, 10),
 (139, 22, 5, 2),
 (140, 22, 3, 2),
 (141, 22, 2, 4),
@@ -90,24 +80,34 @@ INSERT INTO `carts` (`cart_id`, `user_id`, `product_id`, `quantity`) VALUES
 (153, 36, 11, 1),
 (154, 36, 2, 1),
 (155, 36, 1, 1),
-(157, 29, 11, 3),
-(158, 9, 20, 2),
+(157, 29, 11, 4),
 (159, 21, 21, 1),
-(160, 2, 5, 1),
 (161, 39, 5, 1),
 (162, 39, 18, 2),
 (163, 39, 21, 1),
-(164, 2, 21, 1),
 (165, 40, 5, 1),
 (166, 40, 18, 2),
-(167, 40, 21, 1);
+(167, 40, 21, 1),
+(169, 25, 1, 10),
+(171, 2, 1, 37),
+(174, 25, 2, 24),
+(176, 9, 5, 2),
+(177, 3, 11, 2),
+(178, 3, 10, 1),
+(179, 22, 8, 1),
+(180, 22, 21, 5),
+(181, 41, 3, 1),
+(187, 42, 3, 4),
+(189, 43, 1, 2),
+(190, 43, 2, 1),
+(191, 44, 3, 2),
+(192, 44, 10, 1),
+(193, 44, 2, 1);
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `categories`
---
--- Creación: 15-06-2023 a las 22:48:25
 --
 
 CREATE TABLE `categories` (
@@ -129,9 +129,6 @@ INSERT INTO `categories` (`category_id`, `name`) VALUES
 --
 -- Estructura de tabla para la tabla `products`
 --
--- Creación: 15-06-2023 a las 22:48:25
--- Última actualización: 01-07-2023 a las 17:59:28
---
 
 CREATE TABLE `products` (
   `product_id` int(11) NOT NULL,
@@ -141,6 +138,7 @@ CREATE TABLE `products` (
   `description` varchar(255) NOT NULL,
   `colors` varchar(255) NOT NULL,
   `price` decimal(10,0) NOT NULL,
+  `offer` int(11) NOT NULL,
   `brand` varchar(255) NOT NULL,
   `productImg` varchar(255) NOT NULL,
   `createdDate` date NOT NULL
@@ -150,24 +148,22 @@ CREATE TABLE `products` (
 -- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `products` (`product_id`, `name`, `subcategory_id`, `stock`, `description`, `colors`, `price`, `brand`, `productImg`, `createdDate`) VALUES
-(1, 'Guitarra', 1, 42, 'Guitarra Texas Mod.04 crazy sounds!', 'Azul', '25000', 'Gibson', 'img-1685743810754.jpg', '2005-07-23'),
-(2, 'Parlantes', 2, 17, 'Parlantes Edifier M201bt Audio 2.1 -subwooferbluetooth 5.0', 'Azul', '12490', 'Edifer', 'img-1685750412885.webp', '2005-07-23'),
-(3, 'Bajo', 1, 36, 'Bajo eléctrico de 4 cuerdas - Activo. Electrónica: 2 pastillas Powersound PSEB4-4/F y PSEB1-4/R', 'Rojo', '23555', 'Cort', 'img-1685310362172.jpg', '0000-00-00'),
-(5, 'Bateria', 1, 37, 'Una batería innovadora con un tono brillante y expansivo', 'Rojo', '23555', 'Tama', 'img-1685310272930.png', '0000-00-00'),
-(8, 'Amplificador', 2, 16, 'Amplificador Guitarra Eléctrica Marshall Gold Mg15g 15w', 'Negro', '54789', 'Marshal', 'img-1685310401825.jpg', '0000-00-00'),
-(10, 'Auriculares', 2, 37, 'Auriculares Ovansu 2.5mts de cable', 'Azul', '7000', 'Ovansu', 'img-1685310542983.jpg', '0000-00-00'),
-(11, 'Piano', 1, 16, 'Piano Medeli Modelo Sp4000', 'Negro', '54789', 'Medeli', 'img-1685413087146.jpg', '0000-00-00'),
-(18, 'Palillos', 1, 16, 'La linea STD de Sambys madera Guatambú es un palillo versatil para bateristas', 'Marrón', '1500', 'Sam Bys', 'img-1688002785539.webp', '0000-00-00'),
-(20, 'Puas', 3, 98, 'Distintas varidiedades inculye 20 unidades por compra', 'Todos', '100', 'Stone', 'img-1688003016067.webp', '0000-00-00'),
-(21, 'Banco para bateria', 3, 11, 'Asiento para Baterista DS550 Yamaha Asiento redondo Ajuste de la altura del tornillo', 'Negro', '1500', 'Yamaha', 'img-1688075494003.jpg', '0000-00-00');
+INSERT INTO `products` (`product_id`, `name`, `subcategory_id`, `stock`, `description`, `colors`, `price`, `offer`, `brand`, `productImg`, `createdDate`) VALUES
+(1, 'Guitarra', 1, 48, 'Guitarra', 'Azul', '25000', 15, 'Gibson', 'img-1689114413463.jpg', '2005-07-23'),
+(2, 'Parlantes', 2, 38, 'Parlantes Edifier M201bt Audio 2.1 -subwooferbluetooth 5.0', 'Azul', '12490', 0, 'Edifer', 'img-1685750412885.webp', '2005-07-23'),
+(3, 'Bajo', 1, 22, 'Bajo eléctrico de 4 cuerdas - Activo. Electrónica: 2 pastillas Powersound PSEB4-4/F y PSEB1-4/R', 'Rojo', '23555', 0, 'Cort', 'img-1685310362172.jpg', '0000-00-00'),
+(5, 'Bateria', 1, 33, 'Una batería innovadora con un tono brillante y expansivo', 'Rojo', '23555', 0, 'Tama', 'img-1685310272930.png', '0000-00-00'),
+(8, 'Amplificador', 2, 48, 'Amplificador Guitarra Eléctrica Marshall Gold Mg15g 15w', 'Negro', '54789', 20, 'Marshal', 'img-1685310401825.jpg', '0000-00-00'),
+(10, 'Auriculares', 2, 35, 'Auriculares Ovansu 2.5mts de cable', 'Azul', '7000', 0, 'Ovansu', 'img-1685310542983.jpg', '0000-00-00'),
+(11, 'Piano', 1, 10, 'Piano Medeli Modelo Sp4000', 'Negro', '54789', 20, 'Medeli', 'img-1685413087146.jpg', '0000-00-00'),
+(18, 'Palillos', 1, 13, 'La linea STD de Sambys madera Guatambú es un palillo versatil para bateristas', 'Marrón', '1500', 0, 'Sam Bys', 'img-1688002785539.webp', '0000-00-00'),
+(20, 'Puas', 3, 93, 'Distintas varidiedades inculye 20 unidades por compra', 'Todos', '100', 15, 'Stone', 'img-1688003016067.webp', '0000-00-00'),
+(21, 'Banco para bateria', 3, 7, 'Asiento para Baterista DS550 Yamaha Asiento redondo Ajuste de la altura del tornillo', 'Negro', '1500', 0, 'Yamaha', 'img-1688075494003.jpg', '0000-00-00');
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `salesdetails`
---
--- Creación: 15-06-2023 a las 22:48:25
 --
 
 CREATE TABLE `salesdetails` (
@@ -262,14 +258,24 @@ INSERT INTO `salesdetails` (`salesdetail_id`, `product_id`, `salesheader_id`, `p
 (77, 1, 67, '50000', 2),
 (78, 1, 69, '50000', 2),
 (79, 8, 70, '54789', 1),
-(80, 2, 71, '37470', 3);
+(80, 2, 71, '37470', 3),
+(81, 5, 72, '47110', 2),
+(82, 8, 73, '54789', 1),
+(83, 2, 74, '49960', 4),
+(84, 8, 75, '767046', 14),
+(85, 1, 76, '250000', 10),
+(86, 20, 76, '200', 2),
+(87, 18, 77, '4500', 3),
+(88, 11, 78, '164367', 3),
+(89, 8, 79, '54789', 1),
+(90, 20, 80, '500', 5),
+(91, 3, 81, '164885', 7),
+(92, 5, 82, '23555', 1);
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `salesheaders`
---
--- Creación: 15-06-2023 a las 22:48:25
 --
 
 CREATE TABLE `salesheaders` (
@@ -353,14 +359,23 @@ INSERT INTO `salesheaders` (`salesheader_id`, `user_id`, `dateSale`, `total`) VA
 (68, 35, '2023-06-19', '0'),
 (69, 29, '2023-06-24', '25000'),
 (70, 29, '2023-06-28', '54789'),
-(71, 29, '2023-06-28', '12490');
+(71, 29, '2023-06-28', '12490'),
+(72, 2, '2023-07-08', '23555'),
+(73, 24, '2023-07-11', '54789'),
+(74, 9, '2023-07-11', '12490'),
+(75, 9, '2023-07-11', '54789'),
+(76, 9, '2023-07-21', '250200'),
+(77, 41, '2023-08-22', '1500'),
+(78, 42, '2023-08-22', '54789'),
+(79, 42, '2023-08-22', '54789'),
+(80, 42, '2023-08-22', '100'),
+(81, 42, '2023-08-22', '23555'),
+(82, 43, '2023-09-06', '23555');
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `subcategories`
---
--- Creación: 15-06-2023 a las 22:48:25
 --
 
 CREATE TABLE `subcategories` (
@@ -382,9 +397,6 @@ INSERT INTO `subcategories` (`subcategory_id`, `name`, `category_id`) VALUES
 
 --
 -- Estructura de tabla para la tabla `users`
---
--- Creación: 15-06-2023 a las 22:48:25
--- Última actualización: 01-07-2023 a las 18:18:16
 --
 
 CREATE TABLE `users` (
@@ -417,13 +429,17 @@ INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `avatar`, `profile`
 (31, 'Belen', 'belen@gmail.com', '$2a$10$61tRVqYsKbTVDNARJ9/VdOQ7UVNIHWFmsi3OfvMMHqzl4DuMoYrxq', 'img-1688234170878.jpg', 'Cliente'),
 (32, 'Fanku87', 'fanku87@gmail.com', '$2a$10$dhjcuXxbwXzNENQXspgX0O3hVl0gg2VO2aPTXZPmr63zDrALOXQGW', 'img-1685413672918.jpg', 'Cliente'),
 (33, 'More', 'morena@gmail.com', '$2a$10$B.ZGX7SXWGbHCFZRcn53w.NBKLw.XxMRKstEITzqdjiWB3YrWEIwa', 'img-1685486522983.jpg', 'Cliente'),
-(34, 'Critian', 'cristian@gmail.com', '$2a$10$sus5DgXxdT8K1lF35W7V0.x13bHHg9z0l9xy4vMVrsS.Q8jwne5ZC', 'img-1686433322290.png', 'Cliente'),
+(34, 'Cristian', 'cristian@gmail.com', '$2a$10$mkQGy8VX.I0R/kFlO.7cf.O1ql3b.UO11YDSho5.C0.tz7zFNlQ0e', 'img-1688781865667.png', 'Cliente'),
 (35, 'Horacio', 'hnoya@gmail.com', '$2a$10$sAr2s6cgoXqEU7L05Yw0aertykaQPnEBPvJaSD.OJXdHVrI9pCbMq', 'img-1687196935958.jpg', 'Administrador'),
 (36, 'Maribe', 'maribe@gmail.com', '$2a$10$Kpk5Np5c52HR/1D3MRCPSu0pagkMBrToKqnb0IAE28wycYgR0wFY.', 'img-1687644382378.jpg', 'Cliente'),
 (37, 'Jeremias', 'gatofelix@gmail.com', '$2a$10$EncXeijZAblxwuoikSZ2KOE6NWrajpjczV2QRTcbtd5RAmCHEh2dO', 'img-1687998211809.png', 'Cliente'),
 (38, 'Bella', 'agostina@gmail.com', '$2a$10$NSobzroKzjrtsjVNljG.E.eSoGYQ0CA6ZfbIsdV5XRjMGLqOuk8lm', 'img-1688235496044.jpg', 'Administrador'),
 (39, 'Agustin', 'agustin@hotmail.com', '$2a$10$Orhe.031Y.BYAAAh5YZezuF.sKm4/1amoWx5dJtf/dYUKLfe1R1wG', 'img-1688235420452.jpg', 'Administrador'),
-(40, 'Franco', 'colo@gmail.com', '$2a$10$IpYuXYe9f3TkudyT5zaMw.O7Hz.2wHuma.RbcbNVEhQ4O.gCLxHf6', 'img-1688234306979.jpg', 'Administrador');
+(40, 'Franco', 'colo@gmail.com', '$2a$10$IpYuXYe9f3TkudyT5zaMw.O7Hz.2wHuma.RbcbNVEhQ4O.gCLxHf6', 'img-1688234306979.jpg', 'Administrador'),
+(41, 'Juan', 'juan@gmail.com', '$2a$10$juC/WHHd/JpXxrcMVnclyOVJHFj99QS3iZTRHNdM76xLYYNP16uky', 'img-1692738738622.jpeg', 'Cliente'),
+(42, 'Federico', 'champi@gmail.com', '$2a$10$TajmNpAUEvdFHNAcr5EsXuU0mXX1b9GKXD9DwDeAVfpPnBRMOShjO', 'img-1692739445296.jpg', 'Administrador'),
+(43, 'turelli', 'maribecac@gmail.com', '$2a$10$DizSv/BOs43mEG/SvsgLUefJaIpFHQbEKFDWM6TxXtVGrhqfRm1gC', 'img-1694043742915.jpg', 'Administrador'),
+(44, 'Fanku', 'fanku87@mail.com', '$2a$10$DHYzIZPRCk5JByyL7YBap.fARHaBz/LnfhuvCgmHHyJhtJxiU61jW', 'img-1699651560019.jpg', 'Administrador');
 
 --
 -- Índices para tablas volcadas
@@ -486,7 +502,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
 
 --
 -- AUTO_INCREMENT de la tabla `categories`
@@ -504,13 +520,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de la tabla `salesdetails`
 --
 ALTER TABLE `salesdetails`
-  MODIFY `salesdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `salesdetail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT de la tabla `salesheaders`
 --
 ALTER TABLE `salesheaders`
-  MODIFY `salesheader_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `salesheader_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT de la tabla `subcategories`
@@ -522,7 +538,7 @@ ALTER TABLE `subcategories`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- Restricciones para tablas volcadas
